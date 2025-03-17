@@ -12,6 +12,7 @@ es menor o igual a $400.000.Por lo tanto, luego de llamar a la función,
 se quiere mostrar en el main el empleado con mayor sueldo y mostrar el nombre
 y apellido de todos los empleados con salario menor o igual a $400.000.
 */
+//agregar la struct fecha para ser mas eficiente
 struct empleado {
     string nombre;
     string apellido;
@@ -66,6 +67,7 @@ int main (){
     cout<<"ingreso de empleados"<<endl;
     ingreso(nomina);
     prime=empleadoConMayorSueldo(nomina, nomina_barata);
+
     cout<<"el empleado que mas cobra es: "<<prime.nombre<<" y cobra: "<<prime.salario<<" pesos al mes"<<endl;
     cout<< "y los empleados que cobran menos de 400 k al mes son"<<endl;
     for(empleado ju : nomina_barata){
