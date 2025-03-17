@@ -46,22 +46,14 @@ void llenar_pasillo(producto pasillo[3][4]){
 }
 void precio_mayor_nombre_seleccionado(producto pasillo[3][4]){
     int precio_m=0;
-    int total_columna=0;
-    int columna_mayor=0;
     for(int i=0;i<3;i++){
         for(int j=0;j<4;j++){
-            total_columna+=pasillo[i][j].precio;
-        if(total_columna>precio_m){
-            precio_m=total_columna;
-            columna_mayor=j;
-        }
-        total_columna=0;
-    }
-}
+            if(pasillo[i][j].precio>precio_m){
+                precio_m=pasillo[i][j].precio;
+            }
             if(i==2 && j==3){
                 cout<<"nombre del producto seleccionado: "<<pasillo[i][j].nombre<<endl;
             }
-    return columna_mayor+1;
         }
     }
     cout<<precio_m;        

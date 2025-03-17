@@ -4,7 +4,7 @@ using namespace std;
 struct carro{
     string produ;
     int cantidad;
-    int precio;
+    float precio;
 };
 
 struct pedido{
@@ -35,17 +35,17 @@ void ing_pedido(vector<pedido> &pedidos){
         cout<<"nombre del cliente"<<endl;
         cin>>aux.n_cliente;
         while(true){
-            carro aux1;
+            carro auxiliar1;
             string pregunta;
             cout<<"nombre del producto"<<endl;
-            cin>>aux1.produ;
+            cin>>auxiliar1.produ;
             cout<<"cantidad"<<endl;
-            cin>>aux1.cantidad;
+            cin>>auxiliar1.cantidad;
             cout<<"precio?";
-            cin>>aux1.precio;
+            cin>>auxiliar1.precio;
             cout<<"queres hacer otro ingreso?"<<endl;
             cin>>pregunta;
-            aux.carrito.push_back(aux1);
+            aux.carrito.push_back(auxiliar1);
             if(pregunta !="si"){
                 break;
             } 
@@ -56,13 +56,13 @@ void ing_pedido(vector<pedido> &pedidos){
         if(opcion!="si"){
             break;
         }
-        }
+    }
 };
 void borrar_pedido(vector <pedido> &pedidos, int borrar){
     for (int i = 0; i <= pedidos.size(); i++)
     {
-        if(borrar=pedidos[i].n_pedido){
-            pedidos.erase[i];
+        if(borrar==pedidos[i].n_pedido){
+            pedidos.erase(pedidos.begin() + i);
         }
     }
     
@@ -76,25 +76,25 @@ void mostrar_pedido(vector <pedido> pedidos){
         int monto_total=0;
         for (int j = 0; j <= pedidos[i].carrito.size(); j++)
         {
-            monto_total += (pedidos[i].carrito[j].cantidad * pedidos[i].carrito[j].precio;)
+            monto_total += (pedidos[i].carrito[j].cantidad * pedidos[i].carrito[j].precio);
         }
          cout<<"el monto total sera: "<< monto_total;
         
     }
     
 }
-void total(vector <pedido> pedidos ){
+int total(vector <pedido> pedidos ){
     int monto_max=0;
      for (int i = 0; i <= pedidos.size(); i++){
         int monto_total=0;
         for (int j = 0; j <= pedidos[i].carrito.size(); j++)
         {
-            monto_total += (pedidos[i].carrito[j].cantidad * pedidos[i].carrito[j].precio;)
+            monto_total += (pedidos[i].carrito[j].cantidad * pedidos[i].carrito[j].precio);
         }
         monto_max+=monto_total;
         
      }
-     cout<<monto_max;
+     return monto_max;
 }
 
 
@@ -102,11 +102,11 @@ int main(){
     vector <pedido> pedidos;
     while(true){
         string opcion1, opcion2;
-        string var1
+        string var1;
         cout<<"quere ingresar?"<<endl;
         cin>>var1;
         if(var1=="si"){
-            ing_pedido(pedidos);
+            ing_pedido(pedidos);    
         }
         cout<<"queres cancelar un pedido"<<endl;
         cin>>opcion1;
