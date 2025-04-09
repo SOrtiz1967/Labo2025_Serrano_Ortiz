@@ -12,7 +12,7 @@ public class DiaLaboral {
         System.out.println("ingresa el dia de la semana");
         String dia = entrada.nextLine();
         if (dia.equals("sabado") || dia.equals("domingo")){
-            System.out.println("es fin de semana");
+            System.out.println("es fin de semana:)");
         }
         else {
             System.out.println("es un dia laboral:(");

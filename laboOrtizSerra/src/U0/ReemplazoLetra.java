@@ -13,15 +13,9 @@ public class ReemplazoLetra {
         String inpu= entrada.nextLine();
         char reemplazo = inpu.charAt(0);
         String frase="Ayer me compré muñecos de la marca ‘ToyCo’ por internet.";
-        String nueva=frase.replace('e', reemplazo);
+        String nueva=frase.replace('e', reemplazo);//espectacular!
         System.out.println("la frase con la e reemplazada es: "+ nueva);
-        /*
-        for (int i = 0; i < frase.length(); i++){
-            if (frase.charAt(i)=='e'){
-                frase.charAt(i) = reemplazo;
-            }
-        }
-         */
+
 
     }
 }
