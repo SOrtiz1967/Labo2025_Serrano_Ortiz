@@ -27,11 +27,11 @@ public class Rectangulo {
     public void setAltura(int Altura){
         this.Altura = Altura;
     }
-    public double area(int Base, int Altura){
+    public double area(){
         double area0= Base*Altura;
         return area0;
     }
-    public double perimetro(int Base, int Altura){
+    public double perimetro(){
         double perimetro0= Base*2+Altura*2;
         return perimetro0;
     }
