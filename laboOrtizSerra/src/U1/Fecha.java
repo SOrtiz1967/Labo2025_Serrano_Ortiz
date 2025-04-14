@@ -68,13 +68,14 @@ public class Fecha {
         }
     }
 
-    public int diasMes(int mes,int anio){
+    public int diasMes(){
         YearMonth mesdelanio= YearMonth.of(this.anio,this.mes);
         int diasdelmes= mesdelanio.lengthOfMonth();
         return diasdelmes;
     }
-    public void corta(){
+    public String corta(){
         System.out.println(dia+"-"+mes+"-"+anio);
+        return (dia+"-"+mes+"-"+anio);
     }
     public void larga(){
         LocalDate fecha= LocalDate.of(anio,mes,dia);
@@ -83,7 +84,7 @@ public class Fecha {
         System.out.println(fechita+"-"+dia+"-"+diadelanio);
     }
     public void siguiente(){
-        if(dia==diasMes(mes,anio)){
+        if(dia==diasMes()){
             dia=1;
             if(mes==12) {
                 mes = 1;
@@ -99,7 +100,7 @@ public class Fecha {
     }
     public void anterior(){
         if(dia==1){
-            dia=diasMes(mes-1,anio);
+            dia=diasMes();
             mes--;
             if(mes==0) {
                 mes = 12;

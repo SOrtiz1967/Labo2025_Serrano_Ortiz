@@ -32,13 +32,14 @@ public class Main {
         Fecha f1= new Fecha();
         Fecha f2= new Fecha();
         f1.anterior();
-        f1.mayorQue(f2);
-        f1.corta();
-        f1.diasMes(mes,anio);
-        f1.igualQue(f2);
-        f1.menorQue(f2);
         f1.larga();
         f1.siguiente();
         f1.valida();
+        f1.corta();
+        System.out.println(f1.mayorQue(f2));
+        System.out.println(f1.diasMes());
+        System.out.println(f1.igualQue(f2));
+        System.out.println(f1.igualQue(f2));
+        //ejercicio libro
     }
 }

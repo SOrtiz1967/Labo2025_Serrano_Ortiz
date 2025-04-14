@@ -36,10 +36,10 @@ public class Persona {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    public void imprimirDatos() {
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Edad: " + edad);
-        System.out.println("Dirección: " + direccion);
+    public String imprimirDatos() {
+        System.out.println("Nombre: " + nombre + "Edad: " + edad+ "Dirección: " + direccion);
+        return ("Nombre: " + nombre + "Edad: " + edad+ "Dirección: " + direccion);
+
     }
 
 }
