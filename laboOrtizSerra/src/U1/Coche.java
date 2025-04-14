@@ -47,4 +47,14 @@ public class Coche {
     public void setVelocidad(double velocidad) {
         this.velocidad = velocidad;
     }
+
+    public void acelerar(){
+        velocidad++;
+    }
+    public void frenar(){
+        velocidad--;
+    }
+    public void mostrarVelocidadActual(){
+        System.out.println("La velocidad es: "+ velocidad);
+    }
 }
