@@ -41,5 +41,34 @@ public class Main {
         System.out.println(f1.igualQue(f2));
         System.out.println(f1.igualQue(f2));
         //ejercicio libro
+        Libro l1= new Libro();
+        l1.getAutor();
+        l1.getEditorial();
+        l1.getISBN();
+        l1.getFechaPublicacion();
+        l1.getPaginas();
+        l1.getTitulo();
+        l1.setAutor(p1);
+        l1.setEditorial("Santillana");
+        l1.setFechaPublicacion(f2);
+        l1.setISBN(45);
+        l1.setPaginas(250);
+        l1.setTitulo("Las increibles aventuras de Fran");
+        l1.mayorQue(f1);
+        l1.mostrarDatos();
+        //ejercicio cafetera
+        Cafetera caf1= new Cafetera();
+        caf1.setCantidadActual(300);
+        caf1.setCantidadMaxima(1000);
+        caf1.llenarCafetera();
+        caf1.servirTaza(200);
+        caf1.vaciarCafetera();
+        caf1.agregarCafe(500);
+        System.out.println("cantidad actual: " + caf1.getCantidadActual() + "cantidad maxima: " + caf1.getCantidadMaxima());
+        //ejercicio cancion
+        Cancion can1= new Cancion();
+        can1.setAutor("El nehu");
+        can1.setTitulo("Mi yo");
+        System.out.println("Autor: " + can1.getAutor() + " Titulo: " + can1.getTitulo());
     }
 }

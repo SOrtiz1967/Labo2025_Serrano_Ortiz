@@ -99,7 +99,6 @@ public class Libro {
 }
 
     public boolean mayorQue(Fecha fAux){
-
         return this.fechaPublicacion.mayorQue(fAux);
     }
 }
