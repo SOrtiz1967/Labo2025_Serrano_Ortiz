@@ -2,6 +2,7 @@ package personas;
 
 import fecha.Fecha;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ public class Alumno {
     /*
     nombre, apellido, fechaNacimiento, listaDeNotas
 
-Métodos:
+    Métodos:
 
     Getters y setters de todos los atributos.
     agregarNota()
@@ -19,10 +20,10 @@ Métodos:
      */
     private String nombre;
     private String apellido;
-    private Fecha fechaNacimiento;
+    private LocalDate fechaNacimiento;
     private ArrayList<Double> notas;
     //constructores
-    public Alumno(String nombre, String apellido, Fecha fechaNacimiento, ArrayList<Double> notas) {
+    public Alumno(String nombre, String apellido, LocalDate fechaNacimiento, ArrayList<Double> notas) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNacimiento = fechaNacimiento;
@@ -31,7 +32,7 @@ Métodos:
     public Alumno(){
         this.nombre="Juan Ignacio";
         this.apellido="Nardoni";
-        this.fechaNacimiento= new Fecha(14,7, 2002);
+        this.fechaNacimiento= LocalDate.of(2002,07, 14);
         this.notas= new ArrayList<Double>();
         notas.add(10.0);
         notas.add(10.0);
@@ -47,7 +48,7 @@ Métodos:
         return apellido;
     }
 
-    public Fecha getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
@@ -63,7 +64,7 @@ Métodos:
         this.apellido = apellido;
     }
 
-    public void setFechaNacimiento(Fecha fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -85,21 +86,30 @@ Métodos:
         }
         return notaBaja;
     }
-    public Double notaAlta(){
-        double notaAlta=notas.get(0);
-        for (Double nota : notas){
-            if(notaAlta<nota){
-                notaAlta=nota;
+    public Double notaAlta() {
+        double notaAlta = notas.get(0);
+        for (Double nota : notas) {
+            if (notaAlta < nota) {
+                notaAlta = nota;
             }
         }
         return notaAlta;
+    }
 
+    public double calcularProm(){
+        double promedio=0;
+        double suma=0;
+        for (Double nota : notas){
+            suma+=nota;
+        }
+        promedio= suma/notas.size();
+        return promedio;
     }
 
     public static void main(String[] args) {
         Alumno a1= new Alumno();
         System.out.println("el alumno se llama: " + a1.nombre +" "+ a1.apellido +
-                "y nació el "+ a1.fechaNacimiento.getDia()+"/"+a1.fechaNacimiento.getMes()+"/"+a1.fechaNacimiento.getAnio());
+                "y nació el "+ a1.fechaNacimiento.getDayOfMonth()+"/"+a1.fechaNacimiento.getMonth()+"/"+a1.fechaNacimiento.getYear());
         System.out.print("sus notas son: ");
         for (double nota: a1.getNotas()){
             System.out.print(nota+", ");
