@@ -1,5 +1,7 @@
 package sistemas;
 
-public class SistemaCurling {
+import grupos.EquipoCurling;
 
+public class SistemaCurling {
+    private Arraylist <EquipoCurling> equipos;
 }

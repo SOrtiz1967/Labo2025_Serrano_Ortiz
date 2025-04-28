@@ -2,6 +2,7 @@ package grupos;
 
 import personas.JugadorCurling;
 
+import java.time.temporal.JulianFields;
 import java.util.ArrayList;
 
 public class EquipoCurling {
@@ -11,9 +12,74 @@ public class EquipoCurling {
     private ArrayList<JugadorCurling> jugadores;
     private String disponibilidadHoraria;
 
-    public void noRepeatNumberCaptain{
-        for (JugadorCurling jugador : jugadores){
-            
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getBarrio() {
+        return barrio;
+    }
+
+    public EquipoCurling(String nombre, String barrio, ArrayList<JugadorCurling> jugadores, String disponibilidadHoraria, void noRepeatNumberCaptain) {
+        this.nombre = nombre;
+        this.barrio = barrio;
+        this.jugadores = jugadores;
+        this.disponibilidadHoraria = disponibilidadHoraria;
+    }
+
+    public EquipoCurling() {
+        this.nombre = "San Lorenzo";
+        this.barrio = "Indeterminado";
+        this.jugadores = new ArrayList<JugadorCurling>();
+        JugadorCurling j1= new JugadorCurling();
+        jugadores.add(j1);
+        this.disponibilidadHoraria = "Tarde";
+    }
+
+    public void setBarrio(String barrio) {
+        this.barrio = barrio;
+    }
+
+    public ArrayList<JugadorCurling> getJugadores() {
+        return jugadores;
+    }
+
+    public void setJugadores(ArrayList<JugadorCurling> jugadores) {
+        this.jugadores = jugadores;
+    }
+
+    public String getDisponibilidadHoraria() {
+        return disponibilidadHoraria;
+    }
+
+    public void setDisponibilidadHoraria(String disponibilidadHoraria) {
+        this.disponibilidadHoraria = disponibilidadHoraria;
+    }
+
+    public void noRepeatNumberCaptain(){
+        ArrayList<Integer> numeros  = new ArrayList<Integer>();
+        ArrayList<Boolean> capitanes  = new ArrayList<Boolean>();
+        for (JugadorCurling jugador : this.jugadores){
+            numeros.add(jugador.getNumeroCamiseta());
+            capitanes.add(jugador.getCapitan());
+            for(int numero:numeros)
+                if(jugador.getNumeroCamiseta()==numero){
+                    jugador.setNumeroCamiseta((int) (Math.random()*100));
+                }
+            for(Boolean capitan: capitanes){
+                if(jugador.getCapitan()==capitan){
+                    jugador.setCapitan(false);
+                }
+            }
+        }
+    }
+    public void validacionDisponible(){
+        if(this.getDisponibilidadHoraria()!="mañana" || this.getDisponibilidadHoraria()!="tarde" || this.getDisponibilidadHoraria()!="noche"){
+            this.setDisponibilidadHoraria("Indefinida");
         }
     }
 }
