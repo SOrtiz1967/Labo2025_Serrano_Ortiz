@@ -24,7 +24,7 @@ public class EquipoCurling {
         return barrio;
     }
 
-    public EquipoCurling(String nombre, String barrio, ArrayList<JugadorCurling> jugadores, String disponibilidadHoraria, void noRepeatNumberCaptain) {
+    public EquipoCurling(String nombre, String barrio, ArrayList<JugadorCurling> jugadores, String disponibilidadHoraria) {
         this.nombre = nombre;
         this.barrio = barrio;
         this.jugadores = jugadores;
@@ -78,8 +78,19 @@ public class EquipoCurling {
         }
     }
     public void validacionDisponible(){
+        this.getDisponibilidadHoraria().toLowerCase();
         if(this.getDisponibilidadHoraria()!="mañana" || this.getDisponibilidadHoraria()!="tarde" || this.getDisponibilidadHoraria()!="noche"){
             this.setDisponibilidadHoraria("Indefinida");
+        }
+    }
+    public String compararDisponibilidad(EquipoCurling e2){
+        this.validacionDisponible();
+        e2.validacionDisponible();
+        if(this.getDisponibilidadHoraria() == e2.getDisponibilidadHoraria()){
+            return this.getDisponibilidadHoraria();
+        }
+        else{
+            return "No se juega";
         }
     }
 }
