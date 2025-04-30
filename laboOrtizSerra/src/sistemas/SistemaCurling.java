@@ -43,13 +43,18 @@ public class SistemaCurling {
         this.fixture = fixture;
     }
     public void llenarFixture(){
-        for(int i=0;i<this.equipos.size();i++){
-            for (int j=0;j==this.equipos.size()/2;j++){
+        for(int i=1;i<this.equipos.size();i++){
+            for (int j=0;j<this.equipos.size()/2;j++){
                 for(int h=0;h<this.equipos.size();h+=2){
                     fixture.add(new PartidoCurling(this.equipos.get(h),this.equipos.get(h+1),this.equipos.get(h).compararDisponibilidad(this.equipos.get(h+1)), LocalDate.now().plusDays(j*7)));
+                    if(fixture.get(h).getTurno().equals("no existe") || fixture.get(h).getTurno().equals("Indefinida") ){
+                        fixture.remove(h);
+                    }
+
                 }
             }
         }
+
     }
     /*
     alternativa: solo con dos for, el elemento 0 va contra todos menos contra el mismo,
@@ -58,16 +63,16 @@ public class SistemaCurling {
     public static void main(String[] args) {
 
         SistemaCurling sis1= new SistemaCurling();
-        EquipoCurling e7= new EquipoCurling("Voka", "Nuñez", new ArrayList<>(), "mañana");
+        EquipoCurling e7= new EquipoCurling("Voka", "Nuñez", new ArrayList<>(), "tarde");
         sis1.equipos.add(e7);
         sis1.llenarFixture();
-        System.out.println();
-        for (PartidoCurling partido : sis1.getFixture()){
-            //
-            System.out.println("local: "+ partido.getLocal()+ " visitante: "+ partido.getVisitante()+ "fecha: "+ partido.getFechaPartido());
+        for(int i=1;i<sis1.equipos.size();i++) {
+            for (int h = 0; h < sis1.fixture.size(); h++) {
+                System.out.println("Fecha" + i + ": " + "Local: " + sis1.fixture.get(h).getLocal().getNombre() + " Visitante: " + sis1.fixture.get(h).getVisitante().getNombre() + " Fecha: " + sis1.fixture.get(h).getFechaPartido() + " Disponibilidad Horario: " + sis1.fixture.get(h).getTurno());
+            }
+        }
         }
 
 
 
     }
-}

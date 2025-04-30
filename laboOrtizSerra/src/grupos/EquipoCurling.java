@@ -37,7 +37,7 @@ public class EquipoCurling {
         this.jugadores = new ArrayList<JugadorCurling>();
         JugadorCurling j1= new JugadorCurling();
         jugadores.add(j1);
-        this.disponibilidadHoraria = "Tarde";
+        this.disponibilidadHoraria = "tarde";
     }
 
     public void setBarrio(String barrio) {
@@ -78,8 +78,17 @@ public class EquipoCurling {
         }
     }
     public void validacionDisponible(){
-        this.getDisponibilidadHoraria().toLowerCase();
-        if(this.getDisponibilidadHoraria()!="mañana" || this.getDisponibilidadHoraria()!="tarde" || this.getDisponibilidadHoraria()!="noche"){
+        this.setDisponibilidadHoraria(getDisponibilidadHoraria().toLowerCase());
+        if(this.getDisponibilidadHoraria().toLowerCase() == "mañana"){
+            this.setDisponibilidadHoraria(getDisponibilidadHoraria().toLowerCase());
+        }
+        else if (this.getDisponibilidadHoraria().toLowerCase()=="tarde" ){
+            this.setDisponibilidadHoraria(getDisponibilidadHoraria().toLowerCase());
+        }
+        else if (this.getDisponibilidadHoraria().toLowerCase()=="noche"){
+            this.setDisponibilidadHoraria(getDisponibilidadHoraria().toLowerCase());
+        }
+        else{
             this.setDisponibilidadHoraria("Indefinida");
         }
     }
@@ -90,7 +99,7 @@ public class EquipoCurling {
             return this.getDisponibilidadHoraria();
         }
         else{
-            return "No se juega";
+            return "no existe";
         }
     }
 }
