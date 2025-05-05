@@ -4,11 +4,14 @@ public class Prenda {
 
     private String detalles;
     private double costo;
+    private double minPrice = 10.0;
+    private double tax = 1.2;
     private String talla;
 
     public Prenda(String detalles, double costo, String talla){
         this.detalles = detalles;
         this.costo = costo;
+        
         this.talla = talla;
     }
     // no hace falta constructor por defecto 
@@ -22,11 +25,15 @@ public class Prenda {
     }
 
     public double getCosto() {
-        return costo;
+        return costo * tax;
     }
+    
 
     public void setCosto(double costo) {
-        this.costo = costo;
+        if (costo > minPrice){
+            this.costo = costo;
+        }
+
     }
 
     public String getTalla() {
