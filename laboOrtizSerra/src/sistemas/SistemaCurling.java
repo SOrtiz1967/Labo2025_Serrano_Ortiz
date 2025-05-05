@@ -11,7 +11,9 @@ import java.util.ArrayList;
 public class SistemaCurling {
 
     private ArrayList <EquipoCurling> equipos;
-
+    private ArrayList <EquipoCurling> equiposMañana;
+    private ArrayList <EquipoCurling> equiposTarde;
+    private ArrayList <EquipoCurling> equiposNoche;
     private ArrayList <PartidoCurling> fixture;
 
     public SistemaCurling() {
@@ -42,24 +44,36 @@ public class SistemaCurling {
     public void setFixture(ArrayList<PartidoCurling> fixture) {
         this.fixture = fixture;
     }
-    public void llenarFixture(){
-        for(int i=1;i<this.equipos.size();i++){
-            for (int j=0;j<this.equipos.size()/2;j++){
-                for(int h=0;h<this.equipos.size();h+=2){
-                    fixture.add(new PartidoCurling(this.equipos.get(h),this.equipos.get(h+1),this.equipos.get(h).compararDisponibilidad(this.equipos.get(h+1)), LocalDate.now().plusDays(j*7)));
-                    if(fixture.get(h).getTurno().equals("no existe") || fixture.get(h).getTurno().equals("Indefinida") ){
-                        fixture.remove(h);
-                    }
-
+    public void llenarmatriz(){
+        for(EquipoCurling equipo:equipos){
+                equipo.noRepeatNumber;
+                equipo.validacionDisponible;
+                switch(equipo.disponibilidadHoraria){
+                    case "tarde":
+                        this.equiposTarde.add(this);
+                        break;
+                    case "noche":
+                        this.equiposNoche.add(this);
+                        break;
+                    case "mañana":
+                        this.equiposMañana.add(this);
+                        break;
                 }
             }
         }
-
     }
-    /*
-    alternativa: solo con dos for, el elemento 0 va contra todos menos contra el mismo,
-    el elemento 1 va a partir de el 2 por que ya jugo con el 0 y el 1 es el mismo, se puede poner como condicion del for i?
-     */
+    public void enfrentarMatriz(EquipoCurling[] matriz){
+        LocalDate fecha = LocalDate.now();
+        for(int i=0;i<matriz.length;i++){
+            for(int j=0;j<matriz.length;j++){}
+                this.fixture.add(matriz[i],matriz[j+1],fecha.plusDays(j*7),matriz[i].disponibilidadHoraria);
+        }
+    }
+    public void llenarFixture(){
+        this.enfrentarMatriz(equiposTarde);
+        this.enfrentarMatriz(equiposNoche);
+        this.enfrentarMatriz(equiposMañana);
+    }
     public static void main(String[] args) {
 
         SistemaCurling sis1= new SistemaCurling();
