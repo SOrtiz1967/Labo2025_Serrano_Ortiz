@@ -2,18 +2,15 @@ package sistemas;
 
 import eventos.PartidoCurling;
 import grupos.EquipoCurling;
-import personas.JugadorCurling;
 
 import java.time.LocalDate;
-import java.time.temporal.WeekFields;
 import java.util.ArrayList;
-
 public class SistemaCurling {
 
-    private ArrayList <EquipoCurling> equipos;
-    private ArrayList <EquipoCurling> equiposMañana;
-    private ArrayList <EquipoCurling> equiposTarde;
-    private ArrayList <EquipoCurling> equiposNoche;
+    private ArrayList<EquipoCurling> equipos;
+    public ArrayList <EquipoCurling> equiposMañana;
+    public ArrayList <EquipoCurling> equiposTarde;
+    public ArrayList <EquipoCurling> equiposNoche;
     private ArrayList <PartidoCurling> fixture;
 
     public SistemaCurling() {
@@ -30,43 +27,40 @@ public class SistemaCurling {
     }
 
     public ArrayList<EquipoCurling> getEquipos() {
-        return equipos;
-    }
-
-    public void setEquipos(ArrayList<EquipoCurling> equipos) {
-        this.equipos = equipos;
-    }
-
-    public ArrayList<PartidoCurling> getFixture() {
-        return fixture;
-    }
-
-    public void setFixture(ArrayList<PartidoCurling> fixture) {
-        this.fixture = fixture;
-    }
-    public void llenarmatriz(){
-        for(EquipoCurling equipo:equipos){
-                equipo.noRepeatNumber;
-                equipo.validacionDisponible;
-                switch(equipo.disponibilidadHoraria){
+            return equipos;
+        }
+        public void setEquipos(ArrayList<EquipoCurling> equipos) {
+            this.equipos = equipos;
+        }
+        public ArrayList<PartidoCurling> getFixture() {
+            return fixture;
+        }
+        public void setFixture(ArrayList<PartidoCurling> fixture) {
+            this.fixture = fixture;
+        }
+        public void llenarmatriz(){
+            for(EquipoCurling equipo:equipos){
+                equipo.noRepeatNumber();
+                equipo.validacionDisponible();
+                switch(equipo.getDisponibilidadHoraria()){
                     case "tarde":
-                        this.equiposTarde.add(this);
+                        this.equiposTarde.add(equipo);
                         break;
                     case "noche":
-                        this.equiposNoche.add(this);
+                        this.equiposNoche.add(equipo);
                         break;
                     case "mañana":
-                        this.equiposMañana.add(this);
+                        this.equiposMañana.add(equipo);
                         break;
                 }
             }
         }
-    }
-    public void enfrentarMatriz(EquipoCurling[] matriz){
+
+    public void enfrentarMatriz(ArrayList <EquipoCurling> matriz){
         LocalDate fecha = LocalDate.now();
-        for(int i=0;i<matriz.length;i++){
-            for(int j=0;j<matriz.length;j++){}
-                this.fixture.add(matriz[i],matriz[j+1],fecha.plusDays(j*7),matriz[i].disponibilidadHoraria);
+        for(int i=0;i<matriz.size();i++){
+            for(int j=0;j<matriz.size();j++){}
+                this.fixture.add(matriz.get(i),matriz.get(j+1),fecha.plusDays(j*7),matriz.get(i).getDisponibilidadHoraria());
         }
     }
     public void llenarFixture(){
@@ -85,8 +79,10 @@ public class SistemaCurling {
                 System.out.println("Fecha" + i + ": " + "Local: " + sis1.fixture.get(h).getLocal().getNombre() + " Visitante: " + sis1.fixture.get(h).getVisitante().getNombre() + " Fecha: " + sis1.fixture.get(h).getFechaPartido() + " Disponibilidad Horario: " + sis1.fixture.get(h).getTurno());
             }
         }
-        }
-
-
-
     }
+
+
+
+}
+
+}
