@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Alumno {
+public class Alumno extends Persona {
     /*
     nombre, apellido, fechaNacimiento, listaDeNotas
 
@@ -18,19 +18,18 @@ public class Alumno {
     mayorNota()
 
      */
-    private String nombre;
     private String apellido;
     private LocalDate fechaNacimiento;
     private ArrayList<Double> notas;
     //constructores
     public Alumno(String nombre, String apellido, LocalDate fechaNacimiento, ArrayList<Double> notas) {
-        this.nombre = nombre;
+        super.setNombre(nombre);
         this.apellido = apellido;
         this.fechaNacimiento = fechaNacimiento;
         this.notas = notas;
     }
     public Alumno(){
-        this.nombre="Juan Ignacio";
+        super.setNombre("Juan Ignacio");
         this.apellido="Nardoni";
         this.fechaNacimiento= LocalDate.of(2002,07, 14);
         this.notas= new ArrayList<Double>();
@@ -40,9 +39,6 @@ public class Alumno {
     }
     //getters y setters
 
-    public String getNombre() {
-        return nombre;
-    }
 
     public String getApellido() {
         return apellido;
@@ -56,9 +52,6 @@ public class Alumno {
         return notas;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
@@ -108,7 +101,7 @@ public class Alumno {
 
     public static void main(String[] args) {
         Alumno a1= new Alumno();
-        System.out.println("el alumno se llama: " + a1.nombre +" "+ a1.apellido +
+        System.out.println("el alumno se llama: " + a1.getNombre() +" "+ a1.apellido +
                 "y nació el "+ a1.fechaNacimiento.getDayOfMonth()+"/"+a1.fechaNacimiento.getMonth()+"/"+a1.fechaNacimiento.getYear());
         System.out.print("sus notas son: ");
         for (double nota: a1.getNotas()){

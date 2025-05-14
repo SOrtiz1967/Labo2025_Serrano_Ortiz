@@ -1,6 +1,6 @@
 package figuras;
 
-public class Rectangulo {
+public class Rectangulo extends FigurasGeométricas {
     private int Base;
     private int Altura;
     //constructor por defecto

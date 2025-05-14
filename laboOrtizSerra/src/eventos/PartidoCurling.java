@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class PartidoCurling {
     private EquipoCurling local;
     private EquipoCurling visitante;
-    private String turno;
     private LocalDate fechaPartido;
+    private String turno;
 
 
     public PartidoCurling() {
@@ -23,8 +23,9 @@ public class PartidoCurling {
     public PartidoCurling(EquipoCurling local, EquipoCurling visitante, String turno, LocalDate fechaPartido) {
         this.local = local;
         this.visitante = visitante;
-        this.turno = turno;
         this.fechaPartido = fechaPartido;
+        this.turno = turno;
+
     }
 
     public EquipoCurling getLocal() {

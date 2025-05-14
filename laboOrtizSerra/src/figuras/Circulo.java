@@ -1,6 +1,6 @@
 package figuras;
 
-public class Circulo {
+public class Circulo extends FigurasGeométricas{
     private int radio;
     public Circulo(){
         this.radio=2;

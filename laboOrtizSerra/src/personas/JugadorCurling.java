@@ -2,18 +2,9 @@ package personas;
 
 import java.time.LocalDate;
 
-public class JugadorCurling {
-    private String nombre;
+public class JugadorCurling extends Persona {
     private LocalDate FechaNacimiento;
     private int numeroCamiseta;
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     public LocalDate getFechaNacimiento() {
         return FechaNacimiento;
@@ -32,14 +23,14 @@ public class JugadorCurling {
     }
 
     public JugadorCurling(String nombre, LocalDate fechaNacimiento, int numeroCamiseta) {
-        this.nombre = nombre;
+        super.setNombre(nombre);
         FechaNacimiento = fechaNacimiento;
         this.numeroCamiseta = numeroCamiseta;
     }
 
     public JugadorCurling() {
         this.numeroCamiseta=8;
-        this.nombre="Jose Pascual Tamborini";
+        super.setNombre("Jose Pascual Tamborini");
         this.FechaNacimiento=LocalDate.of(2007, 7, 9);
     }
 }

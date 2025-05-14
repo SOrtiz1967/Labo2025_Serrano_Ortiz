@@ -2,6 +2,7 @@ package sistemas;
 
 import eventos.PartidoCurling;
 import grupos.EquipoCurling;
+import personas.JugadorCurling;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,12 +18,18 @@ public class SistemaCurling {
         this.equipos = new ArrayList<EquipoCurling> ();
         EquipoCurling eq1 = new EquipoCurling();
         this.equipos.add(eq1);
+        this.equiposMañana = new ArrayList<>();
+        this.equiposTarde = new ArrayList<>();
+        this.equiposNoche = new ArrayList<>();
         this.fixture= new ArrayList<PartidoCurling>();
 
     }
 
-    public SistemaCurling(ArrayList<EquipoCurling> equipos, ArrayList<PartidoCurling> fixture) {
+    public SistemaCurling(ArrayList<EquipoCurling> equipos,ArrayList <EquipoCurling> equiposMañana, ArrayList <EquipoCurling> equiposTarde, ArrayList <EquipoCurling> equiposNoche, ArrayList<PartidoCurling> fixture) {
         this.equipos = equipos;
+        this.equiposMañana = equiposMañana;
+        this.equiposTarde = equiposTarde;
+        this.equiposNoche = equiposNoche;
         this.fixture = fixture;
     }
 
@@ -58,31 +65,51 @@ public class SistemaCurling {
 
     public void enfrentarMatriz(ArrayList <EquipoCurling> matriz){
         LocalDate fecha = LocalDate.now();
-        for(int i=0;i<matriz.size();i++){
-            for(int j=0;j<matriz.size();j++){}
-                this.fixture.add(matriz.get(i),matriz.get(j+1),fecha.plusDays(j*7),matriz.get(i).getDisponibilidadHoraria());
+        for(int i=0;i<matriz.size();i++) {
+            for (int j = i+1; j < matriz.size(); j++) {
+                EquipoCurling equipo1 = matriz.get(i);
+                EquipoCurling equipo2 = matriz.get(j);
+                String turno = equipo1.getDisponibilidadHoraria();
+
+                PartidoCurling partido = new PartidoCurling(
+                        equipo1,
+                        equipo2,
+                        turno,
+                        fecha.plusDays((i + j) * 7)
+                );
+
+                this.fixture.add(partido);
+            }
         }
     }
-    public void llenarFixture(){
-        this.enfrentarMatriz(equiposTarde);
-        this.enfrentarMatriz(equiposNoche);
-        this.enfrentarMatriz(equiposMañana);
+    public void llenarFixture(ArrayList <EquipoCurling> matriz){
+        this.enfrentarMatriz(matriz);
     }
     public static void main(String[] args) {
 
         SistemaCurling sis1= new SistemaCurling();
-        EquipoCurling e7= new EquipoCurling("Voka", "Nuñez", new ArrayList<>(), "tarde");
+        JugadorCurling j1= new JugadorCurling();
+        EquipoCurling e7= new EquipoCurling("Voka", "Nuñez", new ArrayList<JugadorCurling>(), "tarde",j1);
+        EquipoCurling e6= new EquipoCurling("Belgrano","Alberdi",new ArrayList<JugadorCurling>(),"tarde",j1);
+        sis1.equipos.add(e6 );
         sis1.equipos.add(e7);
-        sis1.llenarFixture();
-        for(int i=1;i<sis1.equipos.size();i++) {
-            for (int h = 0; h < sis1.fixture.size(); h++) {
-                System.out.println("Fecha" + i + ": " + "Local: " + sis1.fixture.get(h).getLocal().getNombre() + " Visitante: " + sis1.fixture.get(h).getVisitante().getNombre() + " Fecha: " + sis1.fixture.get(h).getFechaPartido() + " Disponibilidad Horario: " + sis1.fixture.get(h).getTurno());
-            }
+        sis1.llenarmatriz();
+        sis1.llenarFixture(sis1.equiposNoche);
+        sis1.llenarFixture(sis1.equiposTarde);
+        sis1.llenarFixture(sis1.equiposMañana);
+
+        for (int h = 0; h < sis1.fixture.size(); h++) {
+            PartidoCurling partido = sis1.fixture.get(h);
+            System.out.println("Partido " + (h + 1) + ": Local: " + partido.getLocal().getNombre()
+                    + " | Visitante: " + partido.getVisitante().getNombre()
+                    + " | Fecha: " + partido.getFechaPartido()
+                    + " | Turno: " + partido.getTurno());
         }
+
     }
 
 
 
 }
 
-}
+
