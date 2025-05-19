@@ -1,48 +1,39 @@
 package vehiculo;
 
-public class Coche {
-    private String marca;
-    private String modelo;
-    private String color;
+import java.time.LocalDate;
 
+public class Coche extends Vehiculo{
+    private String patente;
     private double velocidad;
+    private Boolean descapotable;
+    public Coche( double velocidad, String pate){
+        super("FIAT", "palio", "bordo", 4, LocalDate.of(1998, 3, 19));
+        this.patente=pate;
+        this.velocidad=velocidad;
+        this.descapotable=Boolean.FALSE;
+    }
 
     public Coche(){
-        this.marca="Fiat";
-        this.modelo="Cronos";
-        this.color="Blanco";
+        super("FIAT", "Cronos", "blanco", 4, LocalDate.of(2001, 7, 9));
         this.velocidad=100;
+        this.patente="AA 340 KN";
+        this.descapotable=false;
     }
-    public Coche(String marca, String modelo, String color, double velocidad){
-        this.marca=marca;
-        this.modelo=modelo;
-        this.modelo=color;
-        this.velocidad=velocidad;
-    }
-    public String getMarca(){
-        return marca;
-    }
-    public String getModelo(){
-        return modelo;
-    }
-    public String getColor(){
-        return color;
-    }
+
+
     public double getVelocidad(){
         return velocidad;
     }
+    public String getPatente(){return patente;}
+    public Boolean getDescapotable(){return descapotable;}
+
+    public void setPatente(String patente){this.patente=patente;}
+    public void setDescapotable(Boolean descapotable){this.descapotable= descapotable;}
 
     public void setColor(String color) {
         this.color = color;
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
 
     public void setVelocidad(double velocidad) {
         this.velocidad = velocidad;
