@@ -18,20 +18,26 @@ public class Alumno extends Persona {
     mayorNota()
 
      */
-    private String apellido;
+
     private LocalDate fechaNacimiento;
     private ArrayList<Double> notas;
+    private String division;
     //constructores
     public Alumno(String nombre, String apellido, LocalDate fechaNacimiento, ArrayList<Double> notas) {
         super.setNombre(nombre);
-        this.apellido = apellido;
+        super.setApellido(apellido);
         this.fechaNacimiento = fechaNacimiento;
         this.notas = notas;
     }
+    public Alumno(String nombre,String apellido, String division){
+        super.setNombre(nombre);
+        super.setApellido(apellido);
+        this.division=division;
+    }
     public Alumno(){
-        super.setNombre("Juan Ignacio");
-        this.apellido="Nardoni";
-        this.fechaNacimiento= LocalDate.of(2002,07, 14);
+        super.setNombre("");
+        super.setApellido("");
+        this.fechaNacimiento= LocalDate.of(0,0, 0);
         this.notas= new ArrayList<Double>();
         notas.add(10.0);
         notas.add(10.0);
@@ -40,8 +46,12 @@ public class Alumno extends Persona {
     //getters y setters
 
 
-    public String getApellido() {
-        return apellido;
+    public String getDivision() {
+        return division;
+    }
+
+    public void setDivision(String division) {
+        this.division = division;
     }
 
     public LocalDate getFechaNacimiento() {
@@ -50,11 +60,6 @@ public class Alumno extends Persona {
 
     public ArrayList<Double> getNotas() {
         return notas;
-    }
-
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
     }
 
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
@@ -101,7 +106,7 @@ public class Alumno extends Persona {
 
     public static void main(String[] args) {
         Alumno a1= new Alumno();
-        System.out.println("el alumno se llama: " + a1.getNombre() +" "+ a1.apellido +
+        System.out.println("el alumno se llama: " + a1.getNombre() +" "+ a1.getApellido() +
                 "y nació el "+ a1.fechaNacimiento.getDayOfMonth()+"/"+a1.fechaNacimiento.getMonth()+"/"+a1.fechaNacimiento.getYear());
         System.out.print("sus notas son: ");
         for (double nota: a1.getNotas()){
