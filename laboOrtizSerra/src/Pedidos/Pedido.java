@@ -5,17 +5,18 @@ import personas.Persona;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class Pedido {
     private LocalDate f_c;
-    private Plato plato;
+    private ArrayList<Plato> platos;
     private Persona solicitante;
     private LocalTime h_e;
     private boolean entregado;
 
-    public Pedido(LocalDate f_c, Plato plato, Persona solicitante, LocalTime h_e, boolean entregado) {
+    public Pedido(LocalDate f_c, ArrayList<Plato> plato, Persona solicitante, LocalTime h_e, boolean entregado) {
         this.f_c = f_c;
-        this.plato = plato;
+        this.platos = plato;
         this.solicitante = solicitante;
         this.h_e = h_e;
         this.entregado = entregado;
@@ -23,7 +24,7 @@ public class Pedido {
 
     public Pedido() {
         this.f_c = LocalDate.of(0,0,0);
-        this.plato=new Plato("",0);
+        this.platos=new ArrayList<Plato>();
         this.solicitante=new Persona();
         this.h_e= LocalTime.of(0,0);
         this.entregado=true;
@@ -38,12 +39,12 @@ public class Pedido {
         this.f_c = f_c;
     }
 
-    public Plato getPlato() {
-        return plato;
+    public ArrayList<Plato> getPlato() {
+        return platos;
     }
 
-    public void setPlato(Plato plato) {
-        this.plato = plato;
+    public void setPlato(ArrayList<Plato> plato) {
+        this.platos = plato;
     }
 
     public Persona getSolicitante() {
@@ -69,4 +70,15 @@ public class Pedido {
     public void setEntregado(boolean entregado) {
         this.entregado = entregado;
     }
+    public void agregar_p (Plato pl){
+        this.platos.add(pl);
+    }
+    public void eliminar_p(Plato pl){
+        this.platos.remove(pl);
+    }
+    public void modificar_p(Plato pl,Plato platoARemover){
+        this.agregar_p(pl);
+        this.eliminar_p(platoARemover);
+    }
+
 }
