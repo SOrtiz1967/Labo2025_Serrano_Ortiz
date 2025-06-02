@@ -8,14 +8,7 @@ public class Empleado6 extends User{
         Random random = new Random();
         return random.nextInt(121);
     }
-    public void llamar(int telefono){
-        //la duracion me la invento yo!
-        int duracion=generarMinutosRandom();
-        //registramos la llamada
-        
 
-
-    }
     public Empleado6(String nombre, String apellido, int telefono, int dni, String pais) {
         super(nombre, apellido, telefono);
         this.dni = dni;

@@ -1,3 +1,5 @@
+package sistemas;
+
 import personas.Empleado6;
 
 import java.time.LocalDate;
@@ -47,5 +49,8 @@ public class Llamada {
 
     public void setDuracion(float duracion) {
         this.duracion = duracion;
+    }
+    public boolean esExtranjero(){
+        return eOrigen.getPais().equals(eDestino.getPais());
     }
 }
