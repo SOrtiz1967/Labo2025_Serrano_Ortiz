@@ -12,7 +12,7 @@ public class Libro {
     private Persona autor;
     private int ISBN;
     private int paginas;
-    private String editorial;
+    private Editorial editorial;
     private Fecha fechaPublicacion;
 
     //constructor por defecto :>
@@ -21,11 +21,11 @@ public class Libro {
         this.autor= new Persona();
         this.ISBN=9122018;
         this.paginas=912;
-        this.editorial="siameses";
+        this.editorial=Editorial.KAPELUSZ;
         this.fechaPublicacion=new Fecha();
     }
     //constructor parametrizado:<
-    public Libro(String titulo, Persona autor, int ISBN, int paginas, String editorial, Fecha fechaPublicacion) {
+    public Libro(String titulo, Persona autor, int ISBN, int paginas, Editorial editorial, Fecha fechaPublicacion) {
         this.titulo = titulo;
         this.autor = autor;
         this.ISBN = ISBN;
@@ -40,7 +40,7 @@ public class Libro {
         this.autor= new Persona();
         this.ISBN=9122018;
         this.paginas=912;
-        this.editorial="siameses";
+        this.editorial=Editorial.SUDAMERICANA;
         this.fechaPublicacion=new Fecha();
     }
     //getters y setters
@@ -76,11 +76,11 @@ public class Libro {
         this.paginas = paginas;
     }
 
-    public String getEditorial() {
+    public Editorial getEditorial() {
         return editorial;
     }
 
-    public void setEditorial(String editorial) {
+    public void setEditorial(Editorial editorial) {
         this.editorial = editorial;
     }
 

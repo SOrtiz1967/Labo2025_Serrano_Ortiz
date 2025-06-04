@@ -9,7 +9,7 @@ public class EquipoCurling {
     private String nombre;
     private String barrio;
     private ArrayList<JugadorCurling> jugadores;
-    private String disponibilidadHoraria;
+    private DisponibilidadHoraria disponibilidadHoraria;
     private JugadorCurling capitan;
 
 
@@ -37,11 +37,11 @@ public class EquipoCurling {
         this.jugadores = jugadores;
     }
 
-    public String getDisponibilidadHoraria() {
+    public DisponibilidadHoraria getDisponibilidadHoraria() {
         return disponibilidadHoraria;
     }
 
-    public void setDisponibilidadHoraria(String disponibilidadHoraria) {
+    public void setDisponibilidadHoraria(DisponibilidadHoraria disponibilidadHoraria) {
         this.disponibilidadHoraria = disponibilidadHoraria;
     }
 
@@ -53,7 +53,7 @@ public class EquipoCurling {
         this.capitan = capitan;
     }
 
-    public EquipoCurling(String nombre, String barrio, ArrayList<JugadorCurling> jugadores, String disponibilidadHoraria, JugadorCurling capitan) {
+    public EquipoCurling(String nombre, String barrio, ArrayList<JugadorCurling> jugadores, DisponibilidadHoraria disponibilidadHoraria, JugadorCurling capitan) {
         this.nombre = nombre;
         this.barrio = barrio;
         this.jugadores = jugadores;
@@ -66,7 +66,7 @@ public class EquipoCurling {
         this.jugadores = new ArrayList<JugadorCurling>();
         JugadorCurling j1= new JugadorCurling();
         jugadores.add(j1);
-        this.disponibilidadHoraria = "tarde";
+        this.disponibilidadHoraria = DisponibilidadHoraria.TARDE;
         this.capitan = j1;
     }
 
@@ -78,16 +78,6 @@ public class EquipoCurling {
                 if(jugador.getNumeroCamiseta()==numero){
                     jugador.setNumeroCamiseta((int) (Math.random()*100));
                 }
-        }
-    }
-    public void validacionDisponible(){
-        this.setDisponibilidadHoraria(this.getDisponibilidadHoraria().toLowerCase());
-        if(this.getDisponibilidadHoraria()!="tarde"){
-            if(this.getDisponibilidadHoraria()!="mañana"){
-                if(this.getDisponibilidadHoraria()!="noche"){
-                    this.setDisponibilidadHoraria("Indefinido");
-                }
-            }
         }
     }
 
