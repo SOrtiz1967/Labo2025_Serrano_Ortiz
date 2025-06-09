@@ -1,10 +1,6 @@
 package figuras;
 
-public class FigurasGeométricas {
-    public double perimetro(){
-        return 0.0;
-    }
-    public double radio(){
-        return 0.0;
-    }
+public abstract class FigurasGeométricas {
+    public abstract double perimetro();
+    public abstract double area();
 }

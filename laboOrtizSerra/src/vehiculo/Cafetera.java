@@ -1,7 +1,7 @@
 package vehiculo;
 
 public class Cafetera {
-    private int cantidadMaxima;
+    private int cantidadMaxima;//es estatico? o depende de la cafetera
     private int cantidadActual;
 
     public Cafetera() {

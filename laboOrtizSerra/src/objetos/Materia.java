@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Materia {
     private String nombre;
-    private ArrayList<String> listaDeContenidos;
+    private static ArrayList<String> listaDeContenidos= new ArrayList<>();
     private ArrayList<Alumno> alumnosInscriptos;
 
     public String getNombre() {
@@ -19,7 +19,7 @@ public class Materia {
         this.nombre = nombre;
     }
 
-    public ArrayList<String> getListaDeContenidos() {
+    public static ArrayList<String> getListaDeContenidos() {
         return listaDeContenidos;
     }
 
@@ -35,9 +35,9 @@ public class Materia {
         this.alumnosInscriptos = alumnosInscriptos;
     }
 
-    public Materia(String nombre, ArrayList<String> listaDeContenidos, ArrayList<Alumno> alumnosInscriptos) {
+    public Materia(String nombre, ArrayList<Alumno> alumnosInscriptos) {
         this.nombre = nombre;
-        this.listaDeContenidos = listaDeContenidos;
+
         this.alumnosInscriptos = alumnosInscriptos;
     }
     public Materia(){
@@ -45,7 +45,7 @@ public class Materia {
         this.alumnosInscriptos=new ArrayList<Alumno>();
         alumnosInscriptos.add(new Alumno());
         alumnosInscriptos.add(new Alumno("Benjamin", "Serrano", LocalDate.of(2008,3,7),new ArrayList<Double>()));
-        this.listaDeContenidos= new ArrayList<String>();
+
         listaDeContenidos.add("clases");
         listaDeContenidos.add("metodos");
         listaDeContenidos.add("arrays");

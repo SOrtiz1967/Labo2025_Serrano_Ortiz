@@ -1,0 +1,17 @@
+2. Recetas
+
+En una plataforma de recetas culinarias se definirán distintos platos que se podrán realizan indicando nombre del plato, nivel de dificultad (Fácil, medio o avanzado) y una lista de pasos para realizarlo.
+
+Si lo que se quiere cargar es una receta de un plato principal, entonces habrá que agregar información sobre el tiempo de cocción y el número de comensales. Si es un postre, la temperatura del horno en el que se prepara y si es apto diabéticos o no. Para las entradas, agregar si es fría o caliente.
+
+Es importante que sin importar de qué tipo de plato estamos hablando, en cualquier caso, se pueden mostrar las instrucciones en las que se detallan el paso a paso de la preparación.
+
+Para los platos principales habrá que mostrar: “Esta receta tarda en cocinarse + tiempo de cocción y los pasos son: lista pasos”. Para los postres se muestra la lista de pasos, pero por cada paso recordar mantener la cocina limpia y el horno al mínimo. Para las entradas, si son frías recordar una vez que se termina de mostrar la lista de pasos que guarde la preparación en la heladera. En cambio, si es caliente, antes de mostrarle la lista de pasos recordarle que prenda el horno.
+
+Por último, nuestra plataforma deberá:
+
+    Permitir agregar, eliminar y modificar recetas.
+    Buscar recetas según dificultad.
+    Filtrar recetas por tipo (Desafío: Usarlo usando un único if)
+    Cantidad total de recetas cargadas.
+    Dar la receta con mayor cantidad de pasos.

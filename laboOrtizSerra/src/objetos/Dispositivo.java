@@ -2,7 +2,7 @@ package objetos;
 
 import java.time.LocalDate;
 
-public class Dispositivo {
+public abstract class Dispositivo {
 
     protected boolean estado;
     protected double medida;
@@ -26,9 +26,7 @@ public class Dispositivo {
     public boolean debeActivarAlarma(){
         return medida>umbralInicial;
     }
-    public  void Alarma(){
-
-    }
+    public abstract void Alarma();
 
     public boolean getEstado() {
         return estado;

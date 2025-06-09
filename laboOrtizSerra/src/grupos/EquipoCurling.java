@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class EquipoCurling {
     private String nombre;
-    private String barrio;
+    private String barrio;///aca va un enum
     private ArrayList<JugadorCurling> jugadores;
     private DisponibilidadHoraria disponibilidadHoraria;
     private JugadorCurling capitan;

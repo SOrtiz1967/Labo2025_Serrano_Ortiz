@@ -8,7 +8,7 @@ public class SensorPresion extends Dispositivo{
         super(estado, medida, umbralInicial, añoAdquisicion);
 
     }
-    public void alarma(){
+    public void Alarma(){
         System.out.println("Sensor de presión activado");
     }
 

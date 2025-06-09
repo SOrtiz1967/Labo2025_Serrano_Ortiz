@@ -7,7 +7,6 @@ public class CargadorPortatil extends ProductoElectronico {
         super(nombre, precio, stock, seccion);
         this.cantidadCargas = cantidadCargas;
     }
-
     public CargadorPortatil(int cantidadCargas) {
         this.cantidadCargas = cantidadCargas;
     }
