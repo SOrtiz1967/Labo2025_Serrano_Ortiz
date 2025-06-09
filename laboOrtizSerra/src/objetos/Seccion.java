@@ -1,5 +1,5 @@
 package objetos;
 
-public class Seccion {
-    
+public enum Seccion {
+    MULTIMEDIA,CARGADORES;
 }

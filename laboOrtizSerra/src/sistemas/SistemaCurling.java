@@ -1,6 +1,7 @@
 package sistemas;
 
 import eventos.PartidoCurling;
+import grupos.DisponibilidadHoraria;
 import grupos.EquipoCurling;
 import personas.JugadorCurling;
 
@@ -48,15 +49,15 @@ public class SistemaCurling {
         public void llenarmatriz(){
             for(EquipoCurling equipo:equipos){
                 equipo.noRepeatNumber();
-                equipo.validacionDisponible();
+
                 switch(equipo.getDisponibilidadHoraria()){
-                    case "tarde":
+                    case DisponibilidadHoraria.TARDE:
                         this.equiposTarde.add(equipo);
                         break;
-                    case "noche":
+                    case DisponibilidadHoraria.NOCHE:
                         this.equiposNoche.add(equipo);
                         break;
-                    case "mañana":
+                    case DisponibilidadHoraria.MAÑANA:
                         this.equiposMañana.add(equipo);
                         break;
                 }
@@ -69,7 +70,7 @@ public class SistemaCurling {
             for (int j = i+1; j < matriz.size(); j++) {
                 EquipoCurling equipo1 = matriz.get(i);
                 EquipoCurling equipo2 = matriz.get(j);
-                String turno = equipo1.getDisponibilidadHoraria();
+                DisponibilidadHoraria turno = equipo1.getDisponibilidadHoraria();
 
                 PartidoCurling partido = new PartidoCurling(
                         equipo1,
@@ -89,8 +90,8 @@ public class SistemaCurling {
 
         SistemaCurling sis1= new SistemaCurling();
         JugadorCurling j1= new JugadorCurling();
-        EquipoCurling e7= new EquipoCurling("Voka", "Nuñez", new ArrayList<JugadorCurling>(), "tarde",j1);
-        EquipoCurling e6= new EquipoCurling("Belgrano","Alberdi",new ArrayList<JugadorCurling>(),"tarde",j1);
+        EquipoCurling e7= new EquipoCurling("Voka", "Nuñez", new ArrayList<JugadorCurling>(), DisponibilidadHoraria.TARDE,j1);
+        EquipoCurling e6= new EquipoCurling("Belgrano","Alberdi",new ArrayList<JugadorCurling>(),DisponibilidadHoraria.TARDE,j1);
         sis1.equipos.add(e6 );
         sis1.equipos.add(e7);
         sis1.llenarmatriz();

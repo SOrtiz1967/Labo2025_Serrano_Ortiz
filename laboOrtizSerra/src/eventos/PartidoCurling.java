@@ -1,5 +1,6 @@
 package eventos;
 
+import grupos.DisponibilidadHoraria;
 import grupos.EquipoCurling;
 import personas.JugadorCurling;
 
@@ -10,17 +11,17 @@ public class PartidoCurling {
     private EquipoCurling local;
     private EquipoCurling visitante;
     private LocalDate fechaPartido;
-    private String turno;
+    private DisponibilidadHoraria turno;
 
 
     public PartidoCurling() {
         this.local= new EquipoCurling();
         this.visitante= new EquipoCurling();
         this.fechaPartido= LocalDate.of(2006,06,06);
-        this.turno="mañana";
+        this.turno=DisponibilidadHoraria.TARDE;
     }
 
-    public PartidoCurling(EquipoCurling local, EquipoCurling visitante, String turno, LocalDate fechaPartido) {
+    public PartidoCurling(EquipoCurling local, EquipoCurling visitante, DisponibilidadHoraria turno, LocalDate fechaPartido) {
         this.local = local;
         this.visitante = visitante;
         this.fechaPartido = fechaPartido;
@@ -36,11 +37,11 @@ public class PartidoCurling {
         this.local = local;
     }
 
-    public String getTurno() {
+    public DisponibilidadHoraria getTurno() {
         return turno;
     }
 
-    public void setTurno(String turno) {
+    public void setTurno(DisponibilidadHoraria turno) {
         this.turno = turno;
     }
 
