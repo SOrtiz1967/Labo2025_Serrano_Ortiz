@@ -1,5 +1,7 @@
 package objetos;
 
+import Tecnologia.Dispositivo;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 

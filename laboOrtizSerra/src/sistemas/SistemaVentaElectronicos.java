@@ -1,6 +1,6 @@
 package sistemas;
 
-import objetos.ProductoElectronico;
+import Tecnologia.ProductoElectronico;
 import objetos.Seccion;
 
 import java.util.ArrayList;

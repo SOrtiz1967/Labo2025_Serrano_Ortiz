@@ -1,8 +1,10 @@
-package objetos;
+package Tecnologia;
+
+import objetos.Salida;
 
 import java.util.ArrayList;
 
-public class Impresora extends Salida{
+public class Impresora extends Salida {
     private String metodo;
 
     public Impresora(String fabricante, String modelo, double precio, int stock, ArrayList<String> puertos, String metodo) {

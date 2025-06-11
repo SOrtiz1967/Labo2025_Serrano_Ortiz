@@ -1,6 +1,7 @@
 package objetos;
 
 
+import Tecnologia.CPU;
 import personas.User;
 
 import java.util.ArrayList;

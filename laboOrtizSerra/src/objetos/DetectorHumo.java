@@ -1,8 +1,10 @@
 package objetos;
 
+import Tecnologia.Dispositivo;
+
 import java.time.LocalDate;
 
-public class DetectorHumo extends Dispositivo{
+public class DetectorHumo extends Dispositivo {
     public DetectorHumo(boolean estado, float medida, float umbralInicial, LocalDate añoAdquisicion) {
         super(estado, medida, umbralInicial, añoAdquisicion);
     }

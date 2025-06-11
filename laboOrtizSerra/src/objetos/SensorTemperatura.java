@@ -1,8 +1,10 @@
 package objetos;
 
+import Tecnologia.Dispositivo;
+
 import java.time.LocalDate;
 
-public class SensorTemperatura extends Dispositivo{
+public class SensorTemperatura extends Dispositivo {
     public SensorTemperatura(boolean estado, float medida, float umbralInicial, LocalDate añoAdquisicion) {
         super(estado, medida, umbralInicial, añoAdquisicion);
     }

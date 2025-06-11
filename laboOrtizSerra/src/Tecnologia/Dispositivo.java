@@ -1,4 +1,4 @@
-package objetos;
+package Tecnologia;
 
 import java.time.LocalDate;
 

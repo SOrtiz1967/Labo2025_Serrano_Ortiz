@@ -1,6 +1,9 @@
 package objetos;
 
-public class Televisores extends ProductoElectronico{
+import Tecnologia.ProductoElectronico;
+import Tecnologia.Tecnología;
+
+public class Televisores extends ProductoElectronico {
     private int resolucion;
     private Tecnología tecnología;
 

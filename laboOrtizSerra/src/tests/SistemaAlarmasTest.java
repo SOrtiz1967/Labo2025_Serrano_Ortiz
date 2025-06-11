@@ -1,5 +1,6 @@
 package tests;
 
+import Tecnologia.Dispositivo;
 import objetos.*;
 import sistemas.SistemaAlarmas;
 import org.junit.jupiter.api.BeforeEach;

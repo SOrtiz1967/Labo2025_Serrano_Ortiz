@@ -1,5 +1,6 @@
 package sistemas;
 
+import Tecnologia.Dispositivo;
 import objetos.*;
 
 import java.time.LocalDate;

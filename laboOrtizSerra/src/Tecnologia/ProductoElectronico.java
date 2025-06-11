@@ -1,4 +1,6 @@
-package objetos;
+package Tecnologia;
+
+import objetos.Seccion;
 
 public class ProductoElectronico {
     private String nombre;

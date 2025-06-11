@@ -1,6 +1,8 @@
-package objetos;
+package Tecnologia;
 
-public class CPU extends Componente{
+import objetos.Componente;
+
+public class CPU extends Componente {
     public CPU() {
         super("INTEL", "C57", 1500, 15);
     }
