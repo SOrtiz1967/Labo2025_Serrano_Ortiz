@@ -18,6 +18,7 @@ public class Tienda {
         Cliente cliente1 = new Cliente();
         cliente1.setNombreCompleto("Juan luis");
         System.out.println("Bienvenido " + cliente1.getNombreCompleto());
+        System.out.println("El precio minimo es: " + prenda.min_prize);
 
         Prenda prenda1 = new Prenda("remera akd", 20.9, "M");
         Prenda prenda2 = new Prenda("buzo rc style", 10.5, "S");
