@@ -4,8 +4,8 @@ public class Prenda {
 
     private String detalles;
     private double costo;
-    private double minPrice = 10.0;
-    private double tax = 1.2;
+    private static double minPrice = 10.0;
+    private static double tax = 1.2;
     private String talla;
 
     public Prenda(String detalles, double costo, String talla){
