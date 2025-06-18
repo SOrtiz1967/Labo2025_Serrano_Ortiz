@@ -50,6 +50,8 @@ public class Tienda {
         }
         for (Prenda prenda : prendas){
             System.out.println("Detalles de la prenda: " + prenda.getDetalles() + " " + prenda.getCosto() + " " + prenda.getTalla());    
+            sout("item: "+ prenda);
+
             }
             // modificacion para el otro ej solo los q son de la talle del customer c
             //montoFinal += prenda.getCosto;
