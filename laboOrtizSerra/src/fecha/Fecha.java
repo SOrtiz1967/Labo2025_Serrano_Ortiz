@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.Scanner;
 
-public class Fecha {
+public class Fecha {//es un metodo abstracto? en algun momento creamos objetos de tipo fecha por ende no
     private int dia;
     private int mes;
     private int anio;

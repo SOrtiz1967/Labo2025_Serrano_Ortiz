@@ -4,7 +4,7 @@ public abstract class Componente {
     private  String fabricante;
     private String modelo;
     private double precio;
-    private int stock;
+    private int stock;//pense en ponerlo como static pero puede cambiar, el stock de un tipo de componente no es el mismo que de otro tipo
 
     public String getFabricante() {
         return fabricante;
