@@ -47,4 +47,10 @@ public class Prenda {
     public static void main(String[] args) {
         // Método main vacío
     }
+    @override 
+    public string toString(){
+        return getDescription()+","+ getSize() + ","+getPrice();
+    
+
+
 }
