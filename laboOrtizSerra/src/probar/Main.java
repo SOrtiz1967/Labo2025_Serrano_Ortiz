@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        /*
         Rectangulo r1 = new Rectangulo();
         Circulo c1= new Circulo();
         Coche co1= new Coche();
@@ -38,7 +39,7 @@ public class Main {
         System.out.println(" area del circulo da: "+ areaC+ " perimetro del circulo da: "+ perimetroC);
         System.out.println();
         //ejercicio persona
-        Persona p1 = new Persona();
+        //Persona p1 = new Persona();
         p1.imprimirDatos();
         // ejercicio fecha
         Fecha f1= new Fecha();
@@ -88,7 +89,7 @@ public class Main {
         a. Crear un ArrayList de números enteros y mostrar su suma.
         b. Crear un ArrayList de palabras y mostrar solo los elementos que empiezan con una letra específica.
         c. Crear un ArrayList de objetos Persona y mostrar solo las personas que tienen más de 30 años.
-         */
+
         // A
         ArrayList<Integer> numeros = new ArrayList<Integer>();
         numeros.add(7);
@@ -131,6 +132,9 @@ public class Main {
                 System.out.println(persona.getNombre());
             }
 
+
         }
+
+         */
     }
 }

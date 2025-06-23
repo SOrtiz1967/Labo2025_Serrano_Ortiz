@@ -5,8 +5,8 @@ import Estados.EstadoDron;
 import java.time.LocalDate;
 
 public class Vigilante extends Dron{
-    private int memoriaSD;
-    private int almacenamientoMaximo;
+    private int memoriaSD;//(MB)
+    private int almacenamientoMaximo;//(MB)
 
     public int getMemoriaSD() {
         return memoriaSD;
@@ -40,12 +40,19 @@ public class Vigilante extends Dron{
     }
 
     @Override
-    public boolean realizarMision(int longitud, int latitud) {
+    public boolean realizarMision(double longitud, double latitud) {
         double distancia= calcularDistancia(latitud, longitud);
         if (PuedeRealizarMision(distancia)){
+            for (int i = 0; i<= distancia; i++){
+                if(i%2==0){
+                    memoriaSD+=12;
+                }
 
+            }
+            return true;
         }
         else {
+            System.out.println("no se puede realizar la mision, no hay almcenamiento suficiente");
             return false;
         }
     }
@@ -53,5 +60,14 @@ public class Vigilante extends Dron{
     @Override
     public boolean PuedeRealizarMision(double distancia) {
         //pongo un tamaño maximo de bateria yo como atributo
+        //cada 2km una foto que ocupa 12mb
+        int memoAux=this.memoriaSD;
+        for (int i = 0; i<= distancia; i++){
+            if(i%2==0){
+                memoAux+=12;
+            }
+        }
+        return memoAux <= this.almacenamientoMaximo;
     }
+
 }

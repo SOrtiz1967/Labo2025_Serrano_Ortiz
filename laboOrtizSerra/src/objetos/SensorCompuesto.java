@@ -26,7 +26,7 @@ public class SensorCompuesto extends Dispositivo {
         double suma = 0;
         for (Dispositivo s : sensores) {
             if (s.estado) {
-                suma += s.medida;
+                suma += s.getMedida();
             }
         }
         return (suma / 3) > umbralInicial;

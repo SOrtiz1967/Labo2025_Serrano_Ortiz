@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public abstract class Dispositivo {
 
-    protected boolean estado;
+    public boolean estado;
     protected double medida;
     protected float umbralInicial;
     protected LocalDate añoAdquisicion;

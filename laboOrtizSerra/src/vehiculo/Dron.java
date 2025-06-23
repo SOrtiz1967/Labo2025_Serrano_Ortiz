@@ -22,6 +22,7 @@ public abstract class Dron {
     private static double longitudOrigen=-58.504111;
     private static int enOperacion=0;//va a ser unico en cada objeto por que caa vez que se cree uno s va a aumentr
 
+
     public Dron(String nModelo, LocalDate fAdqisicion, EstadoDron estado, int bateria) {
         this.nModelo = nModelo;
         this.fAdqisicion = fAdqisicion;
@@ -35,8 +36,23 @@ public abstract class Dron {
         this.estado = EstadoDron.ENVUELO;
         this.bateria=100;
     }
-    public abstract boolean realizarMision(int longitud, int latitud);
-    public abstract boolean PuedeRealizarMision(int distancia);
+    public void cargarBateria(){
+        if(this.bateria<20){
+            this.bateria=100;
+        }
+        else{
+            this.bateria+=10;
+        }
+    }
+    public boolean rastrear(){
+        if(this.estado.equals(EstadoDron.ENVUELO) || this.estado.equals(EstadoDron.ENOPERATIVO)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public abstract boolean realizarMision(double longitud, double latitud);
+    public abstract boolean PuedeRealizarMision(double distancia);
     public double calcularDistancia(double latitudDestino, double longitudDestino){
         // Convertir a radianes
         double lat1Rad = Math.toRadians(latitudOrigen);
