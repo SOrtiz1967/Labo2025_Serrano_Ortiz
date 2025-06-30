@@ -3,6 +3,8 @@ package personas;
 import auxiliares.Consumicion;
 import consumibles.Bebida;
 
+import java.util.ArrayList;
+
 public class Tomador extends Persona{
     private int dni;
     private ArrayList<Consumicion> consumos;

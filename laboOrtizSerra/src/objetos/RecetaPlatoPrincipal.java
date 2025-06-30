@@ -40,7 +40,7 @@ public class RecetaPlatoPrincipal extends Receta {
     }
 
     @Override
-    void MostrarReceta() {
+    public void MostrarReceta() {
         System.out.println("Los pasos a seguir son: ");
         int i = 0;
         for (String paso : super.getListadepasos()) {
@@ -48,8 +48,7 @@ public class RecetaPlatoPrincipal extends Receta {
             i++;
         }
     }
-    @Override
-    void tipo(){
+    public void Tipo(){
         RecetaPlatoPrincipal.class.getName();
     }
 }

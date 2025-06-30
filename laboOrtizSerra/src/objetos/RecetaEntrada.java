@@ -42,4 +42,7 @@ public class RecetaEntrada extends Receta {
             }
         }
     }
+    public void Tipo(){
+        RecetaPlatoPrincipal.class.getName();
+    }
 }

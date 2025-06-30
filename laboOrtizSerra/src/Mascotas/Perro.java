@@ -13,7 +13,20 @@ public class Perro extends Mascota{
 
     @Override
     public String Saludo(){
-        return "guau";
+        int aux=this.getAlegria();
+        String saludo="guau";
+        if(this.getAlegria()>1) {
+            while (aux > 0) {
+                saludo+=saludo;
+                aux--;
+            }
+            this.setAlegria(this.getAlegria() - 1);
+
+        }
+        if(this.getAlegria()>=0){
+            return saludo;
+        }
+        return "";
     }
     public void serSaludado(String nombreUsuario){
         if(this.getDuenio().getNombre().equals(nombreUsuario)){

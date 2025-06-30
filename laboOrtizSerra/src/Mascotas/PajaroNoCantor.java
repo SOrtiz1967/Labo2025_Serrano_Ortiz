@@ -15,10 +15,27 @@ public class PajaroNoCantor extends Mascota{
 
     @Override
     public String Saludo(){
-        return "pio";}
+            int aux=this.getAlegria();
+            String saludo="pio";
+            if(this.getAlegria()>1) {
+                while (aux > 0) {
+                    saludo+=saludo;
+                    aux--;
+                }
+                this.setAlegria(this.getAlegria() - 1);
+
+            }
+            if(this.getAlegria()>=0){
+                return saludo;
+            }
+            return "";
+        }
     public void serSaludado(String nombreUsuario){
         if(this.getDuenio().getNombre().equals(nombreUsuario)){
             System.out.println(this.Saludo());
+        }
+        else {
+            System.out.println(this.Saludo().toUpperCase()+"!");
         }
     }
     public String queSoy(){

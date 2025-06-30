@@ -62,7 +62,7 @@ public class AplicacionMascotas {
     }
     public static void main(String[] args) {
         AplicacionMascotas ap1= new AplicacionMascotas();
-        Persona u1=new Persona();
+        Persona u1=new Persona("Matias",34,"Faya","villa maipu");
         ap1.usuarios.add(u1);
         Persona u2=new Persona();
         ap1.usuarios.add(u2);
@@ -82,7 +82,7 @@ public class AplicacionMascotas {
         System.out.println("Saludos generales de todas las mascotas =");
         for (Mascota m : ap1.mascotas) {
             System.out.print(m.getNombre() + ": ");
-            m.Saludo();
+            System.out.println(m.Saludo());
         }
         System.out.println("El usuario 1 saluda a Lauty");
         ap1.saludar(u1.getNombre(), m4.getNombre());
