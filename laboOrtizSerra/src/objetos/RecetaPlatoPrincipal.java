@@ -48,4 +48,8 @@ public class RecetaPlatoPrincipal extends Receta {
             i++;
         }
     }
+    @Override
+    void tipo(){
+        RecetaPlatoPrincipal.class.getName();
+    }
 }

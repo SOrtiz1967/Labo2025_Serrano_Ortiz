@@ -43,5 +43,7 @@ public abstract class Receta {
         this.listadepasos=new ArrayList<String>();
     }
     abstract void MostrarReceta();
+    abstract void Tipo();
+    
 
 }
