@@ -14,8 +14,8 @@ public class BebidaNeutra extends Bebida {
         this.coeficienteNegatividad=30.0;
         this.coeficientePositividad=20.0;
     }
-
-    public double getCoeficientePositividad() {
+    @java.lang.Override
+    public double traerCoeficientePositividad() {
         return coeficientePositividad;
     }
 
@@ -23,8 +23,10 @@ public class BebidaNeutra extends Bebida {
         this.coeficientePositividad = coeficientePositividad;
     }
 
-    public double getCoeficienteNegatividad() {
-        return coeficienteNegatividad;
+
+    @java.lang.Override
+    public double calcularCoeficienteNegatividad() {
+        return this.coeficienteNegatividad;
     }
 
     public void setCoeficienteNegatividad(double coeficienteNegatividad) {

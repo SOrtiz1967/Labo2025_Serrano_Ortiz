@@ -13,6 +13,14 @@ public class BebidaAlcoholica extends Bebida{
         super("champeta");
         this.cAlcohol=7.6;
     }
+    @java.lang.Override
+    public static double traerCoeficientePositividad() {
+        return coeficientePositividad;
+    }
+
+    public static void setCoeficientePositividad(double coeficientePositividad) {
+        BebidaAlcoholica.coeficientePositividad = coeficientePositividad;
+    }
 
     public double getcAlcohol() {
         return cAlcohol;
@@ -21,7 +29,10 @@ public class BebidaAlcoholica extends Bebida{
     public void setcAlcohol(double cAlcohol) {
         this.cAlcohol = cAlcohol;
     }
-    public double calcularCoeficienteNegatividad(){
+
+    @java.lang.Override
+    public double calcularCoeficienteNegatividad() {
         return this.cAlcohol*multiplicador;
     }
+    //public double calcularCoeficienteNegatividad(){return this.cAlcohol*multiplicador;}
 }

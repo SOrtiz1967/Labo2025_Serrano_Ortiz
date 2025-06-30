@@ -17,4 +17,6 @@ public abstract class Bebida {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    public abstract double traerCoeficientepositividad();
+    public abstract double calcularCoeficienteNegatividad();
 }

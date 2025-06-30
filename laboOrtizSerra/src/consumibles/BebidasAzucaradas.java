@@ -21,8 +21,8 @@ public class BebidasAzucaradas extends Bebida  {
     public void setAzucares(int azucares) {
         this.azucares = azucares;
     }
-
-    public static double getCoeficientePositividad() {
+    @java.lang.Override
+    public static double traerCoeficientePositividad() {
         return coeficientePositividad;
     }
 
@@ -37,7 +37,10 @@ public class BebidasAzucaradas extends Bebida  {
     public static void setMultiplicador(double multiplicador) {
         BebidasAzucaradas.multiplicador = multiplicador;
     }
-    public double calcularCoeficienteNegatividad(){
+
+    @java.lang.Override
+    public double calcularCoeficienteNegatividad() {
         return this.azucares*multiplicador;
     }
+    // public double calcularCoeficienteNegatividad(){return this.azucares*multiplicador;}
 }
