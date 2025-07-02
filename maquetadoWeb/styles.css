@@ -1,0 +1,12 @@
+.logo{
+    width: 7%;
+}
+.botonBuscar{
+    color: orange;
+    background-color: rgb(128, 128, 128);
+    border-color: orange;
+}
+.lupaBusqueda{
+    max-width: 100%;
+    height: 10%;
+}
