@@ -39,6 +39,11 @@
 .container-display-header{
     display: flex;
 }
-main{
-    margin-left: none;
+
+.footer-ide{
+    margin-top: 1.6%;
+    margin-bottom: 1%;
+    border-top: solid;
+    border-color: #0d0c22;
+    border-width: 1px;
 }
