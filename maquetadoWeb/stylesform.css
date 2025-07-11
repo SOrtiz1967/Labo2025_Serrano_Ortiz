@@ -1,49 +1,33 @@
 .logo{
     width: 7%;
 }
-.botonBuscar{
-    color: orange;
-    background-color: rgb(128, 128, 128);
-    border-color: orange;
-    width: 30%;
+.carousel-inner img{
+    filter: blur(3px);
 }
-.fondomain{
-    width: 100%;
-    height: 100%;
-  
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  
-  object-fit: cover; /* Ajusta la imagen para cubrir todo el contenedor */
-  position: relative;
+.carousel {
+    position: relative;
 }
 
-.carousel-nos{
-    width: 100%;
-    height: 100%;
+.formulario {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1; /* La imagen tendrá un z-index menor */
-    object-fit: cover; /* Ajusta la imagen para cubrir todo el contenedor */
-    }
-.contenedorForm{
-    z-index: 2;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  align-items: center;
-  left: 50%;
-  background-color: rgb(231, 231, 231);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    width: 90%;
+    max-width: 600px;
+}
+.col img{
+     margin: 0;               /* Elimina márgenes */
+    padding: 0;              /* Elimina padding si lo hubiera */
+    width: 100%;             /* Ocupa todo el ancho de su columna */
+    height: 100%;            /* Opcional: ocupa todo el alto disponible */
+    object-fit: cover;       /* Ajusta el recorte si querés que se mantenga estética */
+    display: block;   
 }
 
-/*
-.lupaBusqueda{
-    max-width: 100%;
-    height: 10%;
-}
-*/
+

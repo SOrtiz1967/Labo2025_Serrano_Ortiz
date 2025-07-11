@@ -6,6 +6,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.nio.Buffer;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,16 +25,23 @@ public class Servidor {
                 System.out.println(mensaje);
                 int puertoCliente = paqueteRecibido.getPort();
                 InetAddress direccion = paqueteRecibido.getAddress();
-                mensaje="Chau";
+                MiRunnable miRunnable = new MiRunnable("Hola desde el hilo");
+                Thread hilo = new Thread(miRunnable);
+                hilo.start();
+                hilo.sleep(10000);
+                mensaje="perejil";
                 buffer=mensaje.getBytes();
                 DatagramPacket respuesta = new DatagramPacket(buffer, buffer.length, direccion, puertoCliente);
                 System.out.println("Envio la informacion del cliente");
                 socket.send(respuesta);
+                hilo.interrupt();
             }
         }catch (SocketException ex) {
             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }

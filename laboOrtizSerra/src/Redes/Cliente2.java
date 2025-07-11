@@ -1,4 +1,5 @@
 package Redes;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -7,14 +8,14 @@ import java.net.SocketException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Cliente {
+public class Cliente2 {
     public static void main(String[] args) {
         final int puerto=20000;
         byte[]buffer=new byte[1024];
         try {
             InetAddress direccionServidor = InetAddress.getByName("localhost");
             DatagramSocket socketCliente = new DatagramSocket();
-            String mensaje = "Hola";
+            String mensaje = "Holaa";
             buffer = mensaje.getBytes();
             DatagramPacket pregunta = new DatagramPacket(buffer, buffer.length, direccionServidor, puerto);
             System.out.println("Envio el paquete");
