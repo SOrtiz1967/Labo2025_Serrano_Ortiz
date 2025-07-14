@@ -15,12 +15,32 @@
   .logo-footer{
     width: 65%;/*tamaño del logo en el footer :v*/
   }
-  .imagen-body{
-    height: 100%; 
-    object-fit: cover; 
-  }
   .texto{
     text-align: left;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: normal;
   }
-  
+  .texto-aparte{
+    margin-left: 5%;
+    text-align: left;
+    text-decoration:solid;
+    font-style: italic;
+    font-weight: bolder;
+  }
+  .titulo{
+    margin-top: 1%;
+    margin-left: 5%;
+    text-align: left;
+    font-size: larger;
+    font-style:normal;
+    font-weight: bold;
+  }
+  .texto{
+    margin:0 0 2% 5%;
+  }
+  main{
+    background-color: rgb(255, 240, 228);
+  }
+  .mapa{
+    align-items: center;
+  }
