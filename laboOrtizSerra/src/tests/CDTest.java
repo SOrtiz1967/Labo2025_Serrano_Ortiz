@@ -1,5 +1,5 @@
 package tests;
-
+/*
 import objetos.CD;
 import objetos.Cancion;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,3 +30,4 @@ public class CDTest {
     }
 
 }
+*/

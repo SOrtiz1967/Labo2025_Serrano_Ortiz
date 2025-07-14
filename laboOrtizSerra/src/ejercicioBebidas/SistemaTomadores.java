@@ -1,7 +1,4 @@
-package sistemas;
-
-import consumibles.Bebida;
-import personas.Tomador;
+package ejercicioBebidas;
 
 import java.util.ArrayList;
 
@@ -39,10 +36,7 @@ public class SistemaTomadores {
         }
         return peor;
     }
-    // método para que el usuario elija que bebida consumir y la cantidad.
-    public void userInteract(){
-        
-    }
+
 
 
 

@@ -1,11 +1,10 @@
-package personas;
+package ejercicioBebidas;
 
-import auxiliares.Consumicion;
-import consumibles.Bebida;
+import personas.Persona;
 
 import java.util.ArrayList;
 
-public class Tomador extends Persona{
+public class Tomador extends Persona {
     private int dni;
     private ArrayList<Consumicion> consumos;
 
@@ -18,6 +17,11 @@ public class Tomador extends Persona{
         super(nombre, edad, apellido, direccion);
         this.dni = dni;
         this.consumos = consumos;
+    }
+    public Tomador() {
+        super("Ricky", 33, "Centurion", "cochabamba");
+        this.dni = 24985093;
+        this.consumos = new ArrayList<>();
     }
 
     public Tomador(String nombre, int edad, int dni, ArrayList<Consumicion> consumos) {
@@ -52,6 +56,13 @@ public class Tomador extends Persona{
             total += c.getCantidad() * (coefPos - coefNeg);
         }
         return total;
+    }
+    public void agregarConsumo(Consumicion c){
+        consumos.add(c);
+    }
+    public void tomar(Bebida b, int c){
+        Consumicion c1= new Consumicion(b,c);
+        agregarConsumo(c1);
     }
 
 }

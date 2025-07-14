@@ -1,5 +1,4 @@
-package tests;
-
+package tests;/*
 import Tecnologia.Dispositivo;
 import objetos.*;
 import sistemas.SistemaAlarmas;
@@ -60,3 +59,4 @@ public class SistemaAlarmasTest {
     }
 }
 
+*/

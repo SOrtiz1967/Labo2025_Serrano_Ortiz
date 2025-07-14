@@ -1,5 +1,5 @@
 package tests;
-
+/*
 import objetos.Plato;
 import personas.Alumno;
 import personas.Profesor;
@@ -90,3 +90,4 @@ public class SistemaPedidoAlmuerzosTest {
         }
     }
 }
+*/

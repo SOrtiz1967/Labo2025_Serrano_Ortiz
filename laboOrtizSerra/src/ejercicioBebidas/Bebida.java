@@ -1,4 +1,4 @@
-package consumibles;
+package ejercicioBebidas;
 
 public abstract class Bebida {
     private String nombre;

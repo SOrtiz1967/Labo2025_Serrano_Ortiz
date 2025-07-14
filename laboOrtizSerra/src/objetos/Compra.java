@@ -29,7 +29,7 @@ public class Compra {
                 pc++;
             }
         }
-        if (devices > 1 && pc > 0) {
+        if (devices > 1 && pc == 1) {
             System.out.println("¡Tu pedido fue validado correctamente!");
         } else {
             System.out.println("Algo anda mal, tu pedido no cumple con los requisitos :(");

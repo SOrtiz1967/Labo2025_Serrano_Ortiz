@@ -1,4 +1,4 @@
-package consumibles;
+package ejercicioBebidas;
 
 public class BebidaNeutra extends Bebida {
     private double coeficientePositividad;

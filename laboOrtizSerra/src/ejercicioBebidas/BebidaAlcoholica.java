@@ -1,6 +1,6 @@
-package consumibles;
+package ejercicioBebidas;
 
-public class BebidaAlcoholica extends Bebida{
+public class BebidaAlcoholica extends Bebida {
     private double cAlcohol;
     private static double coeficientePositividad=0;
     private static double multiplicador=20;
@@ -40,3 +40,5 @@ public class BebidaAlcoholica extends Bebida{
     }
     //public double calcularCoeficienteNegatividad(){return this.cAlcohol*multiplicador;}
 }
+
+

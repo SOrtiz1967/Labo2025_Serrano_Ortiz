@@ -1,6 +1,6 @@
-package consumibles;
+package ejercicioBebidas;
 
-public class BebidasAzucaradas extends Bebida  {
+public class BebidasAzucaradas extends Bebida {
     private int azucares;//g
     private static double coeficientePositividad=1;
     private static double multiplicador=10;

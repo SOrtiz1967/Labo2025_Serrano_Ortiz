@@ -1,6 +1,4 @@
-package auxiliares;
-
-import consumibles.Bebida;
+package ejercicioBebidas;
 
 public class Consumicion {
     private Bebida bebida;

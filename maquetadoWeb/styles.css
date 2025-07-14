@@ -40,10 +40,83 @@
     display: flex;
 }
 
-.footer-ide{
-    margin-top: 1.6%;
-    margin-bottom: 1%;
+
+
+.carouestatic{
+
+    margin-top: 10%;
+    margin-bottom: 30%;
+    margin-right: 10%;
+    margin-left: 10%;
+    
+    display: flex;
+    border: #cccccc solid 1px;
+}
+
+.rec {
+    position: relative;
+    color: white;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px;
+    border: #ffb62e solid 1px;
+    box-shadow: 0 4px 12px rgba(241, 108, 19, 0.4);
+  }
+  
+  
+  /* Degradade al ritmo*/
+  .rec::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1));
+    z-index: 1;
+  }
+  
+  /* txt encima de la imagen con el z index, que son las capas, lo q nos mstro tincho */
+  .rec-content {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+  }
+  
+  .rec-date {
+    background-color: #1c3f2f;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .rec-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .rec-sub {
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+  .footer-division{
     border-top: solid;
     border-color: #0d0c22;
     border-width: 1px;
+  }
+  .footer-ide{
+    margin-top: 4%;
+    margin-bottom: 1%;
+   
 }
+
+  .logo-footer{
+    width: 65%;/*tamaño del logo en el footer :v*/
+  }
