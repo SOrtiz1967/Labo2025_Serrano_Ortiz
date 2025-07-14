@@ -40,38 +40,47 @@
     display: flex;
 }
 
+.title-carou{
+  
+  margin-left: 2.5% !important;
+  margin-right: 2.5% !important;
+  margin-top: 3%;
 
+
+}
 
 .carouestatic{
-
-    margin-top: 10%;
-    margin-bottom: 30%;
-    margin-right: 10%;
-    margin-left: 10%;
-    
-    display: flex;
     border: #cccccc solid 1px;
+    box-shadow: 0 4px 12px rgba(170, 170, 170, 0.544);
+    margin-top: 2% !important;
+    margin-bottom: 3% !important;
+    margin-right: 2.5% !important;
+    margin-left: 2.5% !important;
+    display: flex;
+    justify-content: space-between;
 }
 
 .rec {
-    position: relative;
-    color: white;
-    height: 400px;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-    padding: 20px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 10px;
-    border: #ffb62e solid 1px;
-    box-shadow: 0 4px 12px rgba(241, 108, 19, 0.4);
+      position: relative;
+  color: white;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0.5%;
+  border: #ffb62e solid 1px;
+  box-shadow: 0 4px 12px rgba(241, 108, 19, 0.4);
+  transition: box-shadow 0.3s ease, filter 0.3s ease;
+  
   }
   
   
-  /* Degradade al ritmo*/
+  /* Degradade al ritmo perro */
   .rec::before {
     content: "";
     position: absolute;
@@ -120,3 +129,31 @@
   .logo-footer{
     width: 65%;/*tamaño del logo en el footer :v*/
   }
+
+  @media (min-width: 992px){
+    .rec{
+      width: 32% !important;
+    }
+
+  }
+  .imagen-requerimiento{
+    margin-bottom: 2%;
+    
+}
+  .card-textoz {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* centrar horizontal*/
+  height: 100%; /* ocupa tofo*/
+  text-align: center; /* Centra el texto  */
+  background-color: rgba(0, 0, 0, 0.5); /* oscrecer la img*/
+}
+.rec:hover {
+  box-shadow: 0 8px 24px rgba(241, 108, 19, 0.6);
+  filter: brightness(85%);
+  cursor: pointer;
+}
+.contact-itm{
+  border: #0d0c22 solid 1px;
+}
