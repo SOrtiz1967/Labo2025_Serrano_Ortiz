@@ -1,0 +1,26 @@
+.logo{
+    width: 7%;
+}
+.footer-division{
+    border-top: solid;
+    border-color: #0d0c22;
+    border-width: 1px;
+  }
+  .footer-ide{
+    margin-top: 4%;
+    margin-bottom: 1%;
+   
+}
+
+  .logo-footer{
+    width: 65%;/*tamaño del logo en el footer :v*/
+  }
+  .imagen-body{
+    height: 100%; 
+    object-fit: cover; 
+  }
+  .texto{
+    text-align: left;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+  
