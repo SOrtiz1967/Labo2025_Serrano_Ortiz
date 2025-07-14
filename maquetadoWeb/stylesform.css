@@ -9,7 +9,7 @@
 }
 
 .formulario {
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -21,13 +21,37 @@
     width: 90%;
     max-width: 600px;
 }
-.col img{
-     margin: 0;               /* Elimina márgenes */
-    padding: 0;              /* Elimina padding si lo hubiera */
-    width: 100%;             /* Ocupa todo el ancho de su columna */
-    height: 100%;            /* Opcional: ocupa todo el alto disponible */
-    object-fit: cover;       /* Ajusta el recorte si querés que se mantenga estética */
-    display: block;   
+
+/* //////////////////////////////////////////////////////////////////////////////////////// */
+
+.logo {
+  width: 7%;
+}
+
+.carousel {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.carousel-inner img {
+  filter: blur(3px);
+  object-fit: cover;
+  height: 100vh;
+}
+
+.formulario {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  width: 90%;
+  max-width: 600px;
 }
 
 
