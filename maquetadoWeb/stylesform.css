@@ -55,3 +55,27 @@
 }
 
 
+.logo-footer {
+  width: 65%;
+  max-width: 200px;
+}
+
+.imagenfooter {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  margin: 0 5px;
+  
+}
+
+
+
+.column-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor-redes .row {
+  justify-content: center;
+}

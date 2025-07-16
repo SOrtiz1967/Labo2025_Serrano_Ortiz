@@ -38,9 +38,11 @@
     font-style:normal;
     font-weight: bold;
   }
-  main{
-    background-color: rgb(255, 240, 228);
-  }
+  main {
+  background-color: rgb(255, 240, 228);
+  box-shadow: 4px 10px 14px rgb(255, 240, 228);
+
+}
   .contenedorbody{
     padding: 2%;
   }
@@ -69,7 +71,7 @@
     padding-left: 5%;
     align-items: center;
     max-width: 100%;
-    height: auto;
+    height: 400px;
     border-radius: 1rem;
   }
   .texto-carousel{
@@ -103,3 +105,27 @@
 
 
 
+.logo-footer {
+  width: 65%;
+  max-width: 200px;
+}
+
+.imagenfooter {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  margin: 0 5px;
+  
+}
+
+
+
+.column-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor-redes .row {
+  justify-content: center;
+}
