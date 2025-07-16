@@ -159,7 +159,7 @@
   background-color: rgba(0, 0, 0, 0.5); /* oscrecer la img*/
 }
 .rec:hover {
-  box-shadow: 0 8px 24px rgba(241, 108, 19, 0.6);
+  box-shadow: 0 8px 15px rgba(235, 136, 70, 0.6);
   filter: brightness(85%);
   cursor: pointer;
 }
@@ -169,5 +169,18 @@
 
 main {
   background-color: rgb(255, 240, 228);
+  box-shadow: 4px 15px 24px rgb(255, 240, 228);
 }
+ .footer-ide {
+    text-align: left;
+  }
+  .footer-ide h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+  .logo-footer {
+    width: 60%;
+    max-width: 180px;
+  }
+
 
