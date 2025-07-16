@@ -9,7 +9,6 @@
   .footer-ide{
     margin-top: 4%;
     margin-bottom: 1%;
-   
 }
 
   .logo-footer{
@@ -17,38 +16,90 @@
   }
   .texto{
     text-align: left;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-style: normal;
+    margin:0 0 0 5%;
+    font-size: medium;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
   .texto-aparte{
     margin-left: 5%;
+    padding-top: 3%;
     text-align: left;
     text-decoration:solid;
     font-style: italic;
-    font-size: smaller;
+    font-size:larger;
     font-weight: bolder;
   }
   .titulo{
-    margin-top: 2%;
     margin-left: 5%;
+    margin-top: 5%;
     text-align: left;
     font-size:xx-large;
     font-style:normal;
     font-weight: bold;
   }
-  .texto{
-    margin:0 0 2% 5%;
-    font-size: medium;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
   main{
     background-color: rgb(255, 240, 228);
   }
-  .mapa{
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    padding: 4%;
-
+  .contenedorbody{
+    padding: 2%;
   }
+  .contenedorcarousel{
+    display: flex;
+    justify-content: center;
+    padding-top: 2.2%;
+    align-items: center;
+    padding-left: 5%;
+  }
+  .carousel-item img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 1rem;
+  }
+  .mapa{
+    display: flex;
+    justify-content: center;
+    padding-top: 2.2%;
+    align-items: center;
+  }
+  .mapa iframe{
+    display: flex;
+    justify-content: center;
+    padding-top: 2.2%;
+    padding-left: 5%;
+    align-items: center;
+    max-width: 100%;
+    height: auto;
+    border-radius: 1rem;
+  }
+  .texto-carousel{
+    padding-left: 5%;
+    text-align: left;
+    font-style: normal;
+    margin:0 0 2%;
+    font-size: medium;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  .titulo-carousel{
+    padding-left: 5%;
+    padding-top: 5%;
+    text-align: left;
+    font-size:xx-large;
+    font-style:normal;
+    font-weight: bold;
+  }
+  .footer-ide {
+    text-align: left;
+  }
+  .footer-ide h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+  .logo-footer {
+    width: 60%;
+    max-width: 180px;
+  }
+
+
+
+

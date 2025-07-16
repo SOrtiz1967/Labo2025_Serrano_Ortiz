@@ -48,7 +48,8 @@ public class RecetaPostre extends Receta {
             i++;
         }
     }
-    public void Tipo(){
-        RecetaPlatoPrincipal.class.getName();
-    }
+    /*@Override
+    void Tipo(){
+        RecetaPostre.class.getName();
+    }*/
 }

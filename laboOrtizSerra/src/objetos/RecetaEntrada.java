@@ -2,7 +2,7 @@ package objetos;
 
 import java.util.ArrayList;
 
-public class  RecetaEntrada extends Receta {
+public class RecetaEntrada extends Receta {
     private Temperatura temperatura;
 
     public RecetaEntrada(String nombre, Dificultad dificultad, ArrayList<String> listadepasos, Temperatura temperatura) {
@@ -42,7 +42,8 @@ public class  RecetaEntrada extends Receta {
             }
         }
     }
-    public void Tipo(){
-        RecetaPlatoPrincipal.class.getName();
-    }
+    /*@Override
+    void Tipo(){
+        RecetaEntrada.class.getName();
+    }*/
 }
