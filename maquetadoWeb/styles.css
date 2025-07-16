@@ -1,6 +1,9 @@
 .logo{
     width: 7%;
 }
+.link-sty{
+  all: unset;/* esto le sacaa todo el subraayado feo y color a los a*/
+}
 
 /* From Uiverse.io by alexruix */ 
 
@@ -50,14 +53,15 @@
 }
 
 .carouestatic{
-    border: #cccccc solid 1px;
-    box-shadow: 0 4px 12px rgba(170, 170, 170, 0.544);
+    
+    
     margin-top: 2% !important;
     margin-bottom: 3% !important;
     margin-right: 2.5% !important;
     margin-left: 2.5% !important;
     display: flex;
     justify-content: space-between;
+    
 }
 
 .rec {
@@ -74,7 +78,7 @@
   overflow: hidden;
   margin: 0.5%;
   border: #ffb62e solid 1px;
-  box-shadow: 0 4px 12px rgba(241, 108, 19, 0.4);
+  box-shadow: 8px 8px 24px rgba(241, 108, 19, 0.4);
   transition: box-shadow 0.3s ease, filter 0.3s ease;
   
   }
