@@ -9,6 +9,6 @@ public class Main {
         Consumicion c2= new Consumicion(coca, 2);
         alcoholico.agregarConsumo(c1);
         alcoholico.agregarConsumo(c2);
-        System.out.println(coca.);
+        System.out.println("coca");
     }
 }
