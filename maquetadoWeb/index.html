@@ -39,7 +39,7 @@
   <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid container-display-header">
-        <a class="navbar-brand logo" href="#"><img src="/maquetadoWeb/Imagenes/Captura_desde_2025-07-02_09-02-26-removebg-preview.png" class="img-fluid" alt="logoPagina"></a>
+        <a class="navbar-brand logo" href="#"><img src="/Imagenes/Captura_desde_2025-07-02_09-02-26-removebg-preview.png" class="img-fluid" alt="logoPagina"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -79,7 +79,7 @@
       -->
         <div class="imagen-requerimiento">
           <div class="card text-bg-dark">
-            <img src="/maquetadoWeb/Imagenes/averesta.jpg" class="card-img" alt="talvezseraelinfiernonovertenuncamas">
+            <img src="/Imagenes/averesta.jpg" class="card-img" alt="talvezseraelinfiernonovertenuncamas">
             <div class="card-img-overlay card-textoz">
               <h4 class="card-title">Centro Cultural Parque chas</h5>
               <h1 class="card-text">Eventos y citas</h3>
@@ -87,12 +87,15 @@
             </div>
           </div>
         </div>
+        <div id="mensajeConfirmacion" class="alert alert-success d-none" role="alert">
+          ✅ Te inscribiste correctamente, ¡gracias por anotarte!
+        </div>
         <div class="title-carou">
             <h2> Proximos eventos</h2>
         </div>
         <div class="row carouestatic">
-          <div class="col-lg-4 rec" style="background-image: url('/maquetadoWeb/Imagenes/tenis.png');">
-            <a href="/maquetadoWeb/form.html" class="link-sty">
+          <div class="col-lg-4 rec" style="background-image: url('/Imagenes/tenis.png');">
+            <a href="/form_validado.html" class="link-sty">
               <div class="rec-content">
                 <div class="rec-date">Jul 24<br>2025</div>
                 <div class="rec-title">Evento de tenis con Federico Coria</div>
@@ -101,8 +104,8 @@
             </a>
             
           </div>
-          <div class="col-lg-4 rec" style="background-image: url('/maquetadoWeb/Imagenes/basquet.png');">
-            <a href="/maquetadoWeb/form.html" class="link-sty">
+          <div class="col-lg-4 rec" style="background-image: url('/Imagenes/basquet.png');">
+            <a href="/form_validado.html" class="link-sty">
               <div class="rec-content">
               <div class="rec-date">Aug 01<br>2025</div>
               <div class="rec-title">Encuentro basquetbolistico con los chicos de el club villa puyrredon</div>
@@ -110,8 +113,8 @@
             </div>
             </a>
           </div>
-          <div class="col-lg-4 rec" style="background-image: url('/maquetadoWeb/Imagenes/futbol.png');">
-            <a href="/maquetadoWeb/form.html" class="link-sty">
+          <div class="col-lg-4 rec" style="background-image: url('/Imagenes/futbol.png');">
+            <a href="/form_validado.html" class="link-sty">
               <div class="rec-content">
               <div class="rec-date">Sep 10<br>2025</div>
               <div class="rec-title">Clase de futbol infantil</div>
@@ -127,7 +130,7 @@
     <div class="container-fluid px-4">
       <div class="row text-start">
         <div class="col-md-4 mb-3">
-          <img src="/maquetadoWeb/Imagenes/Captura_desde_2025-07-02_09-02-26-removebg-preview.png" alt="logo" class="logo-footer">
+          <img src="/Imagenes/Captura_desde_2025-07-02_09-02-26-removebg-preview.png" alt="logo" class="logo-footer">
         </div>
         <div class="col-md-4 mb-3">
           <h5>Horarios</h5>
@@ -148,6 +151,13 @@
       </div>
     </div>
   </footer>
+  <script>
+    // Muestra el mensaje si ?mensaje=ok
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('mensaje') === 'ok') {
+      document.getElementById('mensajeConfirmacion').classList.remove('d-none');
+    }
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>    
 </body>

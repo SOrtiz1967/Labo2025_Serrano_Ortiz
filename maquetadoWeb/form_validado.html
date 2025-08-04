@@ -71,45 +71,69 @@
         </button>
 
         <!-- eate es el for superpuesto al carusel-->
-        <div class="formulario">
-          <form class="row g-3">
-            <div class="col-md-6">
-              <label for="inputEmail4" class="form-label">Email</label>
-              <input type="text" class="form-control" id="inputEmail4" />
-            </div>
-            <div class="col-md-6">
-              <label for="inputPassword4" class="form-label">Nombre y apellido</label>
-              <input type="text" class="form-control" id="inputPassword4" />
-            </div>
-            <div class="col-12">
-              <label for="inputDNI" class="form-label">DNI</label>
-              <input type="number" class="form-control" id="inputAddress" placeholder="12345678" />
-            </div>
-            
-            <div class="col-md-6">
-              <label for="inputDireccion" class="form-label">direccion</label>
-              <input type="text" class="form-control" id="inputCity" placeholder="moscu 3375" />
-            </div>
-            <div class="col-md-4">
-              <label for="inputtelefono" class="form-label">Numero de telefono</label>
-              <input type="number" class="form-control" id="inputDireccion" placeholder="27387367" />
-            </div>
-            <div class="col-md-2">
-              <label for="inputedad" class="form-label">edad</label>
-              <input type="number" class="form-control" id="inputZip" placeholder="12" />
-            </div>
-            <div class="col-12">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck" />
-                <label class="form-check-label" for="gridCheck">
-                  Acepto los términos y condiciones
-                </label>
-              </div>
-            </div>
-            <div class="col-12">
-              <button type="submit" class="btn btn-primary">Anotarme</button>
-            </div>
-          </form>
+        
+<div class="formulario">
+  <form class="row g-3 needs-validation" novalidate method="POST" action="http://localhost:3000/enviar">
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" name="email" required>
+      <div class="invalid-feedback">
+        Ingresá un correo válido.
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">Nombre y apellido</label>
+      <input type="text" class="form-control" id="inputPassword4" name="nombre" required>
+      <div class="invalid-feedback">
+        Este campo es obligatorio.
+      </div>
+    </div>
+    <div class="col-12">
+      <label for="inputDNI" class="form-label">DNI</label>
+      <input type="number" class="form-control" id="inputDNI" placeholder="12345678" name="dni" required>
+      <div class="invalid-feedback">
+        Ingresá un DNI válido.
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="inputDireccion" class="form-label">Dirección</label>
+      <input type="text" class="form-control" id="inputDireccion" placeholder="Moscu 3375" name="direccion" required>
+      <div class="invalid-feedback">
+        Ingresá una dirección válida.
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="inputTelefono" class="form-label">Número de teléfono</label>
+      <input type="tel" class="form-control" id="inputTelefono" placeholder="27387367" name="telefono" required>
+      <div class="invalid-feedback">
+        Ingresá un teléfono válido.
+      </div>
+    </div>
+    <div class="col-md-2">
+      <label for="inputEdad" class="form-label">Edad</label>
+      <input type="number" class="form-control" id="inputEdad" placeholder="12" name="edad" required>
+      <div class="invalid-feedback">
+        Ingresá una edad válida.
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck" required>
+        <label class="form-check-label" for="gridCheck">
+          Acepto los términos y condiciones 
+
+        </label>
+        <div class="invalid-feedback">
+          Debés aceptar los términos y condiciones.
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Anotarme</button>
+    </div>
+  </form>
+</div>
+</div>
         </div>
       </div>
     </div>
@@ -141,5 +165,22 @@
   </footer>
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+  <script>
+    (() => {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  </script>
 </body>
+
 </html>
