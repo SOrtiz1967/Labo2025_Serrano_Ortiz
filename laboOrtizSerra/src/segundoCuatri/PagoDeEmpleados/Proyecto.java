@@ -1,6 +1,4 @@
-package PagoDeEmpleados;
-
-import java.util.HashSet;
+package segundoCuatri.PagoDeEmpleados;
 
 public class Proyecto {
     private String nombre;

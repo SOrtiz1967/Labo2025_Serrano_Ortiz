@@ -1,9 +1,11 @@
-package PagoDeEmpleados;
+package segundoCuatri.PagoDeEmpleados;
+
+import personas.Persona;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Diseniador extends Persona{
+public class Diseniador extends Persona {
     private Tipo tipo;
     private HashMap<Proyecto, Integer> proyectosAsignados= new HashMap<Proyecto, Integer>();
 
@@ -17,14 +19,16 @@ public class Diseniador extends Persona{
         }
     }
 
-    public Diseniador(Tipo tipo, HashMap<Proyecto, Integer> proyectosAsignados) {
-        this.tipo = tipo;
-        this.proyectosAsignados = proyectosAsignados;
+    public Diseniador() {
+        super();
+        this.tipo=Tipo.UI;
+        this.proyectosAsignados= new HashMap<Proyecto, Integer>();
     }
 
-    public Diseniador() {
-        this.tipo = Tipo.IT;
-        this.proyectosAsignados = new HashMap<Proyecto, Integer>();
+    public Diseniador(String nombre, int edad, String apellido, String direccion, Tipo tipo, HashMap<Proyecto, Integer> proyectosAsignados) {
+        super(nombre, edad, apellido, direccion);
+        this.tipo = tipo;
+        this.proyectosAsignados = proyectosAsignados;
     }
 
     public Tipo getTipo() {
@@ -42,6 +46,7 @@ public class Diseniador extends Persona{
     public void setProyectosAsignados(HashMap<Proyecto, Integer> proyectosAsignados) {
         this.proyectosAsignados = proyectosAsignados;
     }
+
 
 
     public int miSueldo(){

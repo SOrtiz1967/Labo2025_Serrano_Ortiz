@@ -1,4 +1,4 @@
-package PagoDeEmpleados;
+package segundoCuatri.PagoDeEmpleados;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -57,8 +57,8 @@ public class CreativoSinLimites {
         HashMap<Proyecto, Integer> proyectosAsignados2= new HashMap<Proyecto, Integer>();
         proyectosAsignados1.put(p1,p1.getPrecio());
         proyectosAsignados2.put(p2,p2.getPrecio());
-        Diseniador d1=new Diseniador(Tipo.UI,proyectosAsignados1);
-        Diseniador d2=new Diseniador(Tipo.IT,proyectosAsignados2);
+        Diseniador d1=new Diseniador("Matias",17,"Faya","J.H.Martinez 1519",Tipo.UI,proyectosAsignados1);
+        Diseniador d2=new Diseniador("Santiago",18,"Ortiz","Rosario de la Frontera 4913",Tipo.IT,proyectosAsignados2);
         d1.sumarComision();
         d2.sumarComision();
         HashSet<Proyecto> proyectos = new HashSet<Proyecto>();

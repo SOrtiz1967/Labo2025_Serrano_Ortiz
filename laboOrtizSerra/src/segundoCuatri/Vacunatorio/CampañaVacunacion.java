@@ -1,4 +1,4 @@
-package Vacunatorio;
+package segundoCuatri.Vacunatorio;
 
 import java.util.HashMap;
 import java.util.HashSet;

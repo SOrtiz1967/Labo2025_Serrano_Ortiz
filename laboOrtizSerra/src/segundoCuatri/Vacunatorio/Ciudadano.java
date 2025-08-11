@@ -1,4 +1,4 @@
-package Vacunatorio;
+package segundoCuatri.Vacunatorio;
 
 public class Ciudadano {
     /*De cada ciudadano tenemos dni, nombre y apellido, provincia de residencia, domicilio y mail de contacto.*/
