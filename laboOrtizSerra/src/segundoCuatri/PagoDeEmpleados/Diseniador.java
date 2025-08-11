@@ -7,8 +7,8 @@ import java.util.Map;
 
 public class Diseniador extends Persona {
     private Tipo tipo;
-    private HashMap<Proyecto, Integer> proyectosAsignados= new HashMap<Proyecto, Integer>();
-
+    private HashMap<Proyecto, Integer> proyectosAsignados;//valor con comision agregada
+//estaria muy bien que sumar comision vaya en el constructor asi se hace cuando se crea y no hay que llamrla en el man
     public void sumarComision(){
         for(Map.Entry<Tipo,Integer> t:CreativoSinLimites.getComisiones().entrySet()) {
             if (t.getKey().equals(this.tipo)) {
