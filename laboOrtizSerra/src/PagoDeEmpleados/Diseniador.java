@@ -3,17 +3,12 @@ package PagoDeEmpleados;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Diseniador {
+public class Diseniador extends Persona{
     private Tipo tipo;
     private HashMap<Proyecto, Integer> proyectosAsignados= new HashMap<Proyecto, Integer>();
-    private static HashMap<Tipo,Integer>comisiones = new HashMap<Tipo,Integer>();
-    static {
-        comisiones.put(Tipo.UI,7);
-        comisiones.put(Tipo.UX, 8);
-        comisiones.put(Tipo.IT, 12);
-    }
+
     public void sumarComision(){
-        for(Map.Entry<Tipo,Integer> t:Diseniador.comisiones.entrySet()) {
+        for(Map.Entry<Tipo,Integer> t:CreativoSinLimites.getComisiones().entrySet()) {
             if (t.getKey().equals(this.tipo)) {
                 for (Map.Entry<Proyecto, Integer> p : this.proyectosAsignados.entrySet()) {
                     p.setValue(p.getValue() + (p.getValue() * t.getValue()) / 100);
@@ -48,13 +43,6 @@ public class Diseniador {
         this.proyectosAsignados = proyectosAsignados;
     }
 
-    public HashMap<Tipo, Integer> getComisiones() {
-        return comisiones;
-    }
-
-    public static void setComisiones(HashMap<Tipo, Integer> comisiones) {
-        Diseniador.comisiones = comisiones;
-    }
 
     public int miSueldo(){
         int sueldo=0;
@@ -77,7 +65,7 @@ public class Diseniador {
     public void sueldoDiscriminado(){
         for(Map.Entry<Proyecto,Integer> p:proyectosAsignados.entrySet()){
             int comision=p.getValue()-this.gananciaSinComision(p.getKey());
-            System.out.println("Nombre del proyecto: "+ p.getKey().getNombre()+ "Cuanto ganó: "+ this.proyectosAsignados.get(p)+ "Comisión: "+ comision);
+            System.out.println("Nombre del proyecto: "+ p.getKey().getNombre()+ "  Cuanto ganó: "+ this.proyectosAsignados.get(p.getKey())+ " Comisión: "+ comision);
         }
     }
 }
