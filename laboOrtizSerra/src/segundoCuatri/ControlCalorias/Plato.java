@@ -43,4 +43,16 @@ public class Plato {
     public void setCalorias(int calorias) {
         this.calorias = calorias;
     }
+    /*public void agregarIngrediente(String ingrediente){
+        this.ingredientes.add(ingrediente);
+    }
+    public void eliminarIngrediente(String ingrediente){
+        this.ingredientes.remove(ingrediente);
+    }
+    public void ModificarIngrediente(String ingredienteAPoner, String ingredienteASacar){
+        agregarIngrediente(ingredienteAPoner);
+        eliminarIngrediente(ingredienteASacar);
+    }*/
+
+
 }
