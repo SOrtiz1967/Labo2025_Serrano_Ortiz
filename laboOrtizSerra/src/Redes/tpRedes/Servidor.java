@@ -1,12 +1,12 @@
 package Redes.tpRedes;
-/*
+
+import Redes.MiRunnable;
+
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.SocketException;
+import java.net.*;
 import java.nio.Buffer;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,11 +15,10 @@ public class Servidor {
     public static void main(String[] args) {
         final int puerto=20000;
         byte[]buffer=new byte[1024];
+
             try{
                 System.out.println("Iniciado el servidor UDP");
                 DatagramSocket socket= new DatagramSocket(puerto);
-                DatagramPacket paquete = new DatagramPacket(buffer, buffer.length);
-                if(socket.receive(paquete))
                     while(true){
                         DatagramPacket paqueteRecibido=new DatagramPacket(buffer,buffer.length);
                         socket.receive(paqueteRecibido);
@@ -48,4 +47,4 @@ public class Servidor {
         }
     }
 }
-*/
+

@@ -11,6 +11,7 @@ public class Cliente {
     public static void main(String[] args) {
         final int puerto=20000;
         byte[]buffer=new byte[1024];
+
         try {
             InetAddress direccionServidor = InetAddress.getByName("localhost");
             DatagramSocket socketCliente = new DatagramSocket();
