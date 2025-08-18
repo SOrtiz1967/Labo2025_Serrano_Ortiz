@@ -5,10 +5,10 @@ import java.util.HashSet;
 
 public class Plato {
     private String nombre;
-    private HashSet<String> ingredientes;
+    private HashSet<Ingrediente> ingredientes;
     private int calorias;
 
-    public Plato(String nombre, HashSet<String> ingredientes, int calorias) {
+    public Plato(String nombre, HashSet<Ingrediente> ingredientes, int calorias) {
         this.nombre = nombre;
         this.ingredientes = ingredientes;
         this.calorias = calorias;
@@ -28,11 +28,11 @@ public class Plato {
         this.nombre = nombre;
     }
 
-    public HashSet<String> getIngredientes() {
+    public HashSet<Ingrediente> getIngredientes() {
         return ingredientes;
     }
 
-    public void setIngredientes(HashSet<String> ingredientes) {
+    public void setIngredientes(HashSet<Ingrediente> ingredientes) {
         this.ingredientes = ingredientes;
     }
 
