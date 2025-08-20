@@ -1,4 +1,4 @@
-package Tecnologia;
+package ejercicioAlarmas;
 
 import java.time.LocalDate;
 

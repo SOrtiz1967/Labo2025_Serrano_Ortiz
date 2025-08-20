@@ -1,7 +1,7 @@
 package tests;/*
-import Tecnologia.Dispositivo;
+import ejercicioAlarmas.Dispositivo;
 import objetos.*;
-import sistemas.SistemaAlarmas;
+import ejercicioAlarmas.SistemaAlarmas;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

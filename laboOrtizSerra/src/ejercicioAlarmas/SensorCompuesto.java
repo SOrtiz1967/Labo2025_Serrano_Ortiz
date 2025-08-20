@@ -1,6 +1,4 @@
-package objetos;
-
-import Tecnologia.Dispositivo;
+package ejercicioAlarmas;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

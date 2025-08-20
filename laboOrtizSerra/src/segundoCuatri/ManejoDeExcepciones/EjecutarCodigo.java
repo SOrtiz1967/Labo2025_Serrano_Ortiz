@@ -2,12 +2,15 @@ package segundoCuatri.ManejoDeExcepciones;
 
 public class EjecutarCodigo {
     //con throws
-    public void mostrarTamanioNombre() throws NullPointerException {
+    public void mostrarTamanioNombre() throws Personalizada {
         String nombre = null;
+        if(nombre==null){
+            throw new Personalizada("nombre vacio");
+        }
         System.out.println("El largo del nombre es:" + nombre.length());
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Personalizada{
             /*con try/catch
             try {
                 String nombre = null;
@@ -17,15 +20,16 @@ public class EjecutarCodigo {
             }
             System.out.println("Terminó la excepcion");*/
         //con throw
-        try {
+        /*try {
             String nombre = null;
-            if (nombre.length()==0||nombre.isEmpty()) {
+            if (nombre==null) {
                 throw new NullPointerException("El nombre está vacío");
         }} catch (NullPointerException e) {
             System.err.println(e);
-        }
-        //EjecutarCodigo e1= new EjecutarCodigo();
-        //e1.mostrarTamanioNombre();
+        }*/
+        EjecutarCodigo e1= new EjecutarCodigo();
+        e1.mostrarTamanioNombre();
+
     }
 }
 
