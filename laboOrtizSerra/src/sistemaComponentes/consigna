@@ -1,0 +1,6 @@
+3. Sistema componentes de pc (ejercicio 4, unidad 3)
+
+Agregarle al sistema de compras de componentes de computadora (ejercicio 4, unidad 3)
+las excepciones necesarias para que el usuario sepa si no hay stock de los componentes que eligió y lanzar
+una excepción en caso de que al hacer la compra falte uno de los componentes principales
+(una CPU, un dispositivo de entrada y uno de salida).

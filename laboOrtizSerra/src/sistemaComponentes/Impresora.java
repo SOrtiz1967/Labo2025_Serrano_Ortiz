@@ -1,6 +1,4 @@
-package Tecnologia;
-
-import objetos.Salida;
+package sistemaComponentes;
 
 import java.util.ArrayList;
 

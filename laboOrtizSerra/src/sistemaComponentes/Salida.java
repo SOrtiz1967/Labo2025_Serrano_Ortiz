@@ -1,8 +1,8 @@
-package objetos;
+package sistemaComponentes;
 
 import java.util.ArrayList;
 
-public class Salida extends Componente{
+public class Salida extends Componente {
     //pantallas e impresoras (puertos; para impresoras, método de impresión: inyección o láser)
     private ArrayList<String> puertos;
 

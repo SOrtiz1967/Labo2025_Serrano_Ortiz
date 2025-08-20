@@ -1,7 +1,7 @@
-package objetos;
+package sistemaComponentes;
 
 
-import Tecnologia.CPU;
+import objetos.MetodoPago;
 import personas.User;
 
 import java.util.ArrayList;
@@ -31,8 +31,7 @@ public class Compra {
         }
         if (devices > 1 && pc == 1) {
             System.out.println("¡Tu pedido fue validado correctamente!");
-        } else {
-            System.out.println("Algo anda mal, tu pedido no cumple con los requisitos :(");
+        }
         }
 
 

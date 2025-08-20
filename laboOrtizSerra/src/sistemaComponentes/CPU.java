@@ -1,6 +1,4 @@
-package Tecnologia;
-
-import objetos.Componente;
+package sistemaComponentes;
 
 public class CPU extends Componente {
     public CPU() {

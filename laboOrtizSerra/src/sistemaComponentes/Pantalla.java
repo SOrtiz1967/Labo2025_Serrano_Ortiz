@@ -1,8 +1,8 @@
-package objetos;
+package sistemaComponentes;
 
 import java.util.ArrayList;
 
-public class Pantalla extends Salida{
+public class Pantalla extends Salida {
     private int fps;
     public Pantalla(String fabricante, String modelo, double precio, int stock, ArrayList<String> puertos, int fps) {
         super(fabricante, modelo, precio, stock, puertos);

@@ -1,4 +1,4 @@
-package objetos;
+package sistemaComponentes;
 
 public abstract class Componente {
     private  String fabricante;

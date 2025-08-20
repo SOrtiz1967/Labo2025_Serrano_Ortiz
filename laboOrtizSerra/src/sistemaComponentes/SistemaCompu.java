@@ -1,6 +1,4 @@
-package sistemas;
-
-import objetos.Compra;
+package sistemaComponentes;
 
 import java.util.ArrayList;
 

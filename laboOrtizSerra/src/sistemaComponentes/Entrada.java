@@ -1,4 +1,4 @@
-package objetos;
+package sistemaComponentes;
 
 import java.util.ArrayList;
 
