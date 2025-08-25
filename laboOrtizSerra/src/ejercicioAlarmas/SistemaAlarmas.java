@@ -21,6 +21,8 @@ public class SistemaAlarmas {
             }
         }
      */
+        //hay que pedirle que ingrese el numeri adentro de la fucion, y un while para que le repreunte hasta que este bien
+        //ejercicio marui, es muy general el exception
         String Mensaje="el estado de la alarma es "+sensores.get(locuron).estado+" su medida es: "+sensores.get(locuron).medida+"al ritmo ";
         return Mensaje;
     }
