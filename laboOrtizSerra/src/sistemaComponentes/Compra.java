@@ -1,5 +1,5 @@
 package sistemaComponentes;
-
+/*
 
 import objetos.MetodoPago;
 import personas.User;
@@ -92,3 +92,4 @@ public class Compra {
         this.metodoPago = metodoPago;
     }
 }
+*/

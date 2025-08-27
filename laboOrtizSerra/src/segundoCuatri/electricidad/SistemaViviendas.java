@@ -29,4 +29,5 @@ public class SistemaViviendas {
             v.cargarConsumo(hoy, consumo);
         }
     }
+
 }

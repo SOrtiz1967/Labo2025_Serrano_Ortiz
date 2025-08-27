@@ -16,8 +16,6 @@ public class Departamento extends Vivienda{
         this.cAmbientes = cAmbientes;
     }
 
-
-
     public int getcAmbientes() {
         return cAmbientes;
     }
@@ -26,7 +24,8 @@ public class Departamento extends Vivienda{
         this.cAmbientes = cAmbientes;
     }
 
-    public static int getPrecio() {
+    @Override
+    public int getPrecio() {
         return precio;
     }
 
@@ -34,27 +33,7 @@ public class Departamento extends Vivienda{
         Departamento.precio = precio;
     }
 
-    @Override
-    public void cargarConsumo(LocalDate fecha, int consumo) {
-        Consumo cAux= new Consumo(consumo, getPrecio());
-        if(getRegistro().containsKey(fecha.getYear())) {
-            //si existe el año vemos si existe el mes
-            if (getRegistro().get(fecha.getYear()).containsKey(fecha.getMonth())) {
-                System.out.println("ya ingresaste este mes");
-            } else {//si no existe ese mes en el año lo agregamos
 
-                getRegistro().get(fecha.getYear()).put(fecha.getMonth(), cAux);
-
-            }
-        }
-        else{//si el año no existe lo agregamos al map, as el mes
-            HashMap<Month, Consumo> hasAux= new HashMap<>();
-            hasAux.put(fecha.getMonth(),cAux);
-            getRegistro().put(fecha.getYear(), hasAux);
-
-
-        }
-    }
 
 
 

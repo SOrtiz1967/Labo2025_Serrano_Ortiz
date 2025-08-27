@@ -1,5 +1,5 @@
 package sistemaComponentes;
-
+/*
 import java.util.ArrayList;
 
 public class SistemaCompu {
@@ -26,3 +26,4 @@ public class SistemaCompu {
     }
 
 }
+*/

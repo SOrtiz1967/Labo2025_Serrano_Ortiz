@@ -49,10 +49,28 @@ public abstract class Vivienda {
         this.dueño = dueño;
         this.registro = registro;
     }
+    public abstract int getPrecio();
 
-    public abstract void cargarConsumo(LocalDate fecha, int consumo);
+    public void cargarConsumo(LocalDate fecha, int consumo){
+        Consumo cAux= new Consumo(consumo, getPrecio());
+        if(getRegistro().containsKey(fecha.getYear())) {
+            //si existe el año vemos si existe el mes
+            if (getRegistro().get(fecha.getYear()).containsKey(fecha.getMonth())) {
+                System.out.println("ya ingresaste este mes");
+            } else {//si no existe ese mes en el año lo agregamos
+
+                getRegistro().get(fecha.getYear()).put(fecha.getMonth(), cAux);
+
+            }
+        }
+        else{//si el año no existe lo agregamos al map, as el mes
+            HashMap<Month, Consumo> hasAux= new HashMap<>();
+            hasAux.put(fecha.getMonth(),cAux);
+            getRegistro().put(fecha.getYear(), hasAux);
 
 
+        }
+    }
     public double calcularSubtotal(LocalDate fecha){
         if (getRegistro().containsKey(fecha.getYear()) && getRegistro().get(fecha.getYear()).containsKey(fecha.getMonth())) {
             return getRegistro().get(fecha.getYear()).get(fecha.getMonth()).getCosto();
@@ -61,8 +79,7 @@ public abstract class Vivienda {
         return 0;
     }
     public double calcularTotal(LocalDate fecha) {
-        //Por otro lado, si el consumo del mes se redujo un 10% respecto del consumo del mismo
-        //mes del año anterior se debe aplicar un descuento del 5% al número final.
+
         if (calcularSubtotal(fecha) <= calcularSubtotal(fecha.minusYears(1)) * 0.9) {
             return calcularSubtotal(fecha) - calcularSubtotal(fecha) * 0.05;
         } else {
