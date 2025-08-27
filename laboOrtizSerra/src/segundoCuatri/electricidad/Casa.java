@@ -1,6 +1,8 @@
 package segundoCuatri.electricidad;
 
 import java.time.LocalDate;
+import java.time.Month;
+import java.util.HashMap;
 
 public class Casa extends Vivienda{
     //Si la vivienda es una casa, se guardarán los metros cubiertos por un lado y los descubiertos por otro.
@@ -9,7 +11,8 @@ public class Casa extends Vivienda{
     private int mDescubiertos;
     private static int precio=100;
 
-    public Casa(int mCubiertos, int mDescubiertos) {
+    public Casa(String direccion, int cp, Dueño dueño, HashMap<Integer, HashMap<Month, Consumo>> registro, int mCubiertos, int mDescubiertos) {
+        super(direccion, cp, dueño, registro);
         this.mCubiertos = mCubiertos;
         this.mDescubiertos = mDescubiertos;
     }
@@ -40,16 +43,26 @@ public class Casa extends Vivienda{
 
     @Override
     public void cargarConsumo(LocalDate fecha, int consumo) {
-        if(getRegistro().containsKey(fecha.getYear())){
+        Consumo cAux= new Consumo(consumo, getPrecio());
+        if(getRegistro().containsKey(fecha.getYear())) {
+            //si existe el año vemos si existe el mes
+            if (getRegistro().get(fecha.getYear()).containsKey(fecha.getMonth())) {
+                System.out.println("ya ingresaste este mes");
+            } else {//si no existe ese mes en el año lo agregamos
 
+                getRegistro().get(fecha.getYear()).put(fecha.getMonth(), cAux);
+
+            }
         }
-        else{
+        else{//si el año no existe lo agregamos al map, as el mes
+            HashMap<Month, Consumo> hasAux= new HashMap<>();
+            hasAux.put(fecha.getMonth(),cAux);
+            getRegistro().put(fecha.getYear(), hasAux);
+
 
         }
     }
 
-    @Override
-    public double calcularPago() {
-        return ;
-    }
+
+
 }

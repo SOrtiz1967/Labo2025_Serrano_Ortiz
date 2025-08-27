@@ -8,7 +8,10 @@ public class Consumo {
         this.consumo = consumo;
         this.precio = precio;
     }
-
+    public double getCosto(){
+        double maravilla=consumo*precio;
+        return maravilla;
+    }
     public int getConsumo() {
         return consumo;
     }
