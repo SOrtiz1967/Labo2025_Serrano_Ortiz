@@ -1,6 +1,7 @@
 package sistemaComponentes;
-/*
+
 public class ExcepcionFaltaComponentePrincipal extends Exception {
-    public ExcepcionFaltaComponentePrincipal ();
+    public ExcepcionFaltaComponentePrincipal(String mensaje){
+        super(mensaje);
+    }
 }
-*/

@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class AgenteE {
     public static void main(String[] args) {
-        final String HOST = "localhost"; //para probar en la compu anashe
+        final String HOST = "localhost"; //para probar en la compu
         final int PUERTO_SERVIDOR = 5000;
 
         try (DatagramSocket socket = new DatagramSocket();
@@ -15,7 +15,7 @@ public class AgenteE {
             System.out.println("Agente ready pal laburo");
 
             while (true) {
-                System.out.print("Ingresa emergencia");
+                System.out.print("Ingresa emergencia: ");
                 String mensaje = scanner.nextLine();
 
                 if (mensaje.equalsIgnoreCase("salir")) break;
