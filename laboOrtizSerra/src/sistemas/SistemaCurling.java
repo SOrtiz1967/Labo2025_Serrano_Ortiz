@@ -3,7 +3,7 @@ package sistemas;
 import eventos.PartidoCurling;
 import grupos.DisponibilidadHoraria;
 import grupos.EquipoCurling;
-import personas.JugadorCurling;
+import primerCuatri.probar.personas.JugadorCurling;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

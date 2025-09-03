@@ -1,4 +1,4 @@
-package personas;
+package primerCuatri.probar.personas;
 import java.util.Random;
 public class Empleado6 extends User{
     private int dni;

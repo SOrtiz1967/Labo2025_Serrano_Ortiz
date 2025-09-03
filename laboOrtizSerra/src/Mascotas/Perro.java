@@ -1,6 +1,6 @@
 package Mascotas;
 
-import personas.Persona;
+import primerCuatri.probar.personas.Persona;
 
 public class Perro extends Mascota{
     public Perro() {

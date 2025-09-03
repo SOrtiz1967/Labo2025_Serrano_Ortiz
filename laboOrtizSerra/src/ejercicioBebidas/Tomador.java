@@ -1,6 +1,6 @@
 package ejercicioBebidas;
 
-import personas.Persona;
+import primerCuatri.probar.personas.Persona;
 
 import java.util.ArrayList;
 

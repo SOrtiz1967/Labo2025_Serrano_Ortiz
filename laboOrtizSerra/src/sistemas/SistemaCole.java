@@ -1,7 +1,7 @@
 package sistemas;
 
 import objetos.Materia;
-import personas.Alumno;
+import primerCuatri.probar.personas.Alumno;
 
 import java.time.LocalDate;
 import java.time.Period;

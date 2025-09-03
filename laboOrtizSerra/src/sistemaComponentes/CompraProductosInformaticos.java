@@ -1,7 +1,7 @@
 package sistemaComponentes;
 
 import objetos.MetodoPago;
-import personas.User;
+import primerCuatri.probar.personas.User;
 
 import java.util.ArrayList;
 

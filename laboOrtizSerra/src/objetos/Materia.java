@@ -1,7 +1,6 @@
 package objetos;
 
-import fecha.Fecha;
-import personas.Alumno;
+import primerCuatri.probar.personas.Alumno;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

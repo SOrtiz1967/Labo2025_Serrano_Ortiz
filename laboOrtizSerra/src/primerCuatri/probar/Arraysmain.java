@@ -1,6 +1,6 @@
-package probar;
+package primerCuatri.probar;
 
-import personas.Persona;
+import primerCuatri.probar.personas.Persona;
 
 import java.util.ArrayList;
 
@@ -9,8 +9,8 @@ public class Arraysmain {
         // Ejercicio 1
         /*
         a. Crear un ArrayList de números enteros y mostrar su suma.
-        b. Crear un ArrayList de palabras y mostrar solo los elementos que empiezan con una letra específica.
-        c. Crear un ArrayList de objetos Persona y mostrar solo las personas que tienen más de 30 años.
+        b. Crear un ArrayList de primerCuatri.probar.palabras y mostrar solo los elementos que empiezan con una letra específica.
+        c. Crear un ArrayList de objetos Persona y mostrar solo las primerCuatri.probar.personas que tienen más de 30 años.
          */
         // A
         ArrayList<Integer> numeros = new ArrayList<Integer>();

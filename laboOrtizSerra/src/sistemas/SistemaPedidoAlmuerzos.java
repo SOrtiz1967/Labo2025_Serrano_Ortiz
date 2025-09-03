@@ -2,8 +2,8 @@ package sistemas;
 
 import Pedidos.Pedido;
 import objetos.Plato;
-import personas.Alumno;
-import personas.Profesor;
+import primerCuatri.probar.personas.Alumno;
+import primerCuatri.probar.personas.Profesor;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

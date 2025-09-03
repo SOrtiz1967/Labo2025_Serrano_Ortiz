@@ -1,4 +1,4 @@
-package palabras;
+package primerCuatri.probar.palabras;
 
 public class Vocales {
     public static void main(String[] args) {

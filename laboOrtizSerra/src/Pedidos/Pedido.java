@@ -1,7 +1,7 @@
 package Pedidos;
 
 import objetos.Plato;
-import personas.Persona;
+import primerCuatri.probar.personas.Persona;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

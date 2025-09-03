@@ -1,4 +1,4 @@
-package personas;
+package primerCuatri.probar.personas;
 
 import java.time.LocalDate;
 

@@ -1,8 +1,7 @@
 package grupos;
 
-import personas.JugadorCurling;
+import primerCuatri.probar.personas.JugadorCurling;
 
-import java.time.temporal.JulianFields;
 import java.util.ArrayList;
 
 public class EquipoCurling {

@@ -1,9 +1,9 @@
 package tests;
 /*
 import objetos.Plato;
-import personas.Alumno;
-import personas.Profesor;
-import personas.Persona;
+import primerCuatri.probar.personas.Alumno;
+import primerCuatri.probar.personas.Profesor;
+import primerCuatri.probar.personas.Persona;
 import Pedidos.Pedido;
 import sistemas.SistemaPedidoAlmuerzos;
 

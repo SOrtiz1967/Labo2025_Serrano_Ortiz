@@ -1,6 +1,6 @@
 package segundoCuatri.electricidad;
 
-import personas.Persona;
+import primerCuatri.probar.personas.Persona;
 
 public class Dueño extends Persona {
     public Dueño() {

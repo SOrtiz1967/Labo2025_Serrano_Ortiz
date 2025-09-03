@@ -1,6 +1,6 @@
 package Mascotas;
 
-import personas.Persona;
+import primerCuatri.probar.personas.Persona;
 
 public class Gato extends Mascota{
     public Gato(String nombre, Persona duenio) {

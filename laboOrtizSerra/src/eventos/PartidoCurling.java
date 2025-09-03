@@ -2,10 +2,8 @@ package eventos;
 
 import grupos.DisponibilidadHoraria;
 import grupos.EquipoCurling;
-import personas.JugadorCurling;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class PartidoCurling {
     private EquipoCurling local;

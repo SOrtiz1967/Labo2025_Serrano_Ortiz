@@ -1,7 +1,6 @@
 package segundoCuatri.ControlCalorias;
 
-import personas.Persona;
-import segundoCuatri.PagoDeEmpleados.Proyecto;
+import primerCuatri.probar.personas.Persona;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package personas;
+package primerCuatri.probar.personas;
 
 public class Persona {
     private String nombre;

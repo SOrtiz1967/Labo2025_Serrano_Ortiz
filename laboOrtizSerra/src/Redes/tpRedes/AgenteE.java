@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class AgenteE {
     public static void main(String[] args) {
-        final String HOST = "localhost"; //para probar en la compu
+        final String HOST = "localhost"; //para primerCuatri.probar en la compu
         final int PUERTO_SERVIDOR = 5000;
 
         try (DatagramSocket socket = new DatagramSocket();

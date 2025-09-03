@@ -1,6 +1,6 @@
 package segundoCuatri.PagoDeEmpleados;
 
-import personas.Persona;
+import primerCuatri.probar.personas.Persona;
 
 import java.util.HashMap;
 import java.util.Map;

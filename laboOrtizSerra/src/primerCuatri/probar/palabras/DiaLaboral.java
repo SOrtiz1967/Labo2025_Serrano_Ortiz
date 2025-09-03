@@ -1,4 +1,4 @@
-package palabras;
+package primerCuatri.probar.palabras;
 
 import java.util.Scanner;
 

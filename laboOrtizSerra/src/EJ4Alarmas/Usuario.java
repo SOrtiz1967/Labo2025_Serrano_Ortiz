@@ -1,9 +1,6 @@
 package EJ4Alarmas;
 
-import objetos.Libro;
-import personas.Persona;
-import segundoCuatri.PagoDeEmpleados.CreativoSinLimites;
-import segundoCuatri.PagoDeEmpleados.Tipo;
+import primerCuatri.probar.personas.Persona;
 
 import java.util.HashSet;
 import java.util.Map;

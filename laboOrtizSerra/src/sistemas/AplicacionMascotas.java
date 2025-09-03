@@ -1,7 +1,7 @@
 package sistemas;
 
 import Mascotas.*;
-import personas.Persona;
+import primerCuatri.probar.personas.Persona;
 
 import java.util.ArrayList;
 

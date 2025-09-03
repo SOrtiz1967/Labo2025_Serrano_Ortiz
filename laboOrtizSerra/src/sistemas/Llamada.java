@@ -1,6 +1,6 @@
 package sistemas;
 
-import personas.Empleado6;
+import primerCuatri.probar.personas.Empleado6;
 
 import java.time.LocalDate;
 

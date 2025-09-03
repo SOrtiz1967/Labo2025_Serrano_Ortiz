@@ -1,6 +1,4 @@
-package personas;
-
-import fecha.Fecha;
+package primerCuatri.probar.personas;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

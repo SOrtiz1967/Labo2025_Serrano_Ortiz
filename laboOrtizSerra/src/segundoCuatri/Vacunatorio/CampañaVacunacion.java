@@ -31,14 +31,14 @@ public class CampañaVacunacion {
     /*
     Registrar una vacuna aplicada a un ciudadano.
     Consultar el historial de vacunas de un ciudadano por dni.
-    Obtener cuantas personas fueron vacunadas por Provincia
+    Obtener cuantas primerCuatri.probar.personas fueron vacunadas por Provincia
     Saber qué ciudadanos cumplen con tener una determinada cantidad de vacunas pasada por parametro.
     Conocer dado una vacuna determinada qué ciudadanos ya se la dieron.
     */
     public void registrarVacuna(Ciudadano c, Vacuna v){
         /*primero chequear si existe*/
         if (registro.containsKey(c)){
-            /* probar!!!
+            /* primerCuatri.probar!!!
             HashSet<Vacuna> vacunas=registro.get(c);
             vacunas.add(v);
              */
@@ -66,7 +66,7 @@ public class CampañaVacunacion {
         }
 
     }
-    //personas vacunadas por provincia
+    //primerCuatri.probar.personas vacunadas por provincia
     public void vacunadosPorProvincia() {
         HashMap<String, Integer> conteo = new HashMap<>();
 

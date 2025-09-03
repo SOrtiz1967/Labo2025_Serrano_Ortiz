@@ -1,4 +1,4 @@
-package personas;
+package primerCuatri.probar.personas;
 
 public class User {
     //guardar nombre, apellido, celular del cliente y método de pago

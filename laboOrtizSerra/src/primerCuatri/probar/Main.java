@@ -1,16 +1,4 @@
-package probar;
-
-import fecha.Fecha;
-import figuras.Circulo;
-import figuras.Rectangulo;
-import objetos.Cancion;
-import objetos.Editorial;
-import objetos.Libro;
-import personas.Persona;
-import vehiculo.Cafetera;
-import vehiculo.Coche;
-
-import java.util.ArrayList;
+package primerCuatri.probar;
 
 public class Main {
     public static void main(String[] args) {
@@ -87,8 +75,8 @@ public class Main {
         // Ejercicio 1
         /*
         a. Crear un ArrayList de números enteros y mostrar su suma.
-        b. Crear un ArrayList de palabras y mostrar solo los elementos que empiezan con una letra específica.
-        c. Crear un ArrayList de objetos Persona y mostrar solo las personas que tienen más de 30 años.
+        b. Crear un ArrayList de primerCuatri.probar.palabras y mostrar solo los elementos que empiezan con una letra específica.
+        c. Crear un ArrayList de objetos Persona y mostrar solo las primerCuatri.probar.personas que tienen más de 30 años.
 
         // A
         ArrayList<Integer> numeros = new ArrayList<Integer>();
@@ -103,27 +91,27 @@ public class Main {
         }
         System.out.println("la suma de todos los numros es: "+suma);
         //B
-        ArrayList<String> palabras = new ArrayList<String>();
-        palabras.add("auriculares");
-        palabras.add("musica");
-        palabras.add("botella");
-        palabras.add("guitarra");
-        palabras.add("mouse");
-        palabras.add("cable");
-        palabras.add("teclado");
-        for (String palabra : palabras){
+        ArrayList<String> primerCuatri.probar.palabras = new ArrayList<String>();
+        primerCuatri.probar.palabras.add("auriculares");
+        primerCuatri.probar.palabras.add("musica");
+        primerCuatri.probar.palabras.add("botella");
+        primerCuatri.probar.palabras.add("guitarra");
+        primerCuatri.probar.palabras.add("mouse");
+        primerCuatri.probar.palabras.add("cable");
+        primerCuatri.probar.palabras.add("teclado");
+        for (String palabra : primerCuatri.probar.palabras){
             if(palabra.charAt(0)=='a'){
                 System.out.println(palabra);
             }
         }
         //C
-        ArrayList<Persona> personas = new ArrayList<Persona>();
-        personas.add(new Persona("Matias Faya", 17));
-        personas.add(new Persona("Ariadna Leyes", 21));
-        personas.add(new Persona("Martina Cardillo", 20));
-        personas.add(new Persona("Geronimo Benavidez", 38));
-        personas.add(new Persona("Benjamín Gael", 17));
-        for (Persona persona : personas){
+        ArrayList<Persona> primerCuatri.probar.personas = new ArrayList<Persona>();
+        primerCuatri.probar.personas.add(new Persona("Matias Faya", 17));
+        primerCuatri.probar.personas.add(new Persona("Ariadna Leyes", 21));
+        primerCuatri.probar.personas.add(new Persona("Martina Cardillo", 20));
+        primerCuatri.probar.personas.add(new Persona("Geronimo Benavidez", 38));
+        primerCuatri.probar.personas.add(new Persona("Benjamín Gael", 17));
+        for (Persona persona : primerCuatri.probar.personas){
             //seria muy util tener un metodo en la clase persona al que pasandole un valor
             //numerico(edad)
             //nos devuelva true si es mayor

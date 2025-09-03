@@ -1,4 +1,4 @@
-package personas;
+package primerCuatri.probar.personas;
 
 public class Profesor extends Persona {
     private static int porcentaje_descuento;

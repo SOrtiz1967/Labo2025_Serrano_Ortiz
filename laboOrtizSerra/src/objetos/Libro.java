@@ -1,7 +1,7 @@
 package objetos;
 
 import fecha.Fecha;
-import personas.Persona;
+import primerCuatri.probar.personas.Persona;
 
 public class Libro {
     /*

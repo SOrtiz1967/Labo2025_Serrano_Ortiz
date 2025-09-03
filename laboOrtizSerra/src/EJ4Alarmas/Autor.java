@@ -1,8 +1,7 @@
 package EJ4Alarmas;
 
-import personas.Persona;
+import primerCuatri.probar.personas.Persona;
 
-import java.time.LocalDate;
 import java.util.HashSet;
 
 public class Autor extends Persona{
