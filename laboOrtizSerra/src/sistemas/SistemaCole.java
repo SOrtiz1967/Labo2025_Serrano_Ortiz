@@ -1,6 +1,6 @@
 package sistemas;
 
-import objetos.Materia;
+import primerCuatri.probar.objetos.Materia;
 import primerCuatri.probar.personas.Alumno;
 
 import java.time.LocalDate;

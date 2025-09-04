@@ -76,17 +76,17 @@ public class Main {
         /*
         a. Crear un ArrayList de números enteros y mostrar su suma.
         b. Crear un ArrayList de primerCuatri.probar.palabras y mostrar solo los elementos que empiezan con una letra específica.
-        c. Crear un ArrayList de objetos Persona y mostrar solo las primerCuatri.probar.personas que tienen más de 30 años.
+        c. Crear un ArrayList de primerCuatri.probar.objetos Persona y mostrar solo las primerCuatri.probar.personas que tienen más de 30 años.
 
         // A
-        ArrayList<Integer> numeros = new ArrayList<Integer>();
-        numeros.add(7);
-        numeros.add(82);
-        numeros.add(35);
-        numeros.add(95);
-        numeros.add(526);
+        ArrayList<Integer> primerCuatri.probar.numeros = new ArrayList<Integer>();
+        primerCuatri.probar.numeros.add(7);
+        primerCuatri.probar.numeros.add(82);
+        primerCuatri.probar.numeros.add(35);
+        primerCuatri.probar.numeros.add(95);
+        primerCuatri.probar.numeros.add(526);
         int suma=0;
-        for (Integer numero : numeros){
+        for (Integer numero : primerCuatri.probar.numeros){
             suma+=numero;
         }
         System.out.println("la suma de todos los numros es: "+suma);

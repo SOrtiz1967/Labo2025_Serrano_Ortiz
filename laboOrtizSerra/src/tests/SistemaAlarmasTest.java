@@ -1,6 +1,6 @@
 package tests;/*
 import ejercicioAlarmas.Dispositivo;
-import objetos.*;
+import primerCuatri.probar.objetos.*;
 import ejercicioAlarmas.SistemaAlarmas;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

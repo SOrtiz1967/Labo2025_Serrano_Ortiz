@@ -1,6 +1,6 @@
 package Tecnologia;
 
-import objetos.Seccion;
+import primerCuatri.probar.objetos.Seccion;
 
 public class ProductoElectronico {
     private String nombre;

@@ -1,7 +1,7 @@
 package sistemas;
 
 import Tecnologia.ProductoElectronico;
-import objetos.Seccion;
+import primerCuatri.probar.objetos.Seccion;
 
 import java.util.ArrayList;
 

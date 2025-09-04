@@ -1,10 +1,10 @@
 package tests;
 /*
-import objetos.Plato;
+import primerCuatri.probar.objetos.Plato;
 import primerCuatri.probar.personas.Alumno;
 import primerCuatri.probar.personas.Profesor;
 import primerCuatri.probar.personas.Persona;
-import Pedidos.Pedido;
+import primerCuatri.probar.Pedidos.Pedido;
 import sistemas.SistemaPedidoAlmuerzos;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -40,7 +40,7 @@ public class SistemaPedidoAlmuerzosTest {
         sistema.getProfesores().add(profe);
         sistema.getAlumnos().add(alu);
 
-        // Pedidos para popular estadísticas
+        // primerCuatri.probar.Pedidos para popular estadísticas
         agregarPedido(milanesa, profe, true, LocalDate.now());
         agregarPedido(milanesa, alu, true, LocalDate.now());
         agregarPedido(milanesa, alu, true, LocalDate.now().minusDays(1));

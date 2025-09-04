@@ -1,7 +1,7 @@
 package tests;
 /*
-import objetos.CD;
-import objetos.Cancion;
+import primerCuatri.probar.objetos.CD;
+import primerCuatri.probar.objetos.Cancion;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;

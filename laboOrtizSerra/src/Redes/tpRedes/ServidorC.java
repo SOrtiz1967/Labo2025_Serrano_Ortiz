@@ -8,6 +8,7 @@ import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 public class ServidorC {
     public static void main(String[] args) {
@@ -17,7 +18,7 @@ public class ServidorC {
         try (DatagramSocket socketEmergencias = new DatagramSocket(PUERTO_EMERGENCIAS);
              DatagramSocket socketRespuestas = new DatagramSocket(PUERTO_RESPUESTAS)) {
 
-            socketRespuestas.setSoTimeout(1000); // las respuestas tienen un timeout
+            socketRespuestas.setSoTimeout(5000); // 5 segundos timeout
             System.out.println("Servidor escuchando emergencias en puerto " + PUERTO_EMERGENCIAS);
             System.out.println("Servidor escuchando respuestas en puerto " + PUERTO_RESPUESTAS);
 
@@ -26,64 +27,86 @@ public class ServidorC {
                 DatagramPacket paqueteR = new DatagramPacket(buffer, buffer.length);
                 socketEmergencias.receive(paqueteR);
 
-                String mensaje = new String(paqueteR.getData(), 0, paqueteR.getLength());
-                System.out.println("Emergencia recibida del agente: " + mensaje);
+                String mensajeOriginal = new String(paqueteR.getData(), 0, paqueteR.getLength());
 
+                // Generamos un UUID único para c emergen
+                String emergenciaUUID = UUID.randomUUID().toString();
+                String mensajeConUUID = mensajeOriginal + "|" + emergenciaUUID;//lo conatenamos
 
-                if (mensaje.equalsIgnoreCase("incendio")) {
-                    MiRunnable miRunnable = new MiRunnable("Hilo abierto");
+                System.out.println("Emergencia recibida del agente: " + mensajeOriginal);
+                System.out.println("mensaje con el id: " + emergenciaUUID);
+
+                //cuando la emergencia es un incendio
+                if (mensajeOriginal.equalsIgnoreCase("incendio")) {
+                    MiRunnable miRunnable = new MiRunnable("Hilo abierto como .....");
                     new Thread(miRunnable).start();
                 }
 
-                // lista de clientes pendientes (se reinicia con cada emergencia
+                //clientes pendientes
                 List<InetSocketAddress> clientesPendientes = new ArrayList<>();
-                clientesPendientes.add(new InetSocketAddress("localhost", 6000)); // Cliente 1
-                //clientesPendientes.add(new InetSocketAddress("localhost", 6001)); // Cliente 2
-                //clientesPendientes.add(new InetSocketAddress("localhost", 6002)); // Cliente 3
+                clientesPendientes.add(new InetSocketAddress("localhost", 6000));
+                clientesPendientes.add(new InetSocketAddress("localhost", 6001));
+                clientesPendientes.add(new InetSocketAddress("localhost", 6002));
+                //PARA PROBAR CON un sol cliente comento los otros 2
                 new Thread(() -> {
                     try {
-                        // reenvio a clientes hasta que todos respondan
+                        // reenviar
                         while (!clientesPendientes.isEmpty()) {
-                            // enviar a cada cliente pendiente
+                            // Enviar mensaje con UUID a clientes pendientes
                             for (InetSocketAddress cliente : clientesPendientes) {
                                 DatagramPacket alerta = new DatagramPacket(
-                                        mensaje.getBytes(),
-                                        mensaje.length(),
+                                        mensajeConUUID.getBytes(),
+                                        mensajeConUUID.length(),
                                         cliente.getAddress(),
                                         cliente.getPort()
                                 );
                                 socketEmergencias.send(alerta);
+                                System.out.println(" Enviando a " + cliente + ": " + mensajeConUUID);
                             }
 
-                            // intentar recibir respuesta
+
                             try {
                                 DatagramPacket respuesta = new DatagramPacket(new byte[1024], 1024);
                                 socketRespuestas.receive(respuesta);
 
-                                String ack = new String(respuesta.getData(), 0, respuesta.getLength());
+                                String respuestaCompleta = new String(respuesta.getData(), 0, respuesta.getLength());
                                 InetSocketAddress remitente = new InetSocketAddress(respuesta.getAddress(), respuesta.getPort());
 
-                                if (ack.equalsIgnoreCase("RECIBIDO")) {
-                                    System.out.println("Respuesta de: " + remitente);
+                                // Parsear respuesta: "EN_CAMINO|uuid-123-456"
+                                String[] partes = respuestaCompleta.split("\\|", 2);
+                                if (partes.length == 2) {
+                                    String respuestaCliente = partes[0];
+                                    String uuidRespuesta = partes[1];
 
-                                    // eliminar de la lista si contesta
-                                    Iterator<InetSocketAddress> it = clientesPendientes.iterator();
-                                    while (it.hasNext()) {
-                                        InetSocketAddress c = it.next();
-                                        if (c.getPort() == remitente.getPort() &&
-                                                c.getAddress().equals(remitente.getAddress())) {
-                                            it.remove();
-                                            break;
+                                    // comprobar el id
+                                    if (uuidRespuesta.equals(emergenciaUUID)) {
+                                        System.out.println(" Respuesta válida: '" + respuestaCliente + "' de: " + remitente);
+                                        System.out.println(" id verificado: " + uuidRespuesta);
+
+                                        // Eliminar cliente de pendientes
+                                        Iterator<InetSocketAddress> it = clientesPendientes.iterator();
+                                        while (it.hasNext()) {
+                                            InetSocketAddress c = it.next();
+                                            if (c.getPort() == remitente.getPort() &&
+                                                    c.getAddress().equals(remitente.getAddress())) {
+                                                it.remove();
+                                                System.out.println("Cliente " + remitente + " eliminado de la lista");
+                                                break;
+                                            }
                                         }
+                                    } else {
+                                        System.out.println("ID inválido recibido de " + remitente + ": " + uuidRespuesta);
                                     }
+                                } else {
+                                    System.out.println(" Respuesta sin formato correcto de " + remitente + ": " + respuestaCompleta);
                                 }
+
                             } catch (SocketTimeoutException e) {
-                                // nadie respondió, continuar intentando
-                                System.out.println("reenviando");
+                                Thread.sleep(4000);
+                                System.out.println(" Timeout - reenviando emergencia " + emergenciaUUID + "...");
                             }
                         }
-                        // todos respondieron y sale del bucle
-                        System.out.println("todos los clientes respondieron");
+                        System.out.println("Todos los clientes respondieron para emergencia yupiii " + emergenciaUUID + "!");
 
                     } catch (Exception e) {
                         e.printStackTrace();

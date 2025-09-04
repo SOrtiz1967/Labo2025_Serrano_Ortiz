@@ -1,6 +1,6 @@
 package Tecnologia;
 
-import objetos.Seccion;
+import primerCuatri.probar.objetos.Seccion;
 
 public class CargadorPortatil extends ProductoElectronico {
     private int cantidadCargas;

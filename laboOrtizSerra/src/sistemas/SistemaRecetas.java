@@ -1,12 +1,12 @@
 package sistemas;
 
-import objetos.Apto;
-import objetos.Dificultad;
-import objetos.Receta;
-import objetos.RecetaEntrada;
-import objetos.RecetaPlatoPrincipal;
-import objetos.RecetaPostre;
-import objetos.Temperatura;
+import primerCuatri.probar.objetos.Apto;
+import primerCuatri.probar.objetos.Dificultad;
+import primerCuatri.probar.objetos.Receta;
+import primerCuatri.probar.objetos.RecetaEntrada;
+import primerCuatri.probar.objetos.RecetaPlatoPrincipal;
+import primerCuatri.probar.objetos.RecetaPostre;
+import primerCuatri.probar.objetos.Temperatura;
 
 import java.util.ArrayList;
 

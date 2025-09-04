@@ -10,7 +10,7 @@ public class Arraysmain {
         /*
         a. Crear un ArrayList de números enteros y mostrar su suma.
         b. Crear un ArrayList de primerCuatri.probar.palabras y mostrar solo los elementos que empiezan con una letra específica.
-        c. Crear un ArrayList de objetos Persona y mostrar solo las primerCuatri.probar.personas que tienen más de 30 años.
+        c. Crear un ArrayList de primerCuatri.probar.objetos Persona y mostrar solo las primerCuatri.probar.personas que tienen más de 30 años.
          */
         // A
         ArrayList<Integer> numeros = new ArrayList<Integer>();

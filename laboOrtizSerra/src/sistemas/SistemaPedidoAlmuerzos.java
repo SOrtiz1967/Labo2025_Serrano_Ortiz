@@ -1,7 +1,7 @@
 package sistemas;
 
-import Pedidos.Pedido;
-import objetos.Plato;
+import primerCuatri.probar.Pedidos.Pedido;
+import primerCuatri.probar.objetos.Plato;
 import primerCuatri.probar.personas.Alumno;
 import primerCuatri.probar.personas.Profesor;
 
