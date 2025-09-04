@@ -35,13 +35,13 @@ public class ServidorC {
 
                 System.out.println("Emergencia recibida del agente: " + mensajeOriginal);
                 System.out.println("mensaje con el id: " + emergenciaUUID);
-
+/*              hay que cambiar el codigo de mirunnable para que contacte a los clientes el y que se pare en ese if 
                 //cuando la emergencia es un incendio
                 if (mensajeOriginal.equalsIgnoreCase("incendio")) {
                     MiRunnable miRunnable = new MiRunnable("Hilo abierto como .....");
                     new Thread(miRunnable).start();
                 }
-
+*/
                 //clientes pendientes
                 List<InetSocketAddress> clientesPendientes = new ArrayList<>();
                 clientesPendientes.add(new InetSocketAddress("localhost", 6000));
@@ -80,9 +80,23 @@ public class ServidorC {
 
                                     // comprobar el id
                                     if (uuidRespuesta.equals(emergenciaUUID)) {
-                                        System.out.println(" Respuesta válida: '" + respuestaCliente + "' de: " + remitente);
+                                        System.out.println(" Respuesta : '" + respuestaCliente + "' de: " + remitente);
                                         System.out.println(" id verificado: " + uuidRespuesta);
-
+                                        switch (respuestaCliente.toLowerCase()){
+                                            case "encamino":
+                                                System.out.println("El cliente con direccion "+ remitente+ " está en camino");
+                                                break;
+                                            case "recibido":
+                                                System.out.println("El cliente con direccion "+ remitente+ " fue notificado de la emergencia");
+                                                break;
+                                            case "nodisponible":
+                                                System.out.println("La emergencia tendrá que esperar porque el cliente con direccion "+ remitente
+                                                + "no esta disponible");
+                                                break;
+                                            default:
+                                                System.out.println("el cliente respondio esto: '"+respuestaCliente +"' anda a saber que quiso decir");
+                                                break;
+                                        }
                                         // Eliminar cliente de pendientes
                                         Iterator<InetSocketAddress> it = clientesPendientes.iterator();
                                         while (it.hasNext()) {
@@ -94,6 +108,7 @@ public class ServidorC {
                                                 break;
                                             }
                                         }
+
                                     } else {
                                         System.out.println("ID inválido recibido de " + remitente + ": " + uuidRespuesta);
                                     }
@@ -103,10 +118,10 @@ public class ServidorC {
 
                             } catch (SocketTimeoutException e) {
                                 Thread.sleep(4000);
-                                System.out.println(" Timeout - reenviando emergencia " + emergenciaUUID + "...");
+                                System.out.println("reenviando emergencia" + emergenciaUUID + "...");
                             }
                         }
-                        System.out.println("Todos los clientes respondieron para emergencia yupiii " + emergenciaUUID + "!");
+                        System.out.println("Todos los clientes respondieron para la emergencia yupiii este es el codigo de la emergencia:" + emergenciaUUID + "!");
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -116,5 +131,6 @@ public class ServidorC {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 }

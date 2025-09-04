@@ -19,7 +19,7 @@ public class ClienteR {
         final int PUERTO_RESPUESTAS = 5001;
 
         System.out.println("Cliente escuchando en puerto: " + PUERTO_CLIENTE);
-        System.out.println("Podes responder 'RECIBIDO', 'NO_DISPONIBLE', 'EN_CAMINO' u otro que quieras");
+        System.out.println("Podes responder lo que quieras");
 
         try (DatagramSocket socket = new DatagramSocket(PUERTO_CLIENTE);
              Scanner scanner = new Scanner(System.in)) {
@@ -59,7 +59,7 @@ public class ClienteR {
                 // Respuesta por defecto si igresa cualquier cosa
                 String respuestaCliente = respuestaUsuario.isEmpty() ? "RECIBIDO" : respuestaUsuario;
 
-                // Crear respuesta con UUID: "EN_CAMINO|uuid-123-456"
+                // Crear respuesta con UUID: "jhffbvgfg|uuid-123-456"
                 String respuestaConUUID = respuestaCliente + "|" + uuid;
 
                 DatagramPacket respuesta = new DatagramPacket(
@@ -73,9 +73,8 @@ public class ClienteR {
                 // Marcar UUID como respondido
                 uuidsRespondidos.add(uuid);
 
-                System.out.println("📤 Respuesta enviada: '" + respuestaCliente + "' con UUID: " + uuid);
-                System.out.println("✅ Emergencia procesada exitosamente");
-                System.out.println("⏳ Esperando próxima emergencia...\n");
+                System.out.println("Emergencia procesada (dedito para arriba)");
+                System.out.println("pronto para prosecar mas emergencias \n");
             }
         } catch (Exception e) {
             e.printStackTrace();
