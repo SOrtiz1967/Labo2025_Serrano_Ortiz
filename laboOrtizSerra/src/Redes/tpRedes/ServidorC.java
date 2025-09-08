@@ -35,7 +35,7 @@ public class ServidorC {
 
                 System.out.println("Emergencia recibida del agente: " + mensajeOriginal);
                 System.out.println("mensaje con el id: " + emergenciaUUID);
-/*              hay que cambiar el codigo de mirunnable para que contacte a los clientes el y que se pare en ese if 
+/*              hay que cambiar el codigo de mirunnable para que contacte a los clientes el y que se pare en ese if xxxxxxxxxxxxsxsaxdvvtgbttuk
                 //cuando la emergencia es un incendio
                 if (mensajeOriginal.equalsIgnoreCase("incendio")) {
                     MiRunnable miRunnable = new MiRunnable("Hilo abierto como .....");

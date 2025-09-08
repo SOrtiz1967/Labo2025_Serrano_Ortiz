@@ -1,6 +1,6 @@
 package segundoCuatri.eleccionesOctubre;
 
-public class PalomaMensajera extends Ave{
+public class PalomaMensajera extends Ave implements AccionesCampaña{
     private boolean mapa;
 
     public boolean isMapa() {
@@ -14,5 +14,13 @@ public class PalomaMensajera extends Ave{
     public PalomaMensajera(String color, String nombre, String especie, boolean mapa) {
         super(color, nombre, especie);
         this.mapa = mapa;
+    }
+
+    @Override
+    public String hacerCampaña() {
+        if(mapa){
+            return "Lanzando un papelito que dice:";
+        }
+        return "";
     }
 }

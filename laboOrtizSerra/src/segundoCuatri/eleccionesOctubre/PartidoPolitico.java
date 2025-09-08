@@ -57,4 +57,49 @@ public class PartidoPolitico {
     public void setMensajeros(HashSet<AccionesCampaña> mensajeros) {
         this.mensajeros = mensajeros;
     }
+    public void agregarPanqueque(AccionesCampaña panqueque){
+        mensajeros.add(panqueque);
+    }
+    public void hacerCampaña(){
+        for (AccionesCampaña x: mensajeros){
+            if(x.hacerCampaña()!=""){
+
+                System.out.println(x.hacerCampaña() +" Vote por el partido para un mejor futuro");
+            }
+            else{
+                System.out.println("este mensajero no esta disponible para hacer campaña");
+            }
+
+        }
+
+    }
+    public static void main(String[] args) {
+        // Crear mensajeros
+        PalomaMensajera paloma1 = new PalomaMensajera("Blanca", "Pichi", "elrita", true);
+        PalomaMensajera paloma2 = new PalomaMensajera("Gris", "Nube", "Paloma", false);
+
+        // TelefonoMovil (nota: falta la clase Persona, le pongo null por ahora)
+        TelefonoMovil celular1 = new TelefonoMovil(1234, null, "Galaxy S21", "Claro", 11223344, 50.0, true);
+        TelefonoMovil celular2 = new TelefonoMovil(5678, null, "iPhone 14", "Movistar", 22334455, 0.0, false);
+
+        // Trabajador (con horario laboral)
+        Trabajador trabajador1 = new Trabajador("Juan", 30, 20304050, 150000, "Av. Siempre Viva", 8, 18);
+        Trabajador trabajador2 = new Trabajador("Ana", 28, 30405060, 120000, "Calle Falsa", 20, 23);
+
+        // HashSet para mensajeros
+        HashSet<AccionesCampaña> mensajeros = new HashSet<>();
+        mensajeros.add(paloma1);
+        mensajeros.add(paloma2);
+        mensajeros.add(celular1);
+        mensajeros.add(celular2);
+        mensajeros.add(trabajador1);
+        mensajeros.add(trabajador2);
+
+        // Crear partido político
+        PartidoPolitico partido = new PartidoPolitico("Unidos por el Futuro", "Calle Libertad 123", 1000, mensajeros);
+
+        // Hacer campaña
+        System.out.println("=== INICIANDO CAMPAÑA ===");
+        partido.hacerCampaña();
+    }
 }
