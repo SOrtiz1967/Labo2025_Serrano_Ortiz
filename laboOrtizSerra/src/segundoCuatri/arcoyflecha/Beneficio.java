@@ -1,6 +1,6 @@
 package segundoCuatri.arcoyflecha;
 
-public class Beneficio {
+public abstract class Beneficio {
     //Para el caso de los beneficios interesa guardar el nombre del beneficio y quién fue el usuario creador
     // (alcanza con guardar solo el nombre de la persona). Si es un beneficio de gaseosa, se almacenan
     // también a una lista de las gaseosas. Si es un beneficio de comidas, se almacenan también una lista
@@ -13,6 +13,24 @@ public class Beneficio {
     private String creador;
 
 
+    public Beneficio(String nombe, String creador) {
+        this.nombe = nombe;
+        this.creador = creador;
+    }
 
+    public String getNombe() {
+        return nombe;
+    }
 
+    public void setNombe(String nombe) {
+        this.nombe = nombe;
+    }
+
+    public String getCreador() {
+        return creador;
+    }
+
+    public void setCreador(String creador) {
+        this.creador = creador;
+    }
 }
