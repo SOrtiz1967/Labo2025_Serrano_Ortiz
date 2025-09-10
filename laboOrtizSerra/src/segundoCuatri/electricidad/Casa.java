@@ -34,6 +34,7 @@ public class Casa extends Vivienda{
     }
     @Override
     public int getPrecio() {
+
         return precio;
     }
 

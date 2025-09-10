@@ -53,7 +53,7 @@ public abstract class Vivienda {
 
     public void cargarConsumo(LocalDate fecha, int consumo){
         Consumo cAux= new Consumo(consumo, getPrecio());
-        if(getRegistro().containsKey(fecha.getYear())) {
+        if(registro.containsKey(fecha.getYear())) {
             //si existe el año vemos si existe el mes
             if (getRegistro().get(fecha.getYear()).containsKey(fecha.getMonth())) {
                 System.out.println("ya ingresaste este mes");
@@ -79,6 +79,7 @@ public abstract class Vivienda {
         return 0;
     }
     public double calcularTotal(LocalDate fecha) {
+
 
         if (calcularSubtotal(fecha) <= calcularSubtotal(fecha.minusYears(1)) * 0.9) {
             return calcularSubtotal(fecha) - calcularSubtotal(fecha) * 0.05;
