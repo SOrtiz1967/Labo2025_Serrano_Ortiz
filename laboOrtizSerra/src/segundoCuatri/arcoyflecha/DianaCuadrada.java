@@ -19,7 +19,7 @@ public class DianaCuadrada extends Diana{
     }
 
     @Override
-    public double calcularRadio() {
+    public double calcularArea() {
         return lado*lado;
     }
 }

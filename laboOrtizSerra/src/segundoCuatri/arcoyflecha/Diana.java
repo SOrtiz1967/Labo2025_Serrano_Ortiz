@@ -19,6 +19,14 @@ public abstract class Diana {
         this.puntaje = puntaje;
     }
 
+
+    public Diana() {
+        this.nombre = "pepon";
+        this.nivel = "bronce";
+        this.puntaje = new HashMap<>();
+    }
+
+
     public String getNombre() {
         return nombre;
     }
@@ -42,5 +50,5 @@ public abstract class Diana {
     public void setPuntaje(HashMap<Integer, Color> puntaje) {
         this.puntaje = puntaje;
     }
-    public abstract double calcularRadio();
+    public abstract double calcularArea();
 }

@@ -11,8 +11,9 @@ public class DianaCircular extends Diana{
         super(nombre, nivel, puntaje);
     }
 
+
     @Override
-    public double calcularRadio() {
+    public double calcularArea() {
         return Math.PI*radio*radio;
     }
 

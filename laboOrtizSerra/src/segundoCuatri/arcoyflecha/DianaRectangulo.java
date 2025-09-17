@@ -30,7 +30,7 @@ public class DianaRectangulo extends Diana{
     }
 
     @Override
-    public double calcularRadio() {
+    public double calcularArea() {
         return base*altura;
     }
 }

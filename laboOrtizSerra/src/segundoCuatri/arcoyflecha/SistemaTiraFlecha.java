@@ -1,5 +1,6 @@
 package segundoCuatri.arcoyflecha;
 
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class SistemaTiraFlecha {
@@ -43,5 +44,27 @@ public class SistemaTiraFlecha {
     public void beneficiosTragos(){
         int contador=0;
         //ENTRAR A BAR Y RESTRARLE EL SIZE DE ACUMULABLES AL SIZE DE BENEFICIOS
+        for (Bar b: establecimientos){
+            contador += b.getBeneficios().size() - b.getBeneficiosAcumulables().size();
+            System.out.println("este bar tiene: "+ contador+ "beneficios no acumulables");
+        }
+
     }
+    //Retornar la diana de nuestro sistema que tenga más cantidad de puntajes distintos.
+    public Diana dianaMasPiola(){
+        HashMap<Integer, Color> siquesi=new HashMap<>();
+        Diana d= null;
+        int aux=0;
+        for (Diana d1: dianas){
+            //es ineceseario el aux podes calclarlo con cada var
+            if(d==null || aux<d1.getPuntaje().keySet().size()){
+                aux=d1.getPuntaje().keySet().size();
+                d=d1;
+            }
+        }
+        return d;
+    }
+
+
+
 }
