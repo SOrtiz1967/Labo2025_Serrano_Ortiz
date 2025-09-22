@@ -1,0 +1,266 @@
+Comenzamos la Unidad 1 diferenciando los argumentos de otros fragmentos del lenguaje. Atendiendo a esto,
+determiná cuál de los siguientes fragmentos es un argumento. Seleccioná una opción y escribí el número en el
+talón de respuestas.
+1. Si un ser vivo lleva a cabo un proceso de fotosíntesis, entonces es una planta o un vegetal.
+2. Luego de la fotosíntesis, las plantas producen su propio alimento. En cambio, los hongos se alimentan a partir de
+materia orgánica que ya se encuentra en el entorno.
+3. Los hongos no son vegetales, puesto que los vegetales producen su propio alimento mediante la fotosíntesis y los
+hongos no fotosintetizan.
+4. Los hongos no fotosintetizan, pero los animales, las moneras y los protozoos tampoco lo hacen
+
+Una vez que reconocemos que un conjunto de enunciados es un argumento, podemos identificar sus premisas
+y conclusión. Indicá cuál es la conclusión del siguiente argumento. Seleccioná una opción y escribí el número
+en el talón de respuestas.
+Tanto hongos como animales comparten su modo de alimentarse. Pero también su forma de metabolizar y, por lo tanto,
+son más cercanos genéticamente a los animales que a las plantas.
+1. Hongos y animales comparten su modo de alimentarse.
+2. Son más cercanos genéticamente a los animales que a las plantas.
+3. Hongos y animales comparten su forma de metabolizar.
+4. Los hongos son más cercanos genéticamente a los animales que a las plantas.
+
+Ejercicio 3
+Los argumentos están compuestos por enunciados. Tal como vimos, a partir de expresiones lógicas podemos
+combinarlos dando lugar a enunciados complejos, que pueden ser evaluados como verdaderos o falsos a partir
+del valor de verdad de los enunciados simples que los componen y el funcionamiento de las expresiones
+lógicas. Dadas las siguientes oraciones verdaderas:
+- El micelio es la parte vegetativa del hongo.
+- El micelio crece debajo del suelo.
+
+Determiná cuál de los siguientes enunciados es verdadero. Seleccioná una opción y escribí el número en el
+talón de respuestas.
+1. El micelio crece debajo del suelo pero no es la parte vegetativa del hongo.
+2. Si el micelio crece debajo del suelo, entonces es la parte vegetativa del hongo.
+3. El micelio no crece debajo del suelo o no es la parte vegetativa del hongo.
+4. No es cierto que el micelio crece debajo del suelo.
+
+
+Ejercicio 4
+Otro modo de clasificar los enunciados es agruparlos en tautologías, contradicciones o contingencias.
+Completá el siguiente enunciado para que sea una tautología. Seleccioná una opción y escribí el número en el
+talón de respuestas.
+El micelio es la parte vegetativa del hongo ...
+1. y no es la parte vegetativa del hongo.
+2. o no es la parte vegetativa del hongo.
+3. aunque crece debajo del suelo.
+4. que está formada por filamentos
+
+Ejercicio 5
+Clasificamos a los argumentos en deductivos e inductivos. Al caracterizar a los primeros introdujimos la noción
+de validez. Teniendo en cuenta esta noción, determiná cuál de los siguientes argumentos es válido. Seleccioná
+una opción y escribí el número en el talón de respuestas.
+1. Si la levadura crece metabolizando azúcares, entonces es un hongo. Pero no es un hongo. Por lo tanto, la levadura
+no crece metabolizando azúcares.
+2. Las levaduras, el moho y las setas son hongos y producen esporas. En consecuencia, todos los hongos producen
+esporas.
+3. Si el moho negro es unicelular, entonces es comestible. El moho negro no es unicelular. Luego, no es comestible.
+4. Si las setas se originaron de mohos, entonces aparecieron en el período Cámbrico. Dado que las setas aparecieron
+en el período Cámbrico, podemos inferir que se originaron de mohos.
+
+jercicio 6
+La noción de validez estipula un tipo particular de relación entre el valor de verdad de las premisas y el de la
+conclusión. Teniendo en cuenta esto determine si el siguiente enunciado es verdadero o falso y por qué.
+Seleccioná una opción y escribí el número en el talón de respuestas.
+Si un argumento es válido entonces es sólido.
+1. El enunciado es verdadero porque si un argumento es válido entonces su conclusión debe ser verdadera.
+2. El enunciado es verdadero porque si un argumento es válido entonces sus premisas deben ser verdaderas.
+3. El enunciado es falso porque los argumentos válidos pueden tener premisas verdaderas y conclusión falsa y los
+sólidos no.
+4. El enunciado es falso porque los argumentos válidos pueden tener premisas falsas y conclusión verdadera y los
+sólidos no
+
+jercicio 7
+Al presentar los argumentos inductivos distinguimos distintos tipos: por enumeración incompleta, por analogía
+y silogismos inductivos. Dado el siguiente conjunto de enunciados:
+El champiñón común es una seta y es comestible.
+El perrechico es una seta y es comestible.
+...........................................................................................................................
+...........................................................................................................................
+Seleccioná cuáles de los siguientes enunciados corresponden respectivamente a la premisa faltante y a la
+conclusión, de modo tal que el argumento resulte un argumento inductivo por analogía. Escribí en el talón de
+respuestas la opción seleccionada como premisa donde dice "P" y la opción seleccionada como conclusión
+donde dice "C".
+1. La matamoscas es una seta.
+2. La trufa es comestible.
+3. La mayoría de las setas es comestible.
+4. Todas las setas son comestibles.
+5. La matamoscas es comestible
+
+
+Ejercicio 8
+Tras clasificar los distintos tipos de argumentos inductivos establecimos criterios específicos para su
+evaluación. Atendiendo a esto, determiná qué premisa sirve para fortalecer el siguiente argumento inductivo sin
+que deje de ser un argumento inductivo por enumeración incompleta. Seleccioná una opción y escribí el
+número en el talón de respuestas.
+Las gírgolas, los portobellos y las trufas negras son hongos comestibles que poseen un gran valor nutricional. Por lo
+tanto, todos los hongos comestibles tienen un gran valor nutricional.
+1. Las gírgolas, los portobellos y las trufas negras son los únicos tres tipos de hongos comestibles que hay.
+2. El níscalo posee un gran valor nutricional.
+3. El níscalo es un hongo comestible que tiene un gran valor nutricional.
+4. El champiñón es un hongo comestible.
+
+
+Ejercicio 9
+A. En la segunda unidad nos adentramos en la historia de la biología, específicamente en la revolución
+darwiniana. Determiná si el siguiente enunciado es verdadero (V) o falso (F) según la teoría de la selección
+natural de Darwin. Escribí "V" o "F" donde dice "A" en el talón de respuestas.
+La aparición de un rasgo nuevo en un individuo siempre depende del ambiente en el que viva.
+B. Seleccioná la opción que justifica tu respuesta y escribí el número donde dice "B" en el talón de respuestas.
+1. La aparición de algunos rasgos nuevos en un individuo es aleatoria.
+2. Los individuos heredan de sus progenitores solo los rasgos beneficiosos para la superviviencia.
+3. Los rasgos nuevos que aparecen en un individuo son beneficiosos independientemente del ambiente.
+4. Los individuos desarrollan durante su vida los rasgos que le permiten sobrevivir en el ambiente en el que se
+encuentran.
+
+
+Ejercicio 10
+En la segunda unidad también presentamos diferentes respuestas para explicar la diversidad y adaptación de
+las organismos a su entorno. Leé el siguiente enunciado y determiná cuál de los siguientes opciones explica el
+fenómeno a partir de la teoría de la selección natural de Darwin.
+El pájaro carpintero tiene un pico afilado que le permite perforar la corteza de los árboles y alimentarse de los insectos
+que allí habitan.
+1. El pico afilado de los pájaros carpinteros es completamente azaroso, resultado de la "lotería" genética y sin ninguna
+relación con el entorno donde viven y la supervivencia de la especie.
+2. Los pájaros carpinteros fueron creados con un pico afilado para que puedan sobrevivir y reproducirse en un entorno
+donde los insectos habitan bajo la corteza de los árboles, generando un equilibrio armonioso.
+3. Los ancestros del pájaro carpintero afilaban su pico al intentar cazar insectos bajo la corteza de los árboles. Sus
+descendienten heredaron ese rasgo adquirido por el uso intensivo, por lo que hoy presentan un pico afilado.
+4.
+Los ancestros del pájaro carpintero que tenían un pico afilado tenían una ventaja con respecto a los que no lo
+tenían, resultando más aptos en los entornos donde vivían y dejando mayor descendencia que heredó ese pico
+afilado.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Ejercicio 1
+Comenzamos la Unidad 1 diferenciando los argumentos de otros fragmentos del lenguaje. Atendiendo a esto,
+determiná cuál de los siguientes fragmentos es un argumento. Seleccioná una opción y escribí el número en el
+talón de respuestas.
+1. Luego de la fotosíntesis, las plantas producen su propio alimento. En cambio, los hongos se alimentan a partir de
+materia orgánica que ya se encuentra en el entorno.
+2. Los hongos no son vegetales, puesto que los vegetales producen su propio alimento mediante la fotosíntesis y los
+hongos no fotosintetizan.
+3. Los hongos no fotosintetizan, pero los animales, las moneras y los protozoos tampoco lo hacen.
+4. Si un ser vivo lleva a cabo un proceso de fotosíntesis, entonces es una planta o un vegetal.
+
+jercicio 2
+Una vez que reconocemos que un conjunto de enunciados es un argumento, podemos identificar sus premisas
+y conclusión. Indicá cuál es la conclusión del siguiente argumento. Seleccioná una opción y escribí el número
+en el talón de respuestas.
+Tanto hongos como animales comparten su modo de alimentarse. Pero también su forma de metabolizar y, por lo tanto,
+son más cercanos genéticamente a los animales que a las plantas.
+1. Los hongos son más cercanos genéticamente a los animales que a las plantas.
+2. Hongos y animales comparten su modo de alimentarse.
+3. Son más cercanos genéticamente a los animales que a las plantas.
+4. Hongos y animales comparten su forma de metabolizar.
+
+Ejercicio 3
+Los argumentos están compuestos por enunciados. Tal como vimos, a partir de expresiones lógicas podemos
+combinarlos dando lugar a enunciados complejos, que pueden ser evaluados como verdaderos o falsos a partir
+del valor de verdad de los enunciados simples que los componen y el funcionamiento de las expresiones
+lógicas. Dadas las siguientes oraciones verdaderas:
+- El micelio crece debajo del suelo.
+- El micelio es la parte vegetativa del hongo.
+Determiná cuál de los siguientes enunciados es verdadero. Seleccioná una opción y escribí el número en el
+talón de respuestas.
+1. Si el micelio crece debajo del suelo, entonces es la parte vegetativa del hongo.
+2. El micelio crece debajo del suelo pero no es la parte vegetativa del hongo.
+3. No es cierto que el micelio crece debajo del suelo.
+4. El micelio no crece debajo del suelo o no es la parte vegetativa del hongo.
+
+Ejercicio 4
+Otro modo de clasificar los enunciados es agruparlos en tautologías, contradicciones o contingencias.
+Completá el siguiente enunciado para que sea una tautología. Seleccioná una opción y escribí el número en el
+talón de respuestas.
+El micelio es la parte vegetativa del hongo ...
+1. y no es la parte vegetativa del hongo.
+2. aunque crece debajo del suelo.
+3. que está formada por filamentos.
+4. o no es la parte vegetativa del hongo
+
+
+jercicio 5
+Clasificamos a los argumentos en deductivos e inductivos. Al caracterizar a los primeros introdujimos la noción
+de validez. Teniendo en cuenta esta noción, determiná cuál de los siguientes argumentos es válido. Seleccioná
+una opción y escribí el número en el talón de respuestas.
+1. Si las setas se originaron de mohos, entonces aparecieron en el período Cámbrico. Dado que las setas aparecieron
+en el período Cámbrico, podemos inferir que se originaron de mohos.
+2. Si el moho negro es unicelular, entonces es comestible. El moho negro no es unicelular. Luego, no es comestible.
+3. Si la levadura crece metabolizando azúcares, entonces es un hongo. Pero no es un hongo. Por lo tanto, la levadura
+no crece metabolizando azúcares.
+4. Las levaduras, el moho y las setas son hongos y producen esporas. En consecuencia, todos los hongos producen
+esporas.
+
+Ejercicio 6
+La noción de validez estipula un tipo particular de relación entre el valor de verdad de las premisas y el de la
+conclusión. Teniendo en cuenta esto determine si el siguiente enunciado es verdadero o falso y por qué.
+Seleccioná una opción y escribí el número en el talón de respuestas.
+Si un argumento es válido entonces es sólido.
+1. El enunciado es verdadero porque si un argumento es válido entonces su conclusión debe ser verdadera.
+2. El enunciado es falso porque los argumentos válidos pueden tener premisas falsas y conclusión verdadera y los
+sólidos no.
+3. El enunciado es falso porque los argumentos válidos pueden tener premisas verdaderas y conclusión falsa y los
+sólidos no.
+4. El enunciado es verdadero porque si un argumento es válido entonces sus premisas deben ser verdaderas
+
+
+jercicio 7
+Al presentar los argumentos inductivos distinguimos distintos tipos: por enumeración incompleta, por analogía
+y silogismos inductivos. Dado el siguiente conjunto de enunciados:
+El champiñón común es una seta y es comestible.
+El perrechico es una seta y es comestible.
+...........................................................................................................................
+...........................................................................................................................
+Seleccioná cuáles de los siguientes enunciados corresponden respectivamente a la premisa faltante y a la
+conclusión, de modo tal que el argumento resulte un argumento inductivo por analogía. Escribí en el talón de
+respuestas la opción seleccionada como premisa donde dice "P" y la opción seleccionada como conclusión
+donde dice "C".
+1. Todas las setas son comestibles.
+2. La mayoría de las setas es comestible.
+3. La trufa es comestible.
+4. La matamoscas es una seta.
+5. La matamoscas es comestible.
+
+Ejercicio 8
+Tras clasificar los distintos tipos de argumentos inductivos establecimos criterios específicos para su
+evaluación. Atendiendo a esto, determiná qué premisa sirve para fortalecer el siguiente argumento inductivo sin
+que deje de ser un argumento inductivo por enumeración incompleta. Seleccioná una opción y escribí el
+número en el talón de respuestas.
+Las gírgolas, los portobellos y las trufas negras son hongos comestibles que poseen un gran valor nutricional. Por lo
+tanto, todos los hongos comestibles tienen un gran valor nutricional.
+1. El níscalo posee un gran valor nutricional.
+2. El níscalo es un hongo comestible que tiene un gran valor nutricional.
+3. El champiñón es un hongo comestible.
+4. Las gírgolas, los portobellos y las trufas negras son los únicos tres tipos de hongos comestibles que hay.
+
+Ejercicio 9
+A. En la segunda unidad nos adentramos en la historia de la biología, específicamente en la revolución
+darwiniana. Determiná si el siguiente enunciado es verdadero (V) o falso (F) según la teoría de la selección
+natural de Darwin. Escribí "V" o "F" donde dice "A" en el talón de respuestas.
+La aparición de un rasgo nuevo en un individuo siempre depende del ambiente en el que viva.
+B. Seleccioná la opción que justifica tu respuesta y escribí el número donde dice "B" en el talón de respuestas.
+1. Los individuos heredan de sus progenitores solo los rasgos beneficiosos para la superviviencia.
+2. Los rasgos nuevos que aparecen en un individuo son beneficiosos independientemente del ambiente.
+3. Los individuos desarrollan durante su vida los rasgos que le permiten sobrevivir en el ambiente en el que se
+encuentran.
+4. La aparición de algunos rasgos nuevos en un individuo es aleatoria
+
+
+jercicio 10
+En la segunda unidad también presentamos diferentes respuestas para explicar la diversidad y adaptación de
+los organismos a su entorno. Leé el siguiente enunciado y determiná cuál de las siguientes opciones explica el
+fenómeno a partir de la teoría de Lamarck.
+El pájaro carpintero tiene un pico afilado que le permite perforar la corteza de los árboles y alimentarse de los insectos
+que allí habitan.
+1. Los pájaros carpinteros fueron creados con un pico afilado para que puedan sobrevivir y reproducirse en un entorno
+donde los insectos habitan bajo la corteza de los árboles, generando un equilibrio armonioso.
+2.
+Los ancestros del pájaro carpintero que tenían un pico afilado tenían una ventaja con respecto a los que no lo
+tenían, resultando más aptos en los entornos donde vivían y dejando mayor descendencia que heredó ese pico
+afilado.
+3. Los ancestros del pájaro carpintero afilaban su pico al intentar cazar insectos bajo la corteza de los árboles. Sus
+descendienten heredaron ese rasgo adquirido por el uso intensivo, por lo que hoy presentan un pico afilado.
+4. El pico afilado de los pájaros carpinteros es completamente azaroso, resultado de la "lotería" genética y sin ninguna
+relación con el entorno donde viven y la supervivencia de la especie.
+En este ejercicio se te pide que señales la explicación lamarckiana de un rasgo es

@@ -15,7 +15,7 @@ public class ClienteR {
             PUERTO_CLIENTE = Integer.parseInt(args[0]);
         }
 
-        final String IP_SERVIDOR = "localhost";
+        final String IP_SERVIDOR = "172.16.4.176";
         final int PUERTO_RESPUESTAS = 5001;
 
         System.out.println("Cliente escuchando en puerto: " + PUERTO_CLIENTE);
@@ -33,9 +33,9 @@ public class ClienteR {
 
                 String mensajeCompleto = new String(paquete.getData(), 0, paquete.getLength()).trim();
 
-                // Parsear mensaje: "incendio|uuid-123-456"
+                // Parsear "incendio|uuid-123-456"
                 String[] partes = mensajeCompleto.split("\\|", 2);
-                if (partes.length != 2) {
+                if (partes.length != 2) {//si el formato no es valido
                     System.out.println(" Mensaje sin formato correcto recibido: " + mensajeCompleto);
                     continue;
                 }
@@ -43,7 +43,7 @@ public class ClienteR {
                 String emergencia = partes[0];
                 String uuid = partes[1];
 
-                // Verificar si ya respondimos a esta emergencia específica
+                // chequear si la eemergencia ya c repondio
                 if (uuidsRespondidos.contains(uuid)) {
                     System.out.println("Emergencias duplicadas ignoradas ");
                     continue;
@@ -59,8 +59,8 @@ public class ClienteR {
                 // Respuesta por defecto si igresa cualquier cosa
                 String respuestaCliente = respuestaUsuario.isEmpty() ? "RECIBIDO" : respuestaUsuario;
 
-                // Crear respuesta con UUID: "jhffbvgfg|uuid-123-456"
-                String respuestaConUUID = respuestaCliente + "|" + uuid;
+                // creamos la respueta con el UUID
+                String respuestaConUUID = respuestaCliente + "|" + uuid;//a lo q se ingresa le agregamos el id
 
                 DatagramPacket respuesta = new DatagramPacket(
                         respuestaConUUID.getBytes(),
@@ -70,7 +70,7 @@ public class ClienteR {
                 );
                 socket.send(respuesta);
 
-                // Marcar UUID como respondido
+                // AGREGAR LOS UUID RESPONDIDOS
                 uuidsRespondidos.add(uuid);
 
                 System.out.println("Emergencia procesada (dedito para arriba)");
