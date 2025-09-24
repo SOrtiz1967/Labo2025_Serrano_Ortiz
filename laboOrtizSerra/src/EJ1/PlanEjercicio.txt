@@ -1,0 +1,15 @@
+.Plato
+nombre
+apellido
+fechaN
+localidad
+color(Rojo,verde,azul)
+.Abstract Participante//tres tipos principiantes(servirPlatosEntrada)/intermedios/expertos(No tienen ninguno de estos atributos)(tienen tiempo de preparacion estatico=80min)
+Ingredientes prohibidos
+stock ingredientes
+void mensaje()
+interfaz AccionesParticipante()(solo la implementan principiante e intermedios)
+cocinar
+servirPlato
+Hay que hacer excepsiones x si no hay stock, hay prohibidos o no hay tiempo de preparacion
+El main se tiene que llamar MasterchefApp
