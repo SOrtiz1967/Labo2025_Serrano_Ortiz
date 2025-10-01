@@ -1,6 +1,6 @@
 
 
-public class Empleado {
+/*public class Empleado {
     private String nombre;
     private String department;
 
@@ -28,4 +28,4 @@ public class Empleado {
     public void setDepartmento(String departmento) {
         this.departmento = departmento;
     }
-}
+}*/

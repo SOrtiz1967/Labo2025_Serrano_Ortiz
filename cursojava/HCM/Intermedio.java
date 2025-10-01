@@ -7,14 +7,34 @@ import java.util.HashSet;
 import java.util.Map;
 
 public class Intermedio extends Participante implements CocinaryservirPrincipal {
-
+    private HashSet<Ingrediente> ingredientesProhibidos;
+    private HashMap<Ingrediente,Integer> stockIngredientes;
     public Intermedio(String nombre, int edad, String apellido, String direccion, HashSet<Ingrediente> ingredientesProhibidos, HashMap<Ingrediente, Integer> stockIngredientes) {
         super(nombre, edad, apellido, direccion, ingredientesProhibidos, stockIngredientes);
     }
 
     public Intermedio() {
         super();
+        this.ingredientesProhibidos=new HashSet<Ingrediente>();
+        this.stockIngredientes=new HashMap<Ingrediente, Integer>();
     }
+
+    public HashSet<Ingrediente> getIngredientesProhibidos() {
+        return ingredientesProhibidos;
+    }
+
+    public void setIngredientesProhibidos(HashSet<Ingrediente> ingredientesProhibidos) {
+        this.ingredientesProhibidos = ingredientesProhibidos;
+    }
+
+    public HashMap<Ingrediente, Integer> getStockIngredientes() {
+        return stockIngredientes;
+    }
+
+    public void setStockIngredientes(HashMap<Ingrediente, Integer> stockIngredientes) {
+        this.stockIngredientes = stockIngredientes;
+    }
+
     public HashMap<Ingrediente,Integer> getStockIngredientesMayorA1(){
         HashMap<Ingrediente,Integer> mayoresA1=new HashMap<>();
         for(Map.Entry<Ingrediente,Integer> m :this.getStockIngredientes().entrySet()){

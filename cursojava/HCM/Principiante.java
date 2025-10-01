@@ -6,12 +6,32 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class Principiante extends Participante implements CocinaryservirEntrada {
+    private HashSet<Ingrediente> ingredientesProhibidos;
+    private HashMap<Ingrediente,Integer> stockIngredientes;
     public Principiante(String nombre, int edad, String apellido, String direccion, HashSet<Ingrediente> ingredientesProhibidos, HashMap<Ingrediente, Integer> stockIngredientes) {
         super(nombre, edad, apellido, direccion, ingredientesProhibidos, stockIngredientes);
     }
 
+    public HashSet<Ingrediente> getIngredientesProhibidos() {
+        return ingredientesProhibidos;
+    }
+
+    public void setIngredientesProhibidos(HashSet<Ingrediente> ingredientesProhibidos) {
+        this.ingredientesProhibidos = ingredientesProhibidos;
+    }
+
+    public HashMap<Ingrediente, Integer> getStockIngredientes() {
+        return stockIngredientes;
+    }
+
+    public void setStockIngredientes(HashMap<Ingrediente, Integer> stockIngredientes) {
+        this.stockIngredientes = stockIngredientes;
+    }
+
     public Principiante() {
         super();
+        this.ingredientesProhibidos= new HashSet<Ingrediente>();
+        this.stockIngredientes= new HashMap<Ingrediente, Integer>();
     }
     @Override
     public void mensaje(){
