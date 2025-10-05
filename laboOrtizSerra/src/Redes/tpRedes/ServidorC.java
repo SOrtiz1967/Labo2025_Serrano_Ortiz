@@ -1,4 +1,4 @@
-package Redes.tpRedes;
+/*package Redes.tpRedes;
 
 import Redes.MiRunnable;
 
@@ -49,7 +49,7 @@ public class ServidorC {
                     MiRunnable miRunnable = new MiRunnable("Hilo abierto como .....");
                     new Thread(miRunnable).start();
                 }*/
-                DatagramSocket socketSolicitudes= new DatagramSocket(PUERTO_SOLICITUDES);
+      /*          DatagramSocket socketSolicitudes= new DatagramSocket(PUERTO_SOLICITUDES);
                 DatagramPacket solicitud= new DatagramPacket(buffer, buffer.length);
                 //clientes pendientes lista
                 List<InetSocketAddress> clientesPendientes = new ArrayList<>();
@@ -60,7 +60,7 @@ public class ServidorC {
                 clientesPendientes.add(new InetSocketAddress("172.16.1.92", 6001));
                 //clientesPendientes.add(new InetSocketAddress("localhost", 6002));*/
                 //PARA PROBAR CON un sol cliente comento los otros 2
-                new Thread(() -> {
+                /*new Thread(() -> {
                     try {
                         // reenvio
                         while (!clientesPendientes.isEmpty()) {
@@ -140,9 +140,6 @@ public class ServidorC {
                     }
                 }).start();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
 
-    }
-}
+    }*/

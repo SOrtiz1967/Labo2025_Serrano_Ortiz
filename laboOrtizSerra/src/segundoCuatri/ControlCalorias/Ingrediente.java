@@ -29,4 +29,12 @@ public class Ingrediente {
     public void setCalorias(int calorias) {
         this.calorias = calorias;
     }
+
+    @Override
+    public String toString() {
+        return "Ingrediente{" +
+                "nombre='" + nombre + '\'' +
+                ", calorias=" + calorias +
+                '}';
+    }
 }

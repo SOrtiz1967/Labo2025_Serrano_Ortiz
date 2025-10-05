@@ -2,22 +2,20 @@ package EJ1;
 
 import primerCuatri.probar.personas.Persona;
 import segundoCuatri.ControlCalorias.Ingrediente;
+import segundoCuatri.arcoyflecha.Color;
 
 import java.util.HashMap;
 import java.util.HashSet;
 
 public abstract class Participante extends Persona {
-    public Participante(String nombre, int edad, String apellido, String direccion, HashSet<Ingrediente> ingredientesProhibidos, HashMap<Ingrediente, Integer> stockIngredientes) {
+    private Color equipo;
+    public Participante(String nombre, int edad, String apellido, String direccion,Color equipo) {
         super(nombre, edad, apellido, direccion);
-        this.ingredientesProhibidos = ingredientesProhibidos;
-        this.stockIngredientes = stockIngredientes;
+        this.equipo=equipo;
     }
     public Participante() {
         super();
-    }
-
-    public Participante(String nombre, int edad, String apellido, String direccion) {
-        super(nombre, edad, apellido, direccion);
+        this.equipo=Color.AZUL;
     }
     public abstract void mensaje();
 }

@@ -1,4 +1,4 @@
-package segundoCuatri.Ej2repaso;
+/*package segundoCuatri.Ej2repaso;
 import java.time.LocalDate;
 import java.util.HashSet;
 
@@ -42,10 +42,7 @@ public class SistemaBiblioteca {
     // esté en fecha y al validarse correctamente se le suma uno en la lista de prestamos que hizo y la cantidad de veces.
     // Si esto no sucede, enviar una excepción: “Prestamo devuelto fuera de fecha” y se calcula la multa. Esto devuelve un valor
     // que hay que restarle al crédito del usuario y depende el tipo de publicación.
-    public void devolverPrestamo(Publicacion pAux){
-        if (LocalDate.now()>)
 
-    }
 
 
 /*
@@ -134,4 +131,3 @@ public class SistemaBiblioteca {
     }
 
      */
-}
