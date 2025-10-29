@@ -1,10 +1,36 @@
 package RepasoRecuperatorioJava;
 
+import java.util.HashSet;
+
 public class Comun extends Carta implements Jugable{
-    public static int elixir=3;
+    public static Double elixir=3.0;
+
+    public static Double getElixir() {
+        return elixir;
+    }
+
+    public static void setElixir(Double elixir) {
+        Comun.elixir = elixir;
+    }
+
+    public Comun(String nombre, double danio, double vida, Arena arenaDesbloqueo) {
+        super(nombre, danio, vida, arenaDesbloqueo);
+    }
+
+    public Comun() {
+        super();
+    }
+
     @Override
     public void frase(){
-        System.out.println("soy una carta comun y mi costo actual de elixir es: "+Comun.elixir);
+        System.out.println("soy una carta comun y mi costo de elixir es: "+Comun.elixir);
+    }
+    public HashSet<Double> valoresAtributos(){
+        HashSet<Double> valoresAtributos= new HashSet<>();
+        valoresAtributos.add(Comun.elixir);
+        valoresAtributos.add(this.getDanio());
+        valoresAtributos.add(this.getVida());
+        return valoresAtributos;
     }
     @Override
     public void invocarCarta(int elixir)throws SinElixirException{

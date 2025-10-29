@@ -1,12 +1,62 @@
 package RepasoRecuperatorioJava;
 
+import java.util.HashSet;
+
 public class Especial extends Carta implements Jugable{
-    private int nivelDesbloqueo;
-    private int elixir;
-    private int bonus;
+    private double nivelDesbloqueo;
+    private double elixir;
+    private double bonus;
+
+    public double getNivelDesbloqueo() {
+        return nivelDesbloqueo;
+    }
+
+    public void setNivelDesbloqueo(double nivelDesbloqueo) {
+        this.nivelDesbloqueo = nivelDesbloqueo;
+    }
+
+    public double getElixir() {
+        return elixir;
+    }
+
+    public void setElixir(double elixir) {
+        this.elixir = elixir;
+    }
+
+    public double getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(double bonus) {
+        this.bonus = bonus;
+    }
+
+    public Especial(String nombre, double danio, double vida, Arena arenaDesbloqueo, double nivelDesbloqueo, double elixir, double bonus) {
+        super(nombre, danio, vida, arenaDesbloqueo);
+        this.nivelDesbloqueo = nivelDesbloqueo;
+        this.elixir = elixir;
+        this.bonus = bonus;
+    }
+
+    public Especial() {
+        super();
+        this.nivelDesbloqueo = 0;
+        this.elixir = 0;
+        this.bonus = 0;
+    }
+
     @Override
     public void frase(){
-        System.out.println("soy una carta especial de nivel "+this.nivelDesbloqueo+" y mi costo actual de elixir actual es: "+this.elixir);
+        System.out.println("soy una carta especial de nivel "+this.nivelDesbloqueo+" y mi costo de elixir actual es: "+this.elixir);
+    }
+    public HashSet<Double> valoresAtributos(){
+        HashSet<Double> valoresAtributos= new HashSet<>();
+        valoresAtributos.add(this.elixir);
+        valoresAtributos.add(this.bonus);
+        valoresAtributos.add(bonus);
+        valoresAtributos.add(this.getDanio());
+        valoresAtributos.add(this.getVida());
+        return valoresAtributos;
     }
     @Override
     public void invocarCarta(int elixir)throws SinElixirException{
