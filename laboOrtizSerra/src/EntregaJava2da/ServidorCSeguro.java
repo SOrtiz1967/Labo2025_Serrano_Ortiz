@@ -22,15 +22,15 @@ public class ServidorCSeguro {
         try {
             // Generar par de claves RSA del servidor
             parClaves = CryptoUtil.generarParClaves();
-            System.out.println("🔐 Claves RSA del servidor generadas");
+            System.out.println("Claves RSA del servidor generadas");
 
             // Generar clave AES compartida
             claveAESCompartida = CryptoUtil.generarClaveAES();
-            System.out.println("🔑 Clave AES compartida generada");
+            System.out.println(" Clave AES compartida generada");
 
             // Mostrar clave pública del servidor
             String clavePublicaStr = CryptoUtil.clavePublicaAString(parClaves.getPublic());
-            System.out.println("📢 Clave pública del servidor (compartir con clientes):");
+            System.out.println(" Clave pública del servidor (compartir con clientes):");
             System.out.println(clavePublicaStr.substring(0, 50) + "...");
 
             DatagramSocket socketEmergencias = new DatagramSocket(PUERTO_EMERGENCIAS);
@@ -39,7 +39,7 @@ public class ServidorCSeguro {
             DatagramSocket socketIntercambio = new DatagramSocket(PUERTO_INTERCAMBIO_CLAVES);
             socketRespuestas.setSoTimeout(5000);
 
-            System.out.println("\n📡 Servidor escuchando en:");
+            System.out.println("\n Servidor escuchando en:");
             System.out.println("  - Emergencias: " + PUERTO_EMERGENCIAS);
             System.out.println("  - Respuestas: " + PUERTO_RESPUESTAS);
             System.out.println("  - Solicitudes: " + PUERTO_SOLICITUDES);
@@ -60,7 +60,7 @@ public class ServidorCSeguro {
                     // Formato: MENSAJE_ENCRIPTADO|FIRMA
                     String[] partes = mensajeEncriptado.split("\\|FIRMA\\|", 2);
                     if (partes.length != 2) {
-                        System.out.println("❌ Formato de mensaje inválido");
+                        System.out.println(" Formato de mensaje inválido");
                         continue;
                     }
 
@@ -76,12 +76,12 @@ public class ServidorCSeguro {
                     String emergenciaUUID = UUID.randomUUID().toString();
                     String mensajeConUUID = mensajeOriginal + "|" + emergenciaUUID;
 
-                    System.out.println("\n🚨 Emergencia recibida (desencriptada): " + mensajeOriginal);
-                    System.out.println("🆔 UUID: " + emergenciaUUID);
+                    System.out.println("\n Emergencia recibida (desencriptada): " + mensajeOriginal);
+                    System.out.println(" UUID: " + emergenciaUUID);
 
                     List<InetSocketAddress> clientesPendientes = new ArrayList<>();
                     clientesPendientes.add(new InetSocketAddress("172.16.4.176", 6000));
-                    clientesPendientes.add(new InetSocketAddress("172.16.1.92", 6001));
+                    //clientesPendientes.add(new InetSocketAddress("172.16.1.92", 6001));
 
                     new Thread(() -> {
                         try {
@@ -106,7 +106,7 @@ public class ServidorCSeguro {
                                             cliente.getPort()
                                     );
                                     socketEmergencias.send(alerta);
-                                    System.out.println("📤 Enviando (encriptado) a " + cliente);
+                                    System.out.println(" Enviando (encriptado) a " + cliente);
                                 }
 
                                 try {
@@ -135,21 +135,21 @@ public class ServidorCSeguro {
                                             String uuidRespuesta = datosResp[1];
 
                                             if (uuidRespuesta.equals(emergenciaUUID)) {
-                                                System.out.println("✅ Respuesta: '" + respuestaCliente + "' de: " + remitente);
-                                                System.out.println("🔓 Firma verificada");
+                                                System.out.println(" Respuesta: '" + respuestaCliente + "' de: " + remitente);
+                                                System.out.println(" Firma verificada");
 
                                                 switch (respuestaCliente.toLowerCase()) {
                                                     case "encamino":
-                                                        System.out.println("🚗 Cliente " + remitente + " está en camino");
+                                                        System.out.println(" Cliente " + remitente + " está en camino");
                                                         break;
                                                     case "recibido":
-                                                        System.out.println("📬 Cliente " + remitente + " fue notificado");
+                                                        System.out.println(" Cliente " + remitente + " fue notificado");
                                                         break;
                                                     case "nodisponible":
-                                                        System.out.println("⛔ Cliente " + remitente + " no disponible");
+                                                        System.out.println(" Cliente " + remitente + " no disponible");
                                                         break;
                                                     default:
-                                                        System.out.println("💬 Cliente respondió: '" + respuestaCliente + "'");
+                                                        System.out.println(" Cliente respondió: '" + respuestaCliente + "'");
                                                         break;
                                                 }
 
@@ -168,17 +168,17 @@ public class ServidorCSeguro {
                                     }
                                 } catch (SocketTimeoutException e) {
                                     Thread.sleep(4000);
-                                    System.out.println("⏰ Reenviando emergencia " + emergenciaUUID + "...");
+                                    System.out.println(" Reenviando emergencia " + emergenciaUUID + "...");
                                 }
                             }
-                            System.out.println("🎉 Todos respondieron para: " + emergenciaUUID);
+                            System.out.println(" Todos respondieron para: " + emergenciaUUID);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }).start();
 
                 } catch (Exception e) {
-                    System.out.println("❌ Error al procesar emergencia: " + e.getMessage());
+                    System.out.println(" Error al procesar emergencia: " + e.getMessage());
                 }
             }
         } catch (Exception e) {
@@ -187,7 +187,7 @@ public class ServidorCSeguro {
     }
 
     private static void manejarIntercambioClaves(DatagramSocket socket) {
-        System.out.println("🔄 Thread de intercambio de claves iniciado");
+        System.out.println(" Thread de intercambio de claves iniciado");
         byte[] buffer = new byte[4096];
 
         while (true) {
@@ -214,7 +214,7 @@ public class ServidorCSeguro {
                     );
                     socket.send(respPaquete);
 
-                    System.out.println("🔑 Claves enviadas a cliente: " + clienteId);
+                    System.out.println("Claves enviadas a cliente: " + clienteId);
 
                 } else if (mensaje.startsWith("CLIENT_KEY|")) {
                     // Cliente envía su clave pública
@@ -225,11 +225,11 @@ public class ServidorCSeguro {
                     PublicKey clavePublica = CryptoUtil.stringAClavePublica(clavePublicaCliente);
                     clavesPublicasClientes.put(clienteId, clavePublica);
 
-                    System.out.println("🔐 Clave pública recibida de: " + clienteId);
+                    System.out.println(" Clave pública recibida de: " + clienteId);
                 }
 
             } catch (Exception e) {
-                System.out.println("❌ Error en intercambio de claves: " + e.getMessage());
+                System.out.println(" Error en intercambio de claves: " + e.getMessage());
             }
         }
     }

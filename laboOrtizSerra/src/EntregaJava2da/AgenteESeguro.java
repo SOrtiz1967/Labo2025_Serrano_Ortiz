@@ -18,11 +18,11 @@ public class AgenteESeguro {
         final int PUERTO_INTERCAMBIO = 5003;
 
         try {
-            // Generar par de claves RSA del agente
+            // Genero par de claves RSA del agente
             parClaves = CryptoUtil.generarParClaves();
-            System.out.println("🔐 Claves RSA del agente generadas");
+            System.out.println(" Claves RSA del agente generadas");
 
-            // Obtener claves del servidor
+            // Obtener claves servidor
             DatagramSocket socketIntercambio = new DatagramSocket();
 
             // Solicitar claves al servidor
@@ -35,7 +35,7 @@ public class AgenteESeguro {
             );
             socketIntercambio.send(paqueteSolicitud);
 
-            System.out.println("🔄 Solicitando claves al servidor...");
+            System.out.println("Solicitando claves al servidorr");
 
             // Recibir respuesta
             byte[] buffer = new byte[4096];
@@ -52,8 +52,8 @@ public class AgenteESeguro {
                 clavePublicaServidor = CryptoUtil.stringAClavePublica(clavePublicaStr);
                 claveAESCompartida = CryptoUtil.stringAClaveAES(claveAESStr);
 
-                System.out.println("✅ Claves del servidor recibidas");
-                System.out.println("🔑 Clave AES compartida obtenida");
+                System.out.println("Claves del servidor recibidas");
+                System.out.println("Clave AES compartida obtenida");
             }
 
             // Enviar clave pública del agente al servidor
@@ -66,7 +66,7 @@ public class AgenteESeguro {
                     PUERTO_INTERCAMBIO
             );
             socketIntercambio.send(paqueteClavePublica);
-            System.out.println("📤 Clave pública del agente enviada al servidor");
+            System.out.println("Clave pública del agente enviada al servidor");
 
             socketIntercambio.close();
 
@@ -74,8 +74,8 @@ public class AgenteESeguro {
             DatagramSocket socket = new DatagramSocket();
             Scanner scanner = new Scanner(System.in);
 
-            System.out.println("\n🚨 Agente listo para reportar emergencias (mensajes encriptados)");
-            System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+            System.out.println("\n Agente pronto para agarrar ls psls");
+
 
             while (true) {
                 System.out.print("Ingresa emergencia: ");
@@ -100,8 +100,8 @@ public class AgenteESeguro {
                 );
 
                 socket.send(paquete);
-                System.out.println("✅ Emergencia enviada (encriptada + firmada)");
-                System.out.println("🔒 Longitud del paquete: " + paqueteCompleto.length() + " bytes\n");
+                System.out.println("Emergencia enviada (encriptada y firmada)");
+                System.out.println(" Longitud del paquete: " + paqueteCompleto.length() + " bytes\n");
             }
 
             socket.close();

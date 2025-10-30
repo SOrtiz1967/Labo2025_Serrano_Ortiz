@@ -80,6 +80,6 @@ public class DesayunoApp {
     }
 
     public static void main(String[] args) {
-        Preparacion p1= new Bizcochuelo()
+        Preparacion p1= new Bizcochuelo();
     }
 }

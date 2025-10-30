@@ -17,7 +17,7 @@ public class ClienteRSeguro {
             try {
                 PUERTO_CLIENTE = Integer.parseInt(args[0]);
             } catch (NumberFormatException e) {
-                System.out.println("Argumento de puerto inválido, usando 6000.");
+                System.out.println("puerto inválido(6000).");
             }
         }
 
@@ -30,7 +30,7 @@ public class ClienteRSeguro {
             parClaves = CryptoUtil.generarParClaves();
             System.out.println("🔐 Claves RSA del cliente generadas");
 
-            // Obtener claves del servidor (intercambio)
+            // Obtener claves del servidor intercambiar
             DatagramSocket socketIntercambio = new DatagramSocket();
 
             String clienteId = "CLIENTE_" + PUERTO_CLIENTE;
@@ -42,7 +42,7 @@ public class ClienteRSeguro {
                     PUERTO_INTERCAMBIO
             );
             socketIntercambio.send(paqueteSolicitud);
-            System.out.println("🔄 Solicitando claves al servidor...");
+            System.out.println("🔄 Solicitando claves al servidor");
 
             byte[] bufferIntercambio = new byte[8192];
             DatagramPacket paqueteRespuesta = new DatagramPacket(bufferIntercambio, bufferIntercambio.length);
@@ -60,23 +60,23 @@ public class ClienteRSeguro {
                         clavePublicaServidor = CryptoUtil.stringAClavePublica(clavePublicaStr);
                         claveAESCompartida = CryptoUtil.stringAClaveAES(claveAESStr);
 
-                        System.out.println("✅ Claves del servidor recibidas");
-                        System.out.println("🔑 Clave AES compartida obtenida");
+                        System.out.println("Claves del servidor recibidas");
+                        System.out.println("Clave AES compartida obtenida");
                     } else {
-                        System.out.println("❌ Respuesta SERVER_KEYS con formato incorrecto.");
+                        System.out.println("Respuesta SERVER_KEYS con formato incorrecto.");
                     }
                 } else {
-                    System.out.println("❌ Respuesta inesperada del servidor en intercambio: " + respuesta);
+                    System.out.println(" Respuesta inesperada del servidor en intercambio: " + respuesta);
                 }
             } catch (SocketTimeoutException e) {
-                System.out.println("❌ Tiempo de espera agotado al solicitar claves al servidor.");
+                System.out.println(" Tiempo de espera agotado al solicitar claves al servidor.");
             } finally {
                 socketIntercambio.close();
             }
 
             // Si no obtuvimos claves, no podemos continuar
             if (clavePublicaServidor == null || claveAESCompartida == null) {
-                System.out.println("❌ No se obtuvieron las claves necesarias. Abortando.");
+                System.out.println(" No se obtuvieron las claves necesarias. hay algun problema");
                 return;
             }
 
@@ -93,11 +93,11 @@ public class ClienteRSeguro {
             );
             socketEnvioClave.send(paqueteClavePublica);
             socketEnvioClave.close();
-            System.out.println("📤 Clave pública del cliente enviada al servidor");
+            System.out.println(" Clave pública del cliente enviada al servidor");
 
-            System.out.println("\n🎧 Cliente escuchando en puerto: " + PUERTO_CLIENTE);
-            System.out.println("🔒 Mensajes encriptados activados");
-            System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+            System.out.println("\nCliente escuchando en puerto: " + PUERTO_CLIENTE);
+            System.out.println(" Mensajes encriptados activados");
+
 
             DatagramSocket socket = new DatagramSocket(PUERTO_CLIENTE);
             Scanner scanner = new Scanner(System.in);
@@ -116,7 +116,7 @@ public class ClienteRSeguro {
                     // Formato esperado: MENSAJE_ENCRIPTADO|FIRMA|
                     String[] partes = mensajeRecibido.split("\\|FIRMA\\|", 2);
                     if (partes.length != 2) {
-                        System.out.println("❌ Formato de mensaje inválido recibido desde " +
+                        System.out.println("Formato de mensaje inválido recibido desde " +
                                 paquete.getAddress() + ":" + paquete.getPort());
                         continue;
                     }
@@ -133,14 +133,14 @@ public class ClienteRSeguro {
                     );
 
                     if (!firmaValida) {
-                        System.out.println("❌ Firma inválida - mensaje rechazado");
+                        System.out.println("Firma inválida mensaje rechazado por posible intercepcion del sombrio interceptor");
                         continue;
                     }
 
                     // Parsear "emergencia|uuid"
                     String[] datosEmergencia = mensajeCompleto.split("\\|", 2);
                     if (datosEmergencia.length != 2) {
-                        System.out.println("❌ Formato de emergencia inválido: " + mensajeCompleto);
+                        System.out.println(" Formato de emergencia inválido: " + mensajeCompleto);
                         continue;
                     }
 
@@ -148,13 +148,13 @@ public class ClienteRSeguro {
                     String uuid = datosEmergencia[1];
 
                     if (uuidsRespondidos.contains(uuid)) {
-                        System.out.println("⚠️ Emergencia duplicada ignorada (UUID: " + uuid + ")");
+                        System.out.println("Emergencia duplicada ignorada (UUID: " + uuid + ")");
                         continue;
                     }
 
-                    System.out.println("\n🚨 Emergencia recibida (desencriptada): " + emergencia);
-                    System.out.println("🆔 UUID: " + uuid);
-                    System.out.println("✅ Firma del servidor verificada");
+                    System.out.println("\n Emergencia recibida y desencriptada: " + emergencia);
+                    System.out.println(" UUID: " + uuid);
+                    System.out.println("Firma del servidor verificada, todo en orden");
 
                     System.out.print("Ingresa respuesta: ");
                     String respuestaUsuario = scanner.nextLine().trim();
@@ -184,17 +184,17 @@ public class ClienteRSeguro {
                     // Agregar UUID a respondidos
                     uuidsRespondidos.add(uuid);
 
-                    System.out.println("✅ Emergencia procesada y enviada (encriptada + firmada)");
-                    System.out.println("🔒 Longitud del paquete: " + mensajeRespuesta.getBytes().length + " bytes");
-                    System.out.println("🎯 Listo para procesar más emergencias\n");
+                    System.out.println("Emergencia procesada y enviada (encriptada + firmada)");
+                    System.out.println("Longitud del paquete: " + mensajeRespuesta.getBytes().length + " bytes");
+                    System.out.println("Listo para procesar más emergencias\n");
 
                 } catch (Exception e) {
-                    System.out.println("❌ Error al procesar emergencia: " + e.getMessage());
+                    System.out.println(" Error al procesar emergencia: " + e.getMessage());
                     e.printStackTrace();
                 }
             }
         } catch (Exception e) {
-            System.out.println("❌ Error general en cliente: " + e.getMessage());
+            System.out.println(" Error general en cliente: " + e.getMessage());
             e.printStackTrace();
         }
     }
