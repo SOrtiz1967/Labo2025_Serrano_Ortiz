@@ -1,7 +1,5 @@
 package EntregaJava2da;
 
-
-
 import javax.crypto.SecretKey;
 import java.io.IOException;
 import java.net.*;
@@ -12,6 +10,7 @@ public class ServidorCSeguro {
     private static KeyPair parClaves;
     private static SecretKey claveAESCompartida;
     private static Map<String, PublicKey> clavesPublicasClientes = new HashMap<>();
+    private static RegistroClientes registroClientes = new RegistroClientes();
 
     public static void main(String[] args) throws IOException {
         final int PUERTO_EMERGENCIAS = 5000;
@@ -48,6 +47,9 @@ public class ServidorCSeguro {
             // Thread para intercambio de claves
             new Thread(() -> manejarIntercambioClaves(socketIntercambio)).start();
 
+            // Thread para solicitudes de registro
+            new Thread(() -> manejarSolicitudesRegistro(socketSolicitudes)).start();
+
             byte[] buffer = new byte[4096];
 
             while (true) {
@@ -79,14 +81,22 @@ public class ServidorCSeguro {
                     System.out.println("\n Emergencia recibida (desencriptada): " + mensajeOriginal);
                     System.out.println(" UUID: " + emergenciaUUID);
 
-                    List<InetSocketAddress> clientesPendientes = new ArrayList<>();
-                    clientesPendientes.add(new InetSocketAddress("172.16.4.176", 6000));
-                    //clientesPendientes.add(new InetSocketAddress("172.16.1.92", 6001));
+                    // obtener clientes activos registrados
+                    List<InetSocketAddress> clientesPendientes = registroClientes.getClientesActivos();
+
+                    if (clientesPendientes.isEmpty()) {
+                        System.out.println("No hay clientes registrados para atender la emergencia");
+                        continue;
+                    }
+
+                    System.out.println("Enviando a " + clientesPendientes.size() + " cliente(s) registrado(s)");
 
                     new Thread(() -> {
                         try {
-                            while (!clientesPendientes.isEmpty()) {
-                                for (InetSocketAddress cliente : clientesPendientes) {
+                            List<InetSocketAddress> pendientes = new ArrayList<>(clientesPendientes);
+
+                            while (!pendientes.isEmpty()) {
+                                for (InetSocketAddress cliente : pendientes) {
                                     // Encriptar con AES
                                     String mensajeEncriptadoCliente = CryptoUtil.encriptarAES(
                                             mensajeConUUID, claveAESCompartida
@@ -153,13 +163,13 @@ public class ServidorCSeguro {
                                                         break;
                                                 }
 
-                                                Iterator<InetSocketAddress> it = clientesPendientes.iterator();
+                                                Iterator<InetSocketAddress> it = pendientes.iterator();
                                                 while (it.hasNext()) {
                                                     InetSocketAddress c = it.next();
                                                     if (c.getPort() == remitente.getPort() &&
                                                             c.getAddress().equals(remitente.getAddress())) {
                                                         it.remove();
-                                                        System.out.println("🗑️ Cliente " + remitente + " eliminado de la lista");
+                                                        System.out.println("Cliente " + remitente + " eliminado de la lista");
                                                         break;
                                                     }
                                                 }
@@ -230,6 +240,71 @@ public class ServidorCSeguro {
 
             } catch (Exception e) {
                 System.out.println(" Error en intercambio de claves: " + e.getMessage());
+            }
+        }
+    }
+
+    private static void manejarSolicitudesRegistro(DatagramSocket socket) {
+        System.out.println(" Thread de solicitudes de registro iniciado");
+        byte[] buffer = new byte[1024];
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            try {
+                DatagramPacket paquete = new DatagramPacket(buffer, buffer.length);
+                socket.receive(paquete);
+
+                String mensaje = new String(paquete.getData(), 0, paquete.getLength()).trim();
+
+                // Formato: SOLICITUD_REGISTRO|ID_CLIENTE|TIPO|PUERTO
+                if (mensaje.startsWith("SOLICITUD_REGISTRO|")) {
+                    String[] partes = mensaje.split("\\|");
+                    if (partes.length == 4) {
+                        String idCliente = partes[1];
+                        String tipoCliente = partes[2];
+                        int puertoCliente = Integer.parseInt(partes[3]);
+
+                        InetAddress ipCliente = paquete.getAddress();
+                        InetSocketAddress direccionCliente = new InetSocketAddress(ipCliente, puertoCliente);
+
+                        System.out.println("\n=== Nueva Solicitud de Registro ===");
+                        System.out.println("ID: " + idCliente);
+                        System.out.println("Tipo: " + tipoCliente);
+                        System.out.println("Dirección: " + direccionCliente);
+                        System.out.println("===================================");
+                        System.out.print("Aceptar cliente? (si/no): ");
+
+                        String respuestaAdmin = scanner.nextLine().trim().toLowerCase();
+
+                        String respuesta;
+                        if (respuestaAdmin.equals("si") || respuestaAdmin.equals("s")) {
+                            // aceptar cliente
+                            registroClientes.registrarCliente(idCliente, direccionCliente, tipoCliente);
+                            respuesta = "REGISTRO_ACEPTADO|" + idCliente;
+                            System.out.println("Cliente aceptado y registrado");
+                            registroClientes.mostrarClientes();
+                        } else {
+                            // rechazar cliente
+                            respuesta = "REGISTRO_RECHAZADO|" + idCliente;
+                            System.out.println("Cliente rechazado");
+                        }
+
+                        // enviar respuesta al cliente
+                        DatagramPacket respPaquete = new DatagramPacket(
+                                respuesta.getBytes(),
+                                respuesta.length(),
+                                paquete.getAddress(),
+                                paquete.getPort()
+                        );
+                        socket.send(respPaquete);
+
+                    } else {
+                        System.out.println("Solicitud con formato inválido");
+                    }
+                }
+
+            } catch (Exception e) {
+                System.out.println(" Error en solicitudes de registro: " + e.getMessage());
             }
         }
     }

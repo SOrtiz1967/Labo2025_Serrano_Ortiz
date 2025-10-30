@@ -12,6 +12,10 @@ public class ClienteRSeguro {
 
     public static void main(String[] args) {
         int PUERTO_CLIENTE = 6000;
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Ingresa el tipo de el cliente");
+        String TIPO_CLIENTE=input.nextLine();// por ahora no cambia nada pero es un chiche
 
         if (args.length > 0) {
             try {
@@ -21,28 +25,83 @@ public class ClienteRSeguro {
             }
         }
 
+        if (args.length > 1) {
+            TIPO_CLIENTE = args[1].toUpperCase();
+        }
+
         final String IP_SERVIDOR = "172.16.4.176";
         final int PUERTO_RESPUESTAS = 5001;
         final int PUERTO_INTERCAMBIO = 5003;
+        final int PUERTO_SOLICITUDES = 5002;
 
         try {
             // Generar par de claves RSA del cliente
             parClaves = CryptoUtil.generarParClaves();
-            System.out.println("🔐 Claves RSA del cliente generadas");
+            System.out.println("Claves RSA del cliente generadas");
+
+            String clienteId = "CLIENTE_" + PUERTO_CLIENTE;
+
+            // primero solicitar registro al servidor
+            System.out.println("\n=== Solicitando registro al servidor ===");
+            System.out.println("ID: " + clienteId);
+            System.out.println("Tipo: " + TIPO_CLIENTE);
+            System.out.println("Puerto: " + PUERTO_CLIENTE);
+
+            DatagramSocket socketRegistro = new DatagramSocket();
+            socketRegistro.setSoTimeout(30000); // tiempo que va a esperar la respuesta de el servidor
+
+            String solicitudRegistro = "SOLICITUD_REGISTRO|" + clienteId + "|" + TIPO_CLIENTE + "|" + PUERTO_CLIENTE;
+            DatagramPacket paqueteSolicitud = new DatagramPacket(
+                    solicitudRegistro.getBytes(),
+                    solicitudRegistro.length(),
+                    InetAddress.getByName(IP_SERVIDOR),
+                    PUERTO_SOLICITUDES
+            );
+            socketRegistro.send(paqueteSolicitud);
+
+            System.out.println("Esperando respuesta del servidor...");
+
+            // esperar respuesta
+            byte[] bufferRegistro = new byte[1024];
+            DatagramPacket paqueteRespuestaRegistro = new DatagramPacket(bufferRegistro, bufferRegistro.length);
+
+            try {
+                socketRegistro.receive(paqueteRespuestaRegistro);
+                String respuestaRegistro = new String(paqueteRespuestaRegistro.getData(), 0, paqueteRespuestaRegistro.getLength()).trim();
+
+                if (respuestaRegistro.startsWith("REGISTRO_ACEPTADO")) {
+                    System.out.println("REGISTRO ACEPTADO por el servidor");
+                } else if (respuestaRegistro.startsWith("REGISTRO_RECHAZADO")) {
+                    System.out.println("REGISTRO RECHAZADO por el servidor");
+                    System.out.println("No se puede continuar sin registro");
+                    socketRegistro.close();
+                    return;
+                } else {
+                    System.out.println("Respuesta inesperada: " + respuestaRegistro);
+                    socketRegistro.close();
+                    return;
+                }
+            } catch (SocketTimeoutException e) {
+                System.out.println("Timeout esperando respuesta de registro");
+                System.out.println("El servidor no respondió, no se puede continuar");
+                socketRegistro.close();
+                return;
+            }
+
+            socketRegistro.close();
 
             // Obtener claves del servidor intercambiar
             DatagramSocket socketIntercambio = new DatagramSocket();
 
-            String clienteId = "CLIENTE_" + PUERTO_CLIENTE;
             String solicitud = "REQUEST_KEY|" + clienteId;
-            DatagramPacket paqueteSolicitud = new DatagramPacket(
+            DatagramPacket paqueteSolicitudKey = new DatagramPacket(
                     solicitud.getBytes(),
                     solicitud.length(),
                     InetAddress.getByName(IP_SERVIDOR),
                     PUERTO_INTERCAMBIO
             );
-            socketIntercambio.send(paqueteSolicitud);
-            System.out.println("🔄 Solicitando claves al servidor");
+            socketIntercambio.send(paqueteSolicitudKey);
+            System.out.println("Solicitando claves al servidor");
 
             byte[] bufferIntercambio = new byte[8192];
             DatagramPacket paqueteRespuesta = new DatagramPacket(bufferIntercambio, bufferIntercambio.length);
@@ -97,6 +156,7 @@ public class ClienteRSeguro {
 
             System.out.println("\nCliente escuchando en puerto: " + PUERTO_CLIENTE);
             System.out.println(" Mensajes encriptados activados");
+            System.out.println(" Tipo de cliente: " + TIPO_CLIENTE);
 
 
             DatagramSocket socket = new DatagramSocket(PUERTO_CLIENTE);
