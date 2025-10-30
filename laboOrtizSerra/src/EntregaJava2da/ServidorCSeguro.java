@@ -116,7 +116,7 @@ public class ServidorCSeguro {
                                             cliente.getPort()
                                     );
                                     socketEmergencias.send(alerta);
-                                    System.out.println(" Enviando (encriptado) a " + cliente);
+                                    System.out.println(" Enviando (encriptado) a " + cliente);//repaso, no se queda trabado esperando a q le respondan sino q le reenvian
                                 }
 
                                 try {
@@ -227,7 +227,7 @@ public class ServidorCSeguro {
                     System.out.println("Claves enviadas a cliente: " + clienteId);
 
                 } else if (mensaje.startsWith("CLIENT_KEY|")) {
-                    // Cliente envía su clave pública
+                    // el cliente envia sus claves
                     String[] partes = mensaje.split("\\|", 3);
                     String clienteId = partes[1];
                     String clavePublicaCliente = partes[2];
@@ -267,12 +267,11 @@ public class ServidorCSeguro {
                         InetAddress ipCliente = paquete.getAddress();
                         InetSocketAddress direccionCliente = new InetSocketAddress(ipCliente, puertoCliente);
 
-                        System.out.println("\n=== Nueva Solicitud de Registro ===");
+                        System.out.println("\nSolicitud de Registro");
                         System.out.println("ID: " + idCliente);
                         System.out.println("Tipo: " + tipoCliente);
                         System.out.println("Dirección: " + direccionCliente);
-                        System.out.println("===================================");
-                        System.out.print("Aceptar cliente? (si/no): ");
+                        System.out.print("Aceptar cliente? si/no: ");
 
                         String respuestaAdmin = scanner.nextLine().trim().toLowerCase();
 
@@ -281,7 +280,7 @@ public class ServidorCSeguro {
                             // aceptar cliente
                             registroClientes.registrarCliente(idCliente, direccionCliente, tipoCliente);
                             respuesta = "REGISTRO_ACEPTADO|" + idCliente;
-                            System.out.println("Cliente aceptado y registrado");
+                            System.out.println("Cliente aceptado y registrado con exito");
                             registroClientes.mostrarClientes();
                         } else {
                             // rechazar cliente

@@ -46,8 +46,8 @@ public class AgenteESeguro {
 
             if (respuesta.startsWith("SERVER_KEYS|")) {
                 String[] partes = respuesta.split("\\|", 3);
-                String clavePublicaStr = partes[1];
-                String claveAESStr = partes[2];
+                String clavePublicaStr = partes[1];//la clave pub del servidor
+                String claveAESStr = partes[2];//la clave compartida
 
                 clavePublicaServidor = CryptoUtil.stringAClavePublica(clavePublicaStr);
                 claveAESCompartida = CryptoUtil.stringAClaveAES(claveAESStr);
@@ -74,7 +74,7 @@ public class AgenteESeguro {
             DatagramSocket socket = new DatagramSocket();
             Scanner scanner = new Scanner(System.in);
 
-            System.out.println("\n Agente pronto para agarrar ls psls");
+            System.out.println("\n Agente pronto para agarrar la psls");
 
 
             while (true) {
@@ -97,7 +97,7 @@ public class AgenteESeguro {
                         paqueteCompleto.length(),
                         InetAddress.getByName(HOST),
                         PUERTO_SERVIDOR
-                );
+                );//el paquete va a tener el msj encriptado mas la firma
 
                 socket.send(paquete);
                 System.out.println("Emergencia enviada (encriptada y firmada)");
