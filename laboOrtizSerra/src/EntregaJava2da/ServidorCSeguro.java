@@ -12,6 +12,9 @@ public class ServidorCSeguro {
     private static Map<String, PublicKey> clavesPublicasClientes = new HashMap<>();
     private static RegistroClientes registroClientes = new RegistroClientes();
 
+    // Mapa para asociar direcciones de red con IDs de clientes/agentes
+    private static Map<String, String> direccionAClienteId = new HashMap<>();
+
     public static void main(String[] args) throws IOException {
         final int PUERTO_EMERGENCIAS = 5000;
         final int PUERTO_RESPUESTAS = 5001;
@@ -25,12 +28,12 @@ public class ServidorCSeguro {
 
             // Generar clave AES compartida
             claveAESCompartida = CryptoUtil.generarClaveAES();
-            System.out.println(" Clave AES compartida generada");
+            System.out.println("Clave AES compartida generada");
 
             // Mostrar clave pública del servidor
             String clavePublicaStr = CryptoUtil.clavePublicaAString(parClaves.getPublic());
-            System.out.println(" Clave pública del servidor (compartir con clientes):");
-            System.out.println(clavePublicaStr.substring(0, 50) + "...");
+            System.out.println("Clave pública del servidor:");
+            System.out.println("  " + clavePublicaStr.substring(0, 50) + "...");
 
             DatagramSocket socketEmergencias = new DatagramSocket(PUERTO_EMERGENCIAS);
             DatagramSocket socketRespuestas = new DatagramSocket(PUERTO_RESPUESTAS);
@@ -38,11 +41,13 @@ public class ServidorCSeguro {
             DatagramSocket socketIntercambio = new DatagramSocket(PUERTO_INTERCAMBIO_CLAVES);
             socketRespuestas.setSoTimeout(5000);
 
-            System.out.println("\n Servidor escuchando en:");
-            System.out.println("  - Emergencias: " + PUERTO_EMERGENCIAS);
-            System.out.println("  - Respuestas: " + PUERTO_RESPUESTAS);
-            System.out.println("  - Solicitudes: " + PUERTO_SOLICITUDES);
-            System.out.println("  - Intercambio claves: " + PUERTO_INTERCAMBIO_CLAVES);
+
+            System.out.println("Servidor escuchando en:");
+            System.out.println("Emergencias: " + PUERTO_EMERGENCIAS);
+            System.out.println("Respuestas: " + PUERTO_RESPUESTAS);
+            System.out.println("Solicitudes: " + PUERTO_SOLICITUDES);
+            System.out.println("Intercambio claves: " + PUERTO_INTERCAMBIO_CLAVES);
+
 
             // Thread para intercambio de claves
             new Thread(() -> manejarIntercambioClaves(socketIntercambio)).start();
@@ -56,36 +61,90 @@ public class ServidorCSeguro {
                 DatagramPacket paqueteR = new DatagramPacket(buffer, buffer.length);
                 socketEmergencias.receive(paqueteR);
 
-                String mensajeEncriptado = new String(paqueteR.getData(), 0, paqueteR.getLength());
+                String mensajeRecibido = new String(paqueteR.getData(), 0, paqueteR.getLength());
+                InetAddress direccionAgente = paqueteR.getAddress();
+                int puertoAgente = paqueteR.getPort();
 
                 try {
-                    // Formato: MENSAJE_ENCRIPTADO|FIRMA
-                    String[] partes = mensajeEncriptado.split("\\|FIRMA\\|", 2);
+                    // Formato: MENSAJE_ENCRIPTADO|FIRMA|FIRMA_DIGITAL
+                    String[] partes = mensajeRecibido.split("\\|FIRMA\\|", 2);
                     if (partes.length != 2) {
-                        System.out.println(" Formato de mensaje inválido");
+                        System.out.println("Formato de mensaje inválido");
                         continue;
                     }
 
                     String mensajeCifrado = partes[0];
                     String firma = partes[1];
 
-                    // Desencriptar con AES
-                    String mensajeOriginal = CryptoUtil.desencriptarAES(mensajeCifrado, claveAESCompartida);
+                    // PASO 1: Identificar al agente por su dirección
+                    String claveDir = direccionAgente.getHostAddress() + ":" + puertoAgente;
+                    String agenteId = direccionAClienteId.get(claveDir);
 
-                    // Verificar firma (necesitamos la clave pública del agente)
-                    // Por ahora asumimos que la emergencia es válida
+                    if (agenteId == null) {
+                        System.out.println("Emergencia rechazada: Agente no identificado");
+                        System.out.println("Dirección: " + claveDir);
+                        System.out.println("El agente debe intercambiar claves primero");
+                        continue;
+                    }
+
+                    // PASO 2: Obtener la clave pública del agente
+                    PublicKey clavePublicaAgente = clavesPublicasClientes.get(agenteId);
+
+                    if (clavePublicaAgente == null) {
+                        System.out.println("Emergencia rechazada: Clave pública del agente no encontrada");
+                        System.out.println("Agente ID: " + agenteId);
+                        continue;
+                    }
+
+                    // PASO 3: VERIFICAR LA FIRMA (CRÍTICO)
+                    boolean firmaValida = CryptoUtil.verificarFirma(
+                            mensajeCifrado, firma, clavePublicaAgente
+                    );
+
+                    if (!firmaValida) {
+                        System.out.println("EMERGENCIA RECHAZADA: Firma inválida");
+                        System.out.println("Agente ID: " + agenteId);
+                        System.out.println("Posible intento de suplantación de identidad");
+                        continue;
+                    }
+
+                    System.out.println("Firma verificada correctamente para agente: " + agenteId);
+
+                    // PASO 4: Desencriptar con AES
+                    String mensajeCompleto = CryptoUtil.desencriptarAES(mensajeCifrado, claveAESCompartida);
+
+                    // El mensaje tiene formato: AGENTE_ID|MENSAJE
+                    String[] datosMsg = mensajeCompleto.split("\\|", 2);
+                    if (datosMsg.length != 2) {
+                        System.out.println("Formato de mensaje interno inválido");
+                        continue;
+                    }
+
+                    String agenteIdMensaje = datosMsg[0];
+                    String mensajeOriginal = datosMsg[1];
+
+                    // Verificar que el ID del mensaje coincida con el ID del agente
+                    if (!agenteIdMensaje.equals(agenteId)) {
+                        System.out.println("emergencia rechazada: ID de agente no coincide probablemente sea un embaucado como el sombrio interceptor");
+
+                        continue;
+                    }
 
                     String emergenciaUUID = UUID.randomUUID().toString();
                     String mensajeConUUID = mensajeOriginal + "|" + emergenciaUUID;
 
-                    System.out.println("\n Emergencia recibida (desencriptada): " + mensajeOriginal);
-                    System.out.println(" UUID: " + emergenciaUUID);
+                    System.out.println("\n ATENCION! EMERGENCIAAAAA");
+                    System.out.println("Mensaje: " + mensajeOriginal);
+                    System.out.println("UUID: " + emergenciaUUID);
+                    System.out.println("Agente: " + agenteId);
+                    System.out.println("Dirección: " + claveDir);
+
 
                     // obtener clientes activos registrados
                     List<InetSocketAddress> clientesPendientes = registroClientes.getClientesActivos();
 
                     if (clientesPendientes.isEmpty()) {
-                        System.out.println("No hay clientes registrados para atender la emergencia");
+                        System.out.println("No hay clientes registrados para atender la emergencia el agente se la va a tener que bancar solo");
                         continue;
                     }
 
@@ -116,7 +175,7 @@ public class ServidorCSeguro {
                                             cliente.getPort()
                                     );
                                     socketEmergencias.send(alerta);
-                                    System.out.println(" Enviando (encriptado) a " + cliente);//repaso, no se queda trabado esperando a q le respondan sino q le reenvian
+                                    System.out.println("Enviando (encriptado) a " + cliente);
                                 }
 
                                 try {
@@ -128,7 +187,7 @@ public class ServidorCSeguro {
                                             respuesta.getAddress(), respuesta.getPort()
                                     );
 
-                                    // Formato: RESPUESTA_ENCRIPTADA|FIRMA
+                                    // Formato: RESPUESTA_ENCRIPTADA|FIRMA|FIRMA_DIGITAL
                                     String[] partesResp = respuestaEncriptada.split("\\|FIRMA\\|", 2);
                                     if (partesResp.length == 2) {
                                         String respCifrada = partesResp[0];
@@ -145,21 +204,21 @@ public class ServidorCSeguro {
                                             String uuidRespuesta = datosResp[1];
 
                                             if (uuidRespuesta.equals(emergenciaUUID)) {
-                                                System.out.println(" Respuesta: '" + respuestaCliente + "' de: " + remitente);
-                                                System.out.println(" Firma verificada");
+                                                System.out.println("Respuesta: '" + respuestaCliente + "' de: " + remitente);
+                                                System.out.println("Firma verificada");
 
                                                 switch (respuestaCliente.toLowerCase()) {
                                                     case "encamino":
-                                                        System.out.println(" Cliente " + remitente + " está en camino");
+                                                        System.out.println("Cliente " + remitente + " está en camino");
                                                         break;
                                                     case "recibido":
                                                         System.out.println(" Cliente " + remitente + " fue notificado");
                                                         break;
                                                     case "nodisponible":
-                                                        System.out.println(" Cliente " + remitente + " no disponible");
+                                                        System.out.println("Cliente " + remitente + " no disponible");
                                                         break;
                                                     default:
-                                                        System.out.println(" Cliente respondió: '" + respuestaCliente + "'");
+                                                        System.out.println("Cliente respondió: '" + respuestaCliente + "'");
                                                         break;
                                                 }
 
@@ -178,26 +237,29 @@ public class ServidorCSeguro {
                                     }
                                 } catch (SocketTimeoutException e) {
                                     Thread.sleep(4000);
-                                    System.out.println(" Reenviando emergencia " + emergenciaUUID + "...");
+                                    System.out.println("Reenviando emergencia " + emergenciaUUID + "...");
                                 }
                             }
-                            System.out.println(" Todos respondieron para: " + emergenciaUUID);
+                            System.out.println("Todos respondieron para: " + emergenciaUUID + "\n");
                         } catch (Exception e) {
+                            System.err.println("Error procesando respuestas: " + e.getMessage());
                             e.printStackTrace();
                         }
                     }).start();
 
                 } catch (Exception e) {
-                    System.out.println(" Error al procesar emergencia: " + e.getMessage());
+                    System.out.println("Error al procesar emergencia: " + e.getMessage());
+                    e.printStackTrace();
                 }
             }
         } catch (Exception e) {
+            System.err.println("Error general en servidor: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     private static void manejarIntercambioClaves(DatagramSocket socket) {
-        System.out.println(" Thread de intercambio de claves iniciado");
+        System.out.println("Thread de intercambio de claves iniciado");
         byte[] buffer = new byte[4096];
 
         while (true) {
@@ -206,9 +268,11 @@ public class ServidorCSeguro {
                 socket.receive(paquete);
 
                 String mensaje = new String(paquete.getData(), 0, paquete.getLength());
+                InetAddress direccion = paquete.getAddress();
+                int puerto = paquete.getPort();
 
                 if (mensaje.startsWith("REQUEST_KEY|")) {
-                    // Cliente solicita la clave pública del servidor y la clave AES
+                    // Cliente/Agente solicita la clave pública del servidor y la clave AES
                     String clienteId = mensaje.split("\\|")[1];
 
                     String clavePublicaStr = CryptoUtil.clavePublicaAString(parClaves.getPublic());
@@ -224,10 +288,10 @@ public class ServidorCSeguro {
                     );
                     socket.send(respPaquete);
 
-                    System.out.println("Claves enviadas a cliente: " + clienteId);
+                    System.out.println("Claves enviadas a: " + clienteId + " (" + direccion + ":" + puerto + ")");
 
                 } else if (mensaje.startsWith("CLIENT_KEY|")) {
-                    // el cliente envia sus claves
+                    // El cliente/agente envía su clave pública
                     String[] partes = mensaje.split("\\|", 3);
                     String clienteId = partes[1];
                     String clavePublicaCliente = partes[2];
@@ -235,17 +299,22 @@ public class ServidorCSeguro {
                     PublicKey clavePublica = CryptoUtil.stringAClavePublica(clavePublicaCliente);
                     clavesPublicasClientes.put(clienteId, clavePublica);
 
-                    System.out.println(" Clave pública recibida de: " + clienteId);
+                    // MAPEAR la dirección del socket al ID del cliente
+                    String claveDir = direccion.getHostAddress() + ":" + puerto;
+                    direccionAClienteId.put(claveDir, clienteId);
+
+                    System.out.println("Clave pública recibida de: " + clienteId);
+                    System.out.println("Dirección mapeada: " + claveDir + " → " + clienteId);
                 }
 
             } catch (Exception e) {
-                System.out.println(" Error en intercambio de claves: " + e.getMessage());
+                System.err.println("Error en intercambio de claves: " + e.getMessage());
             }
         }
     }
 
     private static void manejarSolicitudesRegistro(DatagramSocket socket) {
-        System.out.println(" Thread de solicitudes de registro iniciado");
+        System.out.println("Thread de solicitudes de registro iniciado");
         byte[] buffer = new byte[1024];
         Scanner scanner = new Scanner(System.in);
 
@@ -267,11 +336,12 @@ public class ServidorCSeguro {
                         InetAddress ipCliente = paquete.getAddress();
                         InetSocketAddress direccionCliente = new InetSocketAddress(ipCliente, puertoCliente);
 
-                        System.out.println("\nSolicitud de Registro");
+                        System.out.println("\nAaaatencion, solicitud de registro ");
                         System.out.println("ID: " + idCliente);
                         System.out.println("Tipo: " + tipoCliente);
                         System.out.println("Dirección: " + direccionCliente);
-                        System.out.print("Aceptar cliente? si/no: ");
+
+                        System.out.print("¿Aceptar cliente? (si/no): ");
 
                         String respuestaAdmin = scanner.nextLine().trim().toLowerCase();
 
@@ -280,7 +350,7 @@ public class ServidorCSeguro {
                             // aceptar cliente
                             registroClientes.registrarCliente(idCliente, direccionCliente, tipoCliente);
                             respuesta = "REGISTRO_ACEPTADO|" + idCliente;
-                            System.out.println("Cliente aceptado y registrado con exito");
+                            System.out.println("Cliente aceptado y registrado con éxito");
                             registroClientes.mostrarClientes();
                         } else {
                             // rechazar cliente
@@ -303,7 +373,7 @@ public class ServidorCSeguro {
                 }
 
             } catch (Exception e) {
-                System.out.println(" Error en solicitudes de registro: " + e.getMessage());
+                System.err.println("Error en solicitudes de registro: " + e.getMessage());
             }
         }
     }

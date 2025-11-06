@@ -42,7 +42,7 @@ public class ClienteRSeguro {
             String clienteId = "CLIENTE_" + PUERTO_CLIENTE;
 
             // primero solicitar registro al servidor
-            System.out.println("\n=== Solicitando registro al servidor ===");
+            System.out.println("\ncontactando al servidor");
             System.out.println("ID: " + clienteId);
             System.out.println("Tipo: " + TIPO_CLIENTE);
             System.out.println("Puerto: " + PUERTO_CLIENTE);
@@ -83,7 +83,7 @@ public class ClienteRSeguro {
                 }
             } catch (SocketTimeoutException e) {
                 System.out.println("Timeout esperando respuesta de registro");
-                System.out.println("El servidor no respondió, no se puede continuar");
+                System.out.println("El servidor no respondio la solicitud");
                 socketRegistro.close();
                 return;
             }
@@ -165,7 +165,7 @@ public class ClienteRSeguro {
             Set<String> uuidsRespondidos = new HashSet<>();
 
             while (true) {
-                // Crear buffer nuevo para cada recepción (evita restos de datos anteriores)
+
                 byte[] buffer = new byte[8192];
                 DatagramPacket paquete = new DatagramPacket(buffer, buffer.length);
                 socket.receive(paquete);

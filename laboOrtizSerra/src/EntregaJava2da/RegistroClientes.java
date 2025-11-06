@@ -81,9 +81,9 @@ public class RegistroClientes {
 
     // ver todos los clientes
     public void mostrarClientes() {
-        System.out.println("\n=== Clientes Registrados ===");
+        System.out.println("\nRegistrados ");
         if (clientesRegistrados.isEmpty()) {
-            System.out.println("No hay clientes registrados todavia");
+            System.out.println("No hay ");
         } else {
             clientesRegistrados.values().forEach(c -> System.out.println("  - " + c));
         }

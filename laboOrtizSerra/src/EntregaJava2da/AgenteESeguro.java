@@ -1,7 +1,5 @@
 package EntregaJava2da;
 
-
-
 import javax.crypto.SecretKey;
 import java.net.*;
 import java.security.*;
@@ -11,6 +9,7 @@ public class AgenteESeguro {
     private static KeyPair parClaves;
     private static PublicKey clavePublicaServidor;
     private static SecretKey claveAESCompartida;
+    private static String agenteId;
 
     public static void main(String[] args) {
         final String HOST = "localhost";
@@ -18,15 +17,19 @@ public class AgenteESeguro {
         final int PUERTO_INTERCAMBIO = 5003;
 
         try {
-            // Genero par de claves RSA del agente
+            // par de claves RSA del agente
             parClaves = CryptoUtil.generarParClaves();
-            System.out.println(" Claves RSA del agente generadas");
+            System.out.println("✓ Claves RSA del agente generadas");
+
+            // Generar ID único para cada agente para confirmar quien es y q no pueda mandar emergencias cualquiera
+            agenteId = "AGENTE_" + System.currentTimeMillis();
+            System.out.println("id del agente: " + agenteId);
 
             // Obtener claves servidor
             DatagramSocket socketIntercambio = new DatagramSocket();
 
             // Solicitar claves al servidor
-            String solicitud = "REQUEST_KEY|AGENTE_" + System.currentTimeMillis();
+            String solicitud = "REQUEST_KEY|" + agenteId;
             DatagramPacket paqueteSolicitud = new DatagramPacket(
                     solicitud.getBytes(),
                     solicitud.length(),
@@ -35,7 +38,7 @@ public class AgenteESeguro {
             );
             socketIntercambio.send(paqueteSolicitud);
 
-            System.out.println("Solicitando claves al servidorr");
+            System.out.println("Solicitando claves al servidor");
 
             // Recibir respuesta
             byte[] buffer = new byte[4096];
@@ -46,8 +49,8 @@ public class AgenteESeguro {
 
             if (respuesta.startsWith("SERVER_KEYS|")) {
                 String[] partes = respuesta.split("\\|", 3);
-                String clavePublicaStr = partes[1];//la clave pub del servidor
-                String claveAESStr = partes[2];//la clave compartida
+                String clavePublicaStr = partes[1]; // la clave publi del servidor
+                String claveAESStr = partes[2]; // la clave compartida
 
                 clavePublicaServidor = CryptoUtil.stringAClavePublica(clavePublicaStr);
                 claveAESCompartida = CryptoUtil.stringAClaveAES(claveAESStr);
@@ -56,9 +59,9 @@ public class AgenteESeguro {
                 System.out.println("Clave AES compartida obtenida");
             }
 
-            // Enviar clave pública del agente al servidor
+            // Enviar clave pública del agente al servidor para la verificacion
             String clavePublicaAgenteStr = CryptoUtil.clavePublicaAString(parClaves.getPublic());
-            String mensajeClavePublica = "CLIENT_KEY|AGENTE|" + clavePublicaAgenteStr;
+            String mensajeClavePublica = "CLIENT_KEY|" + agenteId + "|" + clavePublicaAgenteStr;
             DatagramPacket paqueteClavePublica = new DatagramPacket(
                     mensajeClavePublica.getBytes(),
                     mensajeClavePublica.length(),
@@ -70,26 +73,29 @@ public class AgenteESeguro {
 
             socketIntercambio.close();
 
-            // Ahora iniciar comunicación normal
+            // comunicacion normaal
             DatagramSocket socket = new DatagramSocket();
             Scanner scanner = new Scanner(System.in);
 
-            System.out.println("\n Agente pronto para agarrar la psls");
+            System.out.println("\nAgente listo para enviar emergencias");
 
 
             while (true) {
-                System.out.print("Ingresa emergencia: ");
+                System.out.print("\nIngresa emergencia: ");
                 String mensaje = scanner.nextLine();
 
                 if (mensaje.equalsIgnoreCase("salir")) break;
 
-                // Encriptar mensaje con AES
-                String mensajeEncriptado = CryptoUtil.encriptarAES(mensaje, claveAESCompartida);
+                // Preparar mensaje con ID del agente para identificación
+                String mensajeConId = agenteId + "|" + mensaje;
 
-                // Firmar el mensaje encriptado con la clave privada del agente
+                // Encriptar mensaje con AES
+                String mensajeEncriptado = CryptoUtil.encriptarAES(mensajeConId, claveAESCompartida);
+
+                // Firmar el mensaje ENCRIPTADO con la clave privada del agente
                 String firma = CryptoUtil.firmarMensaje(mensajeEncriptado, parClaves.getPrivate());
 
-                // Formato: MENSAJE_ENCRIPTADO|FIRMA
+                // Formato: MENSAJE_ENCRIPTADO|FIRMA|FIRMA_DIGITAL
                 String paqueteCompleto = mensajeEncriptado + "|FIRMA|" + firma;
 
                 DatagramPacket paquete = new DatagramPacket(
@@ -97,17 +103,18 @@ public class AgenteESeguro {
                         paqueteCompleto.length(),
                         InetAddress.getByName(HOST),
                         PUERTO_SERVIDOR
-                );//el paquete va a tener el msj encriptado mas la firma
+                );
 
                 socket.send(paquete);
-                System.out.println("Emergencia enviada (encriptada y firmada)");
-                System.out.println(" Longitud del paquete: " + paqueteCompleto.length() + " bytes\n");
+                System.out.println(" Emergencia enviada (encriptada y firmada) yujuuuu");
+
             }
 
             socket.close();
             scanner.close();
 
         } catch (Exception e) {
+            System.err.println("Error en el agente: " + e.getMessage());
             e.printStackTrace();
         }
     }
