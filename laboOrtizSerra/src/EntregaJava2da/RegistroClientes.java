@@ -87,15 +87,15 @@ public class RegistroClientes {
         } else {
             clientesRegistrados.values().forEach(c -> System.out.println("  - " + c));
         }
-        System.out.println("===========================\n");
+
     }
 
-    // verificar si un cliente esta registrado
+    // esta resgistrado?
     public boolean estaRegistrado(String id) {
         return clientesRegistrados.containsKey(id);
     }
 
-    // cantidad de clientes activos
+    // clientes activos
     public int cantidadActivos() {
         return (int) clientesRegistrados.values().stream()
                 .filter(c -> c.activo)
